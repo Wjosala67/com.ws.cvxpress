@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              BackgroundColor="{StaticResource DarkBackgroundColor}"
+              xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+              xmlns:CustomControl="clr-namespace:com.ws.cvxpress.Views.Operation"
+              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="com.ws.cvxpress.Views.Operation.DetailAcceptedPage">
+    <ContentPage.Content>
+       
+          <StackLayout  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            
+            
+            <Grid>
+             <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>   
+                <Grid.RowDefinitions>
+                 <RowDefinition Height="3*"/>
+                 <RowDefinition Height="*"/>
+                 <RowDefinition Height="12*"/>
+                 <RowDefinition Height="4*"/>
+                 <RowDefinition Height="3*"/>
+                 <RowDefinition Height="3*"/>
+                 <RowDefinition Height="3*"/>
+                 <RowDefinition Height="3*"/>
+                 <RowDefinition Height="3*"/>
+                 <RowDefinition Height="3*"/>
+               
+                </Grid.RowDefinitions>
+                
+                <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" >
+                    <Grid.RowDefinitions>
+                         <RowDefinition Height="30"/>
+                         <RowDefinition Height="1"/>
+                         <RowDefinition Height="43"/>
+                        
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    
+                  <!-- <Image Source="logopages.png" Grid.Row="1" Grid.Column="1" WidthRequest="200" />-->
+                   <Image x:Name="Back" Source="backizq.png" 
+                                
+                                Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  /> 
+                    
+                    <Label Grid.Row="2" Grid.Column="1" Text="{translator:Translate TravelerRating}" HorizontalTextAlignment="Center" HorizontalOptions="Center"  FontSize="Medium"/>
+                   
+                 </Grid>
+                
+                
+                       <Frame Padding="0,0,0,0"  CornerRadius="10"
+                                              Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"  HasShadow="true" BackgroundColor="{StaticResource DarkBackgroundColor2}">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="40"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>                                         
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>                                         
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>                                         
+                                                        <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>    
+                                                <Grid.RowDefinitions>
+                                                     <RowDefinition Height="2*"/>  
+                                                     <RowDefinition Height="*"/> 
+                                                     <RowDefinition Height="*"/> 
+                                                     <RowDefinition Height="*"/> 
+                                                     <RowDefinition Height="*"/> 
+                                                     <RowDefinition Height="*"/> 
+                                                     <RowDefinition Height="*"/> 
+                                                    
+                                                   
+                                                </Grid.RowDefinitions>   
+                                            
+                                                
+                                                <Image Source="littleplane.png" HorizontalOptions="End" Grid.Column="0" Grid.Row="0"/>
+                                                     
+                                                <Label x:Name="FirstName"  Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3"  Text="{Binding FirstName, Mode= OneTime}" FontSize="Small" TextColor="{StaticResource LabelTextColorRed}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
+                                                
+                                                <Label x:Name="LastName"   Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3"  Text="{Binding LastName, Mode= OneTime}" FontSize="Small" TextColor="{StaticResource LabelTextColorRed}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                        
+                                               <!-- <Label  Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="3"  Text="{translator:Translate someoneaccepted}" FontSize="Small"  TextColor="{StaticResource LabelTextColorRed}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                                -->
+                                                        
+                                               
+                                               
+                                               
+                                                <ffimageloading:CachedImage  x:Name="ImageURL" HorizontalOptions="EndAndExpand"
+                                                                            VerticalOptions="FillAndExpand" 
+                                                    Grid.Row="0" Grid.Column="5" Grid.RowSpan="5"   Grid.ColumnSpan="4"
+                                                      
+                                                    Source="{Binding Image}">
+                                                    <ffimageloading:CachedImage.Transformations>
+                                                        <fftransformations:CornersTransformation
+                                                            CornersTransformType="BottomLeftRounded,TopRightRounded, BottomRightRounded, TopLeftRounded"
+                                                            BottomLeftCornerSize="10"
+                                                            TopRightCornerSize="10"
+                                                            BottomRightCornerSize="10"
+                                                        TopLeftCornerSize="10"/>
+                                                    </ffimageloading:CachedImage.Transformations>   
+                                                </ffimageloading:CachedImage> 
+                                                    
+                                             
+                                            </Grid>    
+                 
+                                        </Frame> 
+               
+               
+               
+              
+                <Grid Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                  <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="*"/>
+                           
+                          
+                            
+                  
+                  </Grid.RowDefinitions>      
+                        
+                        <Image x:Name="star1" Grid.Row="0" Grid.Column="0" Source="{Binding StarImage1}" />
+                        <Label Grid.Row="1" FontSize="Micro" HorizontalOptions="Center" Grid.Column="0" Text="{Binding FirstStar}"   />
+                        <Image x:Name="star2" Grid.Row="0" Grid.Column="1" Source="{Binding StarImage2}" />
+                        <Label Grid.Row="1" FontSize="Micro" HorizontalOptions="Center" Grid.Column="1" Text="{Binding SecondStar}"   />
+                        <Image x:Name="star3" Grid.Row="0" Grid.Column="2" Source="{Binding StarImage3}" />
+                        <Label Grid.Row="1" FontSize="Micro" HorizontalOptions="Center" Grid.Column="2" Text="{Binding ThirdStar}"   />
+                        <Image x:Name="star4" Grid.Row="0" Grid.Column="3" Source="{Binding StarImage4}" />
+                        <Label Grid.Row="1" FontSize="Micro" HorizontalOptions="Center" Grid.Column="3" Text="{Binding FourStar}"   />
+                        <Image x:Name="star5" Grid.Row="0" Grid.Column="4" Source="{Binding StarImage5}" />
+                        <Label Grid.Row="1" FontSize="Micro" HorizontalOptions="Center" Grid.Column="4" Text="{Binding FiveStar}"   />
+                </Grid>    
+             
+            </Grid>
+            
+            
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

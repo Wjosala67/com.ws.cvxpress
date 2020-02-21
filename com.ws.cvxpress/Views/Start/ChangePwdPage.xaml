@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+              xmlns:MyViews ="clr-namespace:WSViews;assembly=WSViews"
+             xmlns:CustomControl="clr-namespace:com.ws.cvxpress.Custom"
+             xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" BackgroundColor="{StaticResource DarkBackgroundColor}" x:Class="com.ws.cvxpress.Views.Start.ChangePwdPage">
+   
+    <ContentPage.Content>
+        
+        <StackLayout Orientation="Vertical" Padding="30"  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" >
+
+              
+              <Grid Grid.Row="0" Grid.Column="1" >
+                    <Grid.RowDefinitions>
+                         <RowDefinition Height="30"/>
+                         <RowDefinition Height="40"/>
+                         <RowDefinition Height="43"/>
+                         <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Image Source="logopages.png" Grid.Row="1" Grid.Column="1" WidthRequest="200" />
+                   
+                    <Image x:Name="b_Back" Source="backizq.png" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" /> 
+                    <Label Grid.Row="2" Grid.Column="1" Text="{translator:Translate RegisterText}" HorizontalTextAlignment="Center" HorizontalOptions="Center"  FontSize="Medium" TextColor="{StaticResource EntryTextColor}" />
+                    <Label Grid.Row="3" Grid.Column="1" Text="" HorizontalTextAlignment="Center"  HorizontalOptions="Center"  FontSize="Small" TextColor="{StaticResource EntryTextColor}"/>
+                  
+                 </Grid>
+                
+           
+          
+
+           
+            <!--<Frame BackgroundColor="Transparent" WidthRequest="400"  HasShadow="True">-->
+            <StackLayout Orientation="Vertical" Spacing="5">
+                <CustomControl:CustomEntry x:Name="ActualMail" Text="{Binding Password, Mode=TwoWay}" Placeholder="{translator:Translate CurrentPass}" Style="{StaticResource EntryStyle}" PlaceholderColor="{StaticResource EntryTextColor}"   
+                               
+                           IsPassword="True"  
+                           >
+                     <Entry.Behaviors>
+                                    <MyViews:LengthValidatorBehavior min="5" max="15" type="C"  />
+                     </Entry.Behaviors>
+
+                </CustomControl:CustomEntry>
+                <CustomControl:CustomEntry x:Name="NewEmail" Text="{Binding PasswordNew, Mode=TwoWay}" Placeholder="{translator:Translate NewPass}" Style="{StaticResource EntryStyle}" PlaceholderColor="{StaticResource EntryTextColor}"  
+                               
+                            IsPassword="True"  
+                           >
+                    <Entry.Behaviors>
+                                    <MyViews:LengthValidatorBehavior min="5" max="15" type="C"  />
+                                </Entry.Behaviors>
+
+                </CustomControl:CustomEntry>
+                <CustomControl:CustomEntry x:Name="NewEmailConf" Text="{Binding PasswordConfirm, Mode=TwoWay}" Placeholder="{translator:Translate ConfirmPass}" Style="{StaticResource EntryStyle}"   PlaceholderColor="{StaticResource EntryTextColor}"
+                               
+                           IsPassword="True"   
+                           >
+                     <Entry.Behaviors>
+                                    <MyViews:LengthValidatorBehavior min="5" max="15" type="C"  />
+                                </Entry.Behaviors>
+
+                </CustomControl:CustomEntry>
+
+            </StackLayout>
+            <!--</Frame>-->
+            <Button Command="{Binding SubmitCommand}" IsEnabled="false" Text="{translator:Translate Send}" Style="{StaticResource buttonStyle}" >
+                <Button.Triggers>
+                    <MultiTrigger TargetType="Button">
+                        <MultiTrigger.Conditions>
+                            <BindingCondition Binding="{Binding Source={x:Reference ActualMail}, Path=TextColor}" Value="LightGray" />
+                            <BindingCondition Binding="{Binding Source={x:Reference NewEmail}, Path=TextColor}" Value="LightGray" />
+
+                            <BindingCondition Binding="{Binding Source={x:Reference NewEmailConf}, Path=TextColor}" Value="LightGray" />
+                        </MultiTrigger.Conditions>
+                        <Setter Property="IsEnabled" Value="True" />
+                    </MultiTrigger>
+                </Button.Triggers>
+
+
+            </Button>
+            <BoxView HeightRequest="20"/>
+           
+           
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

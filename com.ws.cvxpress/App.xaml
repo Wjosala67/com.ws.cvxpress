@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms" 
+             
+             xmlns:converters ="clr-namespace:WSViews;assembly=WSViews"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="com.ws.cvxpress.App">
+   <Application.Resources>
+        <ResourceDictionary>
+            
+            <!--Global Styles-->
+            <Color x:Key="NavigationPrimary">#333333</Color>
+            
+            <Color x:Key="Primary">#808080</Color>
+            
+            <Color x:Key="PrimaryDark">#808080</Color>
+            
+            <Color x:Key="Accent">#808080</Color>
+            
+            
+            
+             <!-- Labels -->
+            <Color x:Key="LabelTextColorDBGeneral">#FFFFFF</Color> 
+            
+            <Color x:Key="LabelTextColorWhite">#FFFFFF</Color>
+            
+            <Color x:Key="LabelTextColorRed">#FF3600</Color> 
+            
+            <Color x:Key="LabelTextColorGeneral">#434b4d</Color>
+            
+            <Color x:Key="LabelLightGrayButton">#542e8c</Color>
+            
+            <Color x:Key="LabelTextWhenLightBack">#333333</Color>
+            
+             <!--  BackGroundColors-->
+            <Color x:Key="LightBackgroundColor">#E6E6E6</Color>
+            
+            <Color x:Key="DarkBackgroundColor">#333333</Color>
+            <Color x:Key="DarkBackgroundColor2">#242424</Color>
+            <Color x:Key="LightBackgroundColor2">#d8d8d8</Color>
+            
+            <Color x:Key="EditorBackground">#2060EB</Color>
+            
+            <Color x:Key="FrameOrangeBackground">#FF3600</Color>
+            
+            <Color x:Key="ForgotBackground">#0071BC</Color>
+            
+            <Color x:Key="VerifyBackground">#38B54A</Color>
+            
+             <!--  Text Colors-->
+            <Color x:Key="MediumGrayTextColor">#4d4d4d</Color>
+            
+            <Color x:Key="LightTextColor">#999999</Color>
+            
+            <Color x:Key="EntryTextColor">#E6E6E6</Color>
+            
+            <Color x:Key="EntryTextColorWhite">#FFFFFF</Color>
+            
+            
+            <Color x:Key="EntryTextColorSpecial">#434b4d</Color>
+            
+            <Color x:Key="LabelTextColorLinks">#73C2FB</Color>
+            
+            <Color x:Key="ButtonTextColor">#434b4d</Color>
+            
+            
+            
+            <!--   Button Colors-->
+            <Color x:Key="ButtonGeneral">#EDEDED</Color>
+            
+            <Color x:Key="sidemenutext">#EDEDED</Color>
+           
+            <Color x:Key="BackLightGrayButton">#C1C1C1</Color>
+            
+            <Color x:Key="DarkGray">#696969</Color>
+            
+            
+            <!--   Frame-->
+            
+            <Color x:Key="FrameBackGround">#FFFFFF</Color>
+            
+            <Color x:Key="FrameTextColor">Black</Color>
+           
+            <Color x:Key="BoxViewBackGround">#FFFFFF</Color>
+            
+             <!-- NavigationPage -->
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="BarTextColor" Value="White" />
+                
+            </Style>
+
+          
+             <!-- Button Style -->
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                
+                <Setter Property="BorderRadius" Value="25" />
+                <Setter Property="BackgroundColor" Value="{StaticResource ButtonGeneral}" />
+                <Setter Property="WidthRequest" Value="200" />
+                <Setter Property="TextColor" Value="{StaticResource ButtonTextColor}" />
+                <Setter Property="FontSize" Value="Small"/>
+               <!-- <Setter Property="FontFamily" >
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS" Value="ThrowMyHandsUpintheAir" />
+                    <On Platform="Android" Value="RegencieLight.ttf#RegencieLight" />
+
+                </OnPlatform>
+                </Setter>-->
+            </Style>
+            
+            
+             <!-- Button Style Back-->
+            <Style x:Key="buttonStyleBack" TargetType="Button">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="BorderColor" Value="Lime" />
+                <Setter Property="BorderRadius" Value="5" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="WidthRequest" Value="300" />
+                <Setter Property="TextColor" Value="{StaticResource ButtonTextColor}" />
+                <Setter Property="FontSize" Value="Medium"/>
+               <!-- <Setter Property="FontFamily" >
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS" Value="ThrowMyHandsUpintheAir" />
+                    <On Platform="Android" Value="RegencieLight.ttf#RegencieLight" />
+
+                </OnPlatform>
+                </Setter>-->
+            </Style>
+            
+            
+             <!-- Label Style General-->
+            
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource LabelTextColorDBGeneral}"/>
+                
+               <!-- <Setter Property="FontFamily" >
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="ThrowMyHandsUpintheAir" />
+                        <On Platform="Android" Value="RegencieLight.ttf#RegencieLight" />
+
+                    </OnPlatform>
+                </Setter>-->
+            </Style>
+
+           
+             <!-- Editor Style -->
+            <Style TargetType="Editor">
+                <Setter Property="TextColor" Value="{StaticResource LabelTextColorGeneral}"/>
+               <!-- <Setter Property="FontFamily" >
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="ThrowMyHandsUpintheAir" />
+                        <On Platform="Android" Value="RegencieLight.ttf#RegencieLight" />
+
+                    </OnPlatform>
+                </Setter>-->
+             </Style>
+
+             <!-- Entry Style -->
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="{StaticResource EntryTextColor}"/>
+                <Setter Property="PlaceholderColor" Value="{StaticResource LabelTextColorGeneral}"/>
+                <Setter Property="HeightRequest" Value="43"/>
+                <Setter Property="WidthRequest" Value="300"/>
+                <Setter Property="FontSize" Value="Medium"/>
+               <!-- <Setter Property="FontFamily" >
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="ThrowMyHandsUpintheAir" />
+                        <On Platform="Android" Value="RegencieLight.ttf#RegencieLight" />
+
+                    </OnPlatform>
+                </Setter>-->
+            </Style>
+
+            <!-- PickerStyle Style -->
+            <Style x:Key="PickerStyle" TargetType="Picker">
+                <Setter Property="TextColor" Value="{StaticResource LabelTextColorGeneral}"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="HeightRequest" Value="43"/>
+                <Setter Property="WidthRequest" Value="300"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <!--<Setter Property="FontFamily" >
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="ThrowMyHandsUpintheAir" />
+                        <On Platform="Android" Value="RegencieLight.ttf#RegencieLight" />
+
+                    </OnPlatform>
+                </Setter>-->
+            </Style>
+            
+            <!-- FrameStyle Style General -->
+            <Style x:Key="FrameStyle" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="{StaticResource FrameBackGround}"/>
+               
+            </Style>
+            <Style x:Key="ImageStyle" TargetType="Image">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="HeightRequest" Value="40"/>
+            </Style>
+            
+            
+             <!-- FrameStyle FrameTextStyle  -->
+            <Style x:Key="FrameTextStyle"  TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource FrameTextColor}"/>
+               <!-- <Setter Property="FontFamily" >
+                   <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="ThrowMyHandsUpintheAir" />
+                        <On Platform="Android" Value="RegencieLight.ttf#RegencieLight" />
+
+                    </OnPlatform>
+                </Setter>-->
+            </Style>
+            
+            <!-- PickerTextStyle Style -->
+            <Style x:Key="PickerTextStyle"  TargetType="Picker">
+                <Setter Property="TextColor" Value="{StaticResource FrameTextColor}"/>
+                <Setter Property="FontSize" Value="Medium"/>
+               <!-- <Setter Property="FontFamily" >
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="ThrowMyHandsUpintheAir" />
+                        <On Platform="Android" Value="RegencieLight.ttf#RegencieLight" />
+
+                    </OnPlatform>
+                </Setter>-->
+            </Style>
+            
+            <converters:InverseBooleanConverter x:Key="InverseBoolConverter"/>
+            <converters:StringToIntConverter x:Key="StringToIntConverter">5</converters:StringToIntConverter>
+            <x:String x:Key="formatdate">{0:dd/MM/yyyy hh:mm tt}</x:String>
+            <x:String x:Key="formatdatenotime">{0:dd/MM/yyyy}</x:String>
+             <x:String x:Key="CurrencyFormat">{0:F2}</x:String>
+            <x:Int16 x:Key="Corners">5</x:Int16>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

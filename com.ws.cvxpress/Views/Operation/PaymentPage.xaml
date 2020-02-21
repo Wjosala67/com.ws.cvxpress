@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:MyViews ="clr-namespace:WSViews;assembly=WSViews"
+             xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+             xmlns:CustomControl="clr-namespace:com.ws.cvxpress.Custom"
+             xmlns:local ="clr-namespace:com.ws.cvxpress.Classes"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:fastentry="clr-namespace:XamarinFastEntrySample.FastEntry;assembly=XamarinFastEntry.Behaviors"
+             BackgroundColor="{StaticResource DarkBackgroundColor}"
+             x:Class="com.ws.cvxpress.Views.Operation.PaymentPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:CardType x:Key="CardConverter"
+                            Amex="amex.png" Dinners="dinners.png" Discover="discover.png"
+                            JCB="jcb.png" MasterCard="mastercard.png" Visa="visa.png" NotRecognized="card.png"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>  
+        
+        <ScrollView Padding="0,5,0,5">
+                <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="AUTO"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+             <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"   >
+                    <Grid.RowDefinitions>
+                         <RowDefinition Height="30"/>
+                         <RowDefinition Height="40"/>
+                         <RowDefinition Height="AUTO"/>
+                         
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Image Source="logopages.png" Grid.Row="1" Grid.Column="1" WidthRequest="200" />
+                   
+                    <Image x:Name="Back" Source="backizq.png"  HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  /> 
+                    <Label Grid.Row="2" Grid.Column="1" Text="{translator:Translate CreditCardInfo}" FontSize="Small" HorizontalTextAlignment="Center" HorizontalOptions="Center"  />
+                    
+                 </Grid>
+
+           
+
+             <Label x:Name="AmountPay" Grid.Row="1"   Grid.Column="1" Grid.ColumnSpan="3"  />
+
+                <CustomControl:CustomPicker x:Name="TypeEntry" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"
+                      
+                     TextColor="{StaticResource EntryTextColor}" 
+                     SelectedIndexChanged="Handle_SelectedTypeChanged"
+                     TitleColor="{StaticResource EntryTextColor}" 
+                                  FontSize="Small"
+                       HorizontalOptions="FillAndExpand"
+                     HeightRequest="40" 
+                     Image="down"
+                     Title="{translator:Translate SelectCard}">
+                      
+                 </CustomControl:CustomPicker>
+
+             <Grid Grid.ColumnSpan="3" x:Name = "NewCard" Grid.Row="3" 
+                                           Grid.Column="1" IsVisible="false" >
+                 <Grid.ColumnDefinitions>
+                     <ColumnDefinition Width="10*"/>
+                     <ColumnDefinition Width="2*"/>
+                 </Grid.ColumnDefinitions>
+
+                  <CustomControl:CustomEntry x:Name="CardNumber" Keyboard="Numeric" Grid.Column="0" 
+                                           FontSize="Small" IsPassword="True"
+                                           Text="{Binding Number,Mode=TwoWay}"
+                                           Style="{StaticResource EntryStyle}" Unfocused="CardNumber_Unfocused"
+                                           MaxLength="16" HorizontalOptions="FillAndExpand"  Placeholder="{translator:Translate CardNumber}" PlaceholderColor="{StaticResource EntryTextColor}"  >
+                    <Entry.Behaviors>
+                       
+                        <fastentry:XamarinFastEntryBehaviour Mask="################" MaxLength="16"/>
+                    </Entry.Behaviors>
+             </CustomControl:CustomEntry>
+
+
+
+                 <Image Source="{Binding Number, Converter={StaticResource CardConverter}}" HeightRequest="25" WidthRequest="25" Grid.Column="1"/>
+             </Grid>
+
+              <Grid Grid.ColumnSpan="3"  x:Name = "ExistsCard" Grid.Row="3" IsVisible="false" 
+                                           Grid.Column="1" >
+                 <Grid.ColumnDefinitions>
+                     <ColumnDefinition Width="10*"/>
+                     <ColumnDefinition Width="2*"/>
+                 </Grid.ColumnDefinitions>
+
+                    <CustomControl:CustomPicker x:Name="CardsList"  Grid.Column="0" Grid.ColumnSpan="2" 
+                      
+                     TextColor="{StaticResource EntryTextColor}"
+                                                ItemsSource="{Binding cards}"
+                                                ItemDisplayBinding="{Binding Number}"
+                     SelectedIndexChanged="Handle_SelectedCardChanged"
+                     TitleColor="{StaticResource EntryTextColor}" 
+                                  FontSize="Small"
+                       HorizontalOptions="FillAndExpand"
+                     HeightRequest="40" 
+                     Image="card"
+                     Title="{translator:Translate SelectCard}">
+                      
+                 </CustomControl:CustomPicker>
+
+                 
+             </Grid>
+              
+             <CustomControl:CustomEntry x:Name="CardHolder" Grid.Row="4" 
+                                           Grid.Column="1"  FontSize="Small"
+                                           Grid.ColumnSpan="3"
+                                           Text="{Binding Name,ModeTwoWay}"
+                                           Style="{StaticResource EntryStyle}" 
+                                           MaxLength="50" 
+                                           HorizontalOptions="FillAndExpand" 
+                                           PlaceholderColor="{StaticResource EntryTextColor}"  Placeholder="{translator:Translate CardHolder}" Keyboard="Default"  >
+                    <Entry.Behaviors>
+                        <MyViews:LengthValidatorBehavior  max="30" type="C" />
+                    </Entry.Behaviors>
+                </CustomControl:CustomEntry>
+                                
+             <Label Text="{translator:Translate MonthAndYear}" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3"
+                      FontSize="Small"   TextColor="{StaticResource EntryTextColor}"  
+                          />
+                
+             <CustomControl:CustomPicker x:Name="Month" Grid.Row="6" Grid.Column="1"  
+                      
+                     TextColor="{StaticResource EntryTextColor}" 
+                     SelectedIndexChanged="Handle_SelectedIndexChanged"
+                     TitleColor="{StaticResource EntryTextColor}" 
+                                  FontSize="Small"
+                     HorizontalOptions="FillAndExpand"
+                     HeightRequest="40" 
+                     Image="down"
+                     Title="{translator:Translate Month}">
+                      
+                 </CustomControl:CustomPicker>
+
+             <CustomControl:CustomPicker x:Name="Year" Grid.Row="6" Grid.Column="2" 
+                      
+                     TextColor="{StaticResource EntryTextColor}" 
+                     SelectedIndexChanged="Handle_SelectedIndexChanged"
+                     TitleColor="{StaticResource EntryTextColor}" 
+                    
+                                           FontSize="Small"
+                      HorizontalOptions="FillAndExpand"
+                     HeightRequest="40" 
+                     Image="down"
+                     Title="{translator:Translate Year}">
+                      
+                 </CustomControl:CustomPicker> 
+                
+             <CustomControl:CustomEntry x:Name="CVV" Grid.Row="6" Grid.Column="3" 
+                                           FontSize="Small" IsPassword="True"
+                                           Style="{StaticResource EntryStyle}" 
+                                           MaxLength="3" HorizontalOptions="FillAndExpand" 
+                                           Text="{Binding CVV,ModeTwoWay}"
+                                           Placeholder="CVV" Keyboard="Numeric"
+                                           PlaceholderColor="{StaticResource EntryTextColor}"  >
+                    <Entry.Behaviors>
+                        <MyViews:LengthValidatorBehavior min="3" max="3" type="C"  />
+                    </Entry.Behaviors>
+                </CustomControl:CustomEntry>
+
+             <Label Text = "{translator:Translate PaymentInfo}" Grid.Row="7" Grid.Column="1"  Grid.ColumnSpan="3"
+                                    FontSize="Small" />
+
+             <CustomControl:CustomEntry x:Name="Line1" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3" 
+                                           FontSize="Small"
+                                           Style="{StaticResource EntryStyle}" 
+                                           MaxLength="100" HorizontalOptions="FillAndExpand" 
+                                           Text="{Binding Line1,ModeTwoWay}"
+                                           Placeholder="{translator:Translate Line1}" 
+                                           PlaceholderColor="{StaticResource EntryTextColor}"  >
+                    <Entry.Behaviors>
+                        <MyViews:LengthValidatorBehavior min="5" max="100" type="C"  />
+                    </Entry.Behaviors>
+                </CustomControl:CustomEntry>
+
+           
+
+             <CustomControl:CustomEntry x:Name="State" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="3"
+                                           
+                                           Style="{StaticResource EntryStyle}" FontSize="Small"
+                                           MaxLength="30" HorizontalOptions="FillAndExpand" 
+                                           Text="{Binding SState ,ModeTwoWay}"
+                                           Placeholder="{translator:Translate SState}" 
+                                           PlaceholderColor="{StaticResource EntryTextColor}"  >
+                    <Entry.Behaviors>
+                        <MyViews:LengthValidatorBehavior min="3" max="30" type="C"  />
+                    </Entry.Behaviors>
+                </CustomControl:CustomEntry>
+
+             <CustomControl:CustomEntry x:Name="City" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2"
+                                            FontSize="Small"
+                                           Style="{StaticResource EntryStyle}" 
+                                           MaxLength="30" HorizontalOptions="FillAndExpand" 
+                                           Text="{Binding SCity ,ModeTwoWay}"
+                                           Placeholder="{translator:Translate SCity}" 
+                                           PlaceholderColor="{StaticResource EntryTextColor}"  >
+                    <Entry.Behaviors>
+                        <MyViews:LengthValidatorBehavior min="3" max="30" type="C"  />
+                    </Entry.Behaviors>
+                </CustomControl:CustomEntry>
+
+             <CustomControl:CustomPicker x:Name="Country" Grid.Row="11" IsVisible="False" Grid.Column="1" Grid.ColumnSpan="2"
+                      
+                     TextColor="{StaticResource EntryTextColor}" 
+                     SelectedIndexChanged="Handle_SelectedCountryChanged"
+                     TitleColor="{StaticResource EntryTextColor}" 
+                                  FontSize="Small"
+                       HorizontalOptions="FillAndExpand"
+                     HeightRequest="40" 
+                     Image="down"
+                     Title="{translator:Translate Country}">
+                      
+                 </CustomControl:CustomPicker>
+
+             <CustomControl:CustomEntry x:Name="PostalCode" Grid.Row="10" Grid.Column="3" 
+                                           FontSize="Small" Keyboard="Numeric"
+                                           Style="{StaticResource EntryStyle}" 
+                                           MaxLength="5" HorizontalOptions="FillAndExpand" 
+                                           Text="{Binding PostalCode ,ModeTwoWay}"
+                                           Placeholder="{translator:Translate ZipCode}" 
+                                           PlaceholderColor="{StaticResource EntryTextColor}"  >
+                    <Entry.Behaviors>
+                        <MyViews:LengthValidatorBehavior min="5" max="5" type="C"  />
+                    </Entry.Behaviors>
+                </CustomControl:CustomEntry>
+
+
+                <Button  Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="3"   Clicked="Handle_Clicked_1"  Text="{translator:Translate Continue}" IsEnabled="false" Style="{StaticResource buttonStyle}" >
+                <Button.Triggers>
+                    <MultiTrigger TargetType="Button">
+                        <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference CardHolder}, Path=TextColor}" Value="LightGray" />
+                               
+                                <BindingCondition Binding="{Binding Source={x:Reference PostalCode}, Path=TextColor}" Value="LightGray" />
+                                <BindingCondition Binding="{Binding Source={x:Reference CVV}, Path=TextColor}" Value="LightGray" />
+                                <BindingCondition Binding="{Binding Source={x:Reference State}, Path=TextColor}" Value="LightGray" />
+                                <BindingCondition Binding="{Binding Source={x:Reference City}, Path=TextColor}" Value="LightGray" />
+                               
+                            </MultiTrigger.Conditions>
+                        <Setter Property="IsEnabled" Value="True" />
+                    </MultiTrigger>
+                </Button.Triggers>
+                </Button>
+         
+
+        </Grid>
+
+
+        </ScrollView>
+    
+
+
+         
+      
+    </ContentPage.Content>
+</ContentPage>

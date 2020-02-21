@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:MyViews ="clr-namespace:WSViews;assembly=WSViews"
+              xmlns:CustomControl="clr-namespace:com.ws.cvxpress.Custom"
+             xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="com.ws.cvxpress.Views.Start.ForgotPage" BackgroundColor="{StaticResource ForgotBackground}">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Padding="30" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" >
+              
+           
+              
+           <Grid  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            <Grid.RowDefinitions>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="AUTO"/>
+             </Grid.RowDefinitions>   
+                
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                         <RowDefinition Height="30"/>
+                         <RowDefinition Height="60"/>
+                         <RowDefinition Height="AUTO"/>
+                         <RowDefinition Height="43"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                     <Image Source="logopages.png" Grid.Row="1" Grid.Column="1" WidthRequest="200" />
+                     <Image x:Name="b_Back" Source="backizq.png"  Grid.Row="0" Grid.Column="1"   >
+                    
+                    </Image>
+                    
+<!--                    Logo-->
+                    
+                    <Label Text="{translator:Translate ForgotPassText}" HorizontalTextAlignment="Center"  HorizontalOptions="Center" Grid.Row="2" Grid.Column="1" FontSize="Medium"/>
+                    
+                </Grid>
+                
+                
+            </Grid>
+            
+            
+           
+           
+           
+            <BoxView HeightRequest="30"/>
+            <!--<Frame BackgroundColor="Transparent" WidthRequest="400"  HasShadow="True">-->
+            <StackLayout Orientation="Vertical" Spacing="5">
+                
+                
+                 <Grid ColumnSpacing="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                  
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="40"/>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+               
+                  <Image Source="emailblue.png" Grid.Row="0"/>
+                 <CustomControl:CustomEntry Grid.Row="0" BorderColor="White"  Grid.Column="1" x:Name="Email" Text="{Binding Email}" Placeholder="{translator:Translate Email}" Style="{StaticResource EntryStyle}" PlaceholderColor="{StaticResource EntryTextColor}"  
+                               
+                           Keyboard="Email"  
+                           >
+                    <Entry.Behaviors>
+                        <MyViews:EmailValidatorBehavior min="6" max="50"/>
+                    </Entry.Behaviors>
+
+                </CustomControl:CustomEntry>
+                </Grid>
+                
+               
+               
+            </StackLayout>
+            <!--</Frame>-->
+            <Button Command="{Binding SubmitCommand}" Text="{translator:Translate Send}" Style="{StaticResource buttonStyle}" >
+                <Button.Triggers>
+                    <MultiTrigger TargetType="Button">
+                        <MultiTrigger.Conditions>
+                            <BindingCondition Binding="{Binding Source={x:Reference Email}, Path=TextColor}" Value="LightGreen" />
+                           
+                        </MultiTrigger.Conditions>
+                        <Setter Property="IsEnabled" Value="True" />
+                    </MultiTrigger>
+                </Button.Triggers>
+
+
+            </Button>
+            <BoxView HeightRequest="20"/>
+     
+          
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

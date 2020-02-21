@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<popup:PopupPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+      xmlns:MyViews ="clr-namespace:WSViews;assembly=WSViews"
+    xmlns:CustomControl="clr-namespace:com.ws.cvxpress.Custom"
+    xmlns:popup = "clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    x:Class="com.ws.cvxpress.Views.Operation.PopDelayed">
+    <StackLayout>
+        
+        <Frame HeightRequest="290" HasShadow="true" CornerRadius="5" Margin="30" Padding="10">
+        <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="AUTO"/>
+                    <RowDefinition Height="AUTO"/>
+                    <RowDefinition Height="AUTO"/>
+                    <RowDefinition Height="AUTO"/>
+                    <RowDefinition Height="AUTO"/>
+                    <RowDefinition Height="AUTO"/>
+                    <RowDefinition Height="AUTO"/>
+                    <RowDefinition Height="AUTO"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+        <Label Text="{translator:Translate ItineraryChange}" HorizontalOptions="Center" TextColor="Gray" FontSize="Small" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+        <!--<Entry Grid.Row="2" Grid.ColumnSpan="2" FontSize="Small" Placeholder="Comentarios" />
+              -->  
+       <CustomControl:CustomEntry  x:Name="Coments"
+                    Grid.Row="2" Grid.ColumnSpan="2" BorderColor="{StaticResource DarkBackgroundColor}" 
+                    Text="" Style="{StaticResource EntryStyle}" FontSize="Small"
+                    MaxLength="60" Placeholder="{translator:Translate Comments}" 
+                    PlaceholderColor="{StaticResource DarkBackgroundColor}" Keyboard="Default"  >
+           <Entry.Behaviors>
+             <MyViews:EmailValidatorBehavior min="6" max="30" />                 
+           </Entry.Behaviors>
+       </CustomControl:CustomEntry>
+       <Label Text="{translator:Translate Departure}" Grid.Row="3" FontSize="Small" TextColor="{StaticResource DarkBackgroundColor}" Grid.Column="0" Grid.ColumnSpan="2"/>
+       <CustomControl:CustomDatePicker x:Name="PickDeparture" 
+                      
+                     TextColor="{StaticResource DarkBackgroundColor}" 
+                     FontSize="Small"
+                    
+                    
+                     Format="dd/MM/yyyy"                    
+                     Grid.Row="4" Grid.Column="0" HorizontalOptions="FillAndExpand"
+                     HeightRequest="50" 
+                     Image="calendarblack"
+                     >
+                      
+       </CustomControl:CustomDatePicker> 
+               
+       <CustomControl:CustomTimePicker x:Name="PickDepartureTime" 
+                      
+                     TextColor="{StaticResource DarkBackgroundColor}" 
+                     Time="{Binding TimeArrival, Mode=TwoWay}"
+                     FontSize="Small"
+                     
+                                     
+                     Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand"
+                     HeightRequest="50" 
+                     Image="clockblack"
+                     >
+                      
+                 </CustomControl:CustomTimePicker>         
+                
+        <Label Text="{translator:Translate Arrival}" Grid.Row="5" FontSize="Small" TextColor="{StaticResource DarkBackgroundColor}" Grid.Column="0" Grid.ColumnSpan="2"/>
+       <CustomControl:CustomDatePicker x:Name="PickArrival" 
+                      
+                     TextColor="{StaticResource DarkBackgroundColor}" 
+                     FontSize="Small"
+                    
+                     MinimumDate="{Binding ToDate, Path=Date, Mode=TwoWay}"
+                     Format="dd/MM/yyyy"                    
+                     Grid.Row="6" Grid.Column="0" HorizontalOptions="FillAndExpand"
+                     HeightRequest="50" 
+                     Image="calendarblack"
+                     >
+                      
+       </CustomControl:CustomDatePicker> 
+               
+       <CustomControl:CustomTimePicker x:Name="PickArrivalTime" 
+                      
+                     TextColor="{StaticResource DarkBackgroundColor}" 
+                     Time="{Binding TimeArrival, Mode=TwoWay}"
+                     
+                     FontSize="Small"
+                                     
+                     Grid.Row="6" Grid.Column="1" HorizontalOptions="FillAndExpand"
+                     HeightRequest="50" 
+                     Image="clockblack"
+                     >
+                      
+                 </CustomControl:CustomTimePicker>         
+        <Button Text="{translator:Translate Update}" Clicked="Handle_Clicked" BackgroundColor="Transparent" Grid.Row="7" HorizontalOptions="Center" FontSize="Small" Grid.Column="1"/>
+                <Button Text="{translator:Translate Cancel}" Clicked="Handle_Clicked_1" BackgroundColor="Transparent" Grid.Row="7" HorizontalOptions="Center" FontSize="Small" Grid.Column="0"/>
+            </Grid>
+        </Frame>
+    </StackLayout>
+</popup:PopupPage>

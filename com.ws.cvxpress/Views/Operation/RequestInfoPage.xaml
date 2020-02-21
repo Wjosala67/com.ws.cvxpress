@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             BackgroundColor="{StaticResource DarkBackgroundColor}"
+             x:Class="com.ws.cvxpress.Views.Operation.RequestInfoPage">
+     <ContentPage.Content>
+       
+          <StackLayout  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            
+            
+            <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+            >
+               
+             <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>   
+                <Grid.RowDefinitions>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="*"/>
+                 <RowDefinition Height="*"/>
+                 <RowDefinition Height="*"/>
+                 <RowDefinition Height="*"/>
+                 <RowDefinition Height="*"/>
+                 <RowDefinition Height="*"/>
+                 <RowDefinition Height="*"/>
+                 <RowDefinition Height="17*"/>
+                 <RowDefinition Height="3*"/>
+               
+                </Grid.RowDefinitions>
+                
+               <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4">
+                    <Grid.RowDefinitions>
+                         <RowDefinition x:Name="rowcero" Height="30"/>
+                         <RowDefinition Height="35"/>
+                         <RowDefinition Height="1"/>
+                         <RowDefinition Height="1"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Image Source="logopages.png" Grid.Row="1" Grid.Column="1" WidthRequest="150" />
+                   
+                    <Image x:Name="Back" 
+                                 Source="backizq.png" 
+                                 HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" 
+                                 Grid.ColumnSpan="3" /> 
+                   
+               </Grid>
+                
+                <Label Text="{translator:Translate From}" Grid.Row="1" Grid.Column="1"/>
+                <Label Grid.Row="1" Text="{Binding From}" Grid.Column="2" />
+                
+                <Label Text="{translator:Translate To}" Grid.Row="2" Grid.Column="1"/>
+                <Label  Grid.Row="2" Text="{Binding To}" Grid.Column="2" HorizontalOptions="Start"/>
+                
+                <Label Text="{translator:Translate PrefArrival}" Grid.Row="3" Grid.Column="1"/>
+                <Label  Text="{Binding DesiredDate, Mode=OneTime, StringFormat={StaticResource formatdate}}" Grid.Row="3" Grid.Column="2" HorizontalOptions="Start"/>
+               
+                <Label Text="{translator:Translate Article}" Grid.Row="4" Grid.Column="1"/>
+                <Label  Text="{Binding Description}" Grid.Row="4" Grid.Column="2" HorizontalOptions="Start"/>
+               
+                <Label Text="{translator:Translate ItemFind}" Grid.Row="5" Grid.Column="1"/>
+                <Label Text="{Binding WhereFind}" Grid.Row="5" Grid.Column="2" HorizontalOptions="Start"/>
+               
+                <Label Text="{translator:Translate ProductValue}" Grid.Row="6" Grid.Column="1"/>
+                <Label Text="{Binding ProductValue, Mode=OneTime, StringFormat={StaticResource CurrencyFormat}}" Grid.Row="6" Grid.Column="2" HorizontalOptions="Start"/>
+               
+                <Label Text="{translator:Translate Qty}" Grid.Row="7" Grid.Column="1"/>
+                <Label Text="{Binding Qty}" Grid.Row="7" Grid.Column="2" HorizontalOptions="Start"/>
+
+                <Label Text="{translator:Translate Weight}" Grid.Row="7" Grid.Column="3"/>
+                <Label Text="{Binding Weight}" Grid.Row="7" Grid.Column="4" HorizontalOptions="Start"/>
+     
+                <Label x:Name="RequestedAcepted" IsVisible="false" FontSize="Medium" HorizontalTextAlignment="Center" 
+                       TextColor="{StaticResource LabelTextColorRed}" 
+                       Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="4" HorizontalOptions="Start"/>
+                <Frame  Padding="5,5,5,5" CornerRadius="5" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="4" IsVisible="false" x:Name="MyFrameView" BackgroundColor="{StaticResource DarkBackgroundColor2}" >
+                <Frame Padding="0,0,0,0" BackgroundColor="{StaticResource DarkBackgroundColor2}"  CornerRadius="5" 
+                   HasShadow="true" >
+
+                    <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="20"/>
+                                                        <ColumnDefinition Width="2*"/>
+                                                        <ColumnDefinition Width="2*"/>
+                                                        <ColumnDefinition Width="2*"/>                                         
+                                                        <ColumnDefinition Width="2*"/>
+                                                        
+                                                </Grid.ColumnDefinitions>    
+                                                <Grid.RowDefinitions>
+                                                     <RowDefinition Height="2*"/>  
+                                                     <RowDefinition Height="*"/> 
+                                                     <RowDefinition Height="6*"/> 
+                                                     
+                                                     <RowDefinition Height="*"/> 
+                                                     <RowDefinition Height="*"/> 
+                                                     <RowDefinition Height="*"/> 
+                                                      
+                                                </Grid.RowDefinitions>   
+                                             
+                                              
+                                               
+                                                
+                                                <Image Source="littleplane.png" Grid.Column="0" Grid.Row="0"/>
+                                                     
+                                                <Label x:Name="FirstName"  Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3"  Text="{Binding FirstName, Mode= OneTime}" FontSize="Default" TextColor="{StaticResource LabelTextColorRed}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
+                                                
+                                                <!--<Label x:Name="LastName" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"  Text="{Binding LastName, Mode= OneTime}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />-->
+                                        
+                                                <Label x:Name="Someone" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4"  Text="{translator:Translate someoneaccepted}" FontSize="Small"  TextColor="{StaticResource LabelTextColorRed}" HorizontalOptions="Start" VerticalOptions="Center" />
+
+                                                <Grid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+                                                        <ColumnDefinition Width="*"/>
+
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="4*"/>
+                                                        <RowDefinition Height="2*"/>
+                                                    </Grid.RowDefinitions>
+
+
+                                                    <Label x:Name="txt_auth" IsVisible="false"  Grid.ColumnSpan="5"  FontSize="Small"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+
+                                                    <Button x:Name="bt_auth" IsVisible="false" Text="{translator:Translate Yes}"  Grid.Column="1" Grid.Row="1" Clicked="Handle_auth"  HorizontalOptions="Center" VerticalOptions="Start" Style="{StaticResource buttonStyle}" />
+
+                                                    <Button x:Name="bt_Canc" IsVisible="false" Text="{translator:Translate No}"  Grid.Column="3" Grid.Row="1" Clicked="Handle_canc"  HorizontalOptions="Center" VerticalOptions="Start" Style="{StaticResource buttonStyle}" />
+                                                </Grid>
+                                                
+
+                                                <Label  Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="1"  Text="{translator:Translate Departure}" FontSize="Small" LineBreakMode="WordWrap" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                        
+                                                <Label  Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2"  Text="{Binding FromDate, Mode= OneTime,StringFormat={StaticResource formatdatenotime}}" FontSize="Small" LineBreakMode="WordWrap" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                        
+                                                <Label  Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="1"  Text="{translator:Translate Arrival}" FontSize="Small" LineBreakMode="WordWrap" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                        
+                                                        
+                                                <Label  Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"  Text="{Binding ToDate, Mode= OneTime,StringFormat={StaticResource formatdatenotime}}" FontSize="Small" LineBreakMode="WordWrap" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                      
+                                             
+                                                <Label x:Name="Ratlabel" Grid.Column="4"  Grid.Row="5" Grid.ColumnSpan="2"  FontSize="Small" LineBreakMode="WordWrap" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Center" VerticalOptions="Center" />
+                                      
+                        
+                                                <ffimageloading:CachedImage  x:Name="ImageURL" HorizontalOptions="EndAndExpand"
+                                                                            VerticalOptions="FillAndExpand" 
+                                                    Grid.Row="0" Grid.Column="4" Grid.RowSpan="2"   Grid.ColumnSpan="2"
+                                                      
+                                                    Source="{Binding image}">
+                                                    <ffimageloading:CachedImage.Transformations>
+                                                        <fftransformations:CornersTransformation
+                                                            CornersTransformType="BottomLeftRounded,TopRightRounded, BottomRightRounded, TopLeftRounded"
+                                                            BottomLeftCornerSize="5"
+                                                            TopRightCornerSize="5"
+                                                            BottomRightCornerSize="5"
+                                                        TopLeftCornerSize="5"/>
+                                                    </ffimageloading:CachedImage.Transformations>   
+                                                </ffimageloading:CachedImage> 
+                                                    
+                                                <Image   Source="chat.png" x:Name="ImgChat"  Grid.Row="3" HeightRequest="35" WidthRequest="35" IsVisible="{Binding ShowChat}" Grid.RowSpan="2" HorizontalOptions="Center" VerticalOptions="End" Grid.Column="4" Grid.ColumnSpan="2" />
+                                       
+                                                <Image  Source="emptystar.png" x:Name="ImgTouch" HeightRequest="35" WidthRequest="35"  Grid.Row="3" IsVisible="{Binding ShowClick}" Grid.RowSpan="2" HorizontalOptions="Center" VerticalOptions="End"  Grid.Column="4" Grid.ColumnSpan="2" />
+                                       
+                                               
+                                            </Grid>    
+                 
+
+                </Frame> 
+                </Frame>    
+              
+                
+               <Grid Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="4"> 
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                
+             
+                    <Image Grid.Row="0" Grid.Column="0" Source="{Binding ImageSource1}"/>
+                    <Image Grid.Row="0" Grid.Column="1" Source="{Binding ImageSource2}"/>
+                    <Image Grid.Row="0" Grid.Column="2" Source="{Binding ImageSource3}"/>
+                    <Image Grid.Row="0" Grid.Column="3" Source="{Binding ImageSource4}"/>
+                
+                    <Label Text="{Binding Bought}" Grid.Row="1" Grid.Column="0" FontSize="Micro"  HorizontalOptions="Center"/>
+                    <Label Text="{Binding Started}" Grid.Row="1" Grid.Column="1" FontSize="Micro"  HorizontalOptions="Center" />
+                    <Label Text="{Binding Delivered}" Grid.Row="1" Grid.Column="2" FontSize="Micro"  HorizontalOptions="Center" />
+                    <Label Text="{Binding Ended}" Grid.Row="1" Grid.Column="3" FontSize="Micro"  HorizontalOptions="Center" />
+              </Grid>        
+                                            
+               
+            </Grid>
+            
+            
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

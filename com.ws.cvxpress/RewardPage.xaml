@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:viewModels="clr-namespace:com.ws.cvxpress.ViewModels"
+             xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+       
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="com.ws.cvxpress.RewardPage"
+             BackgroundColor="{StaticResource DarkBackgroundColor}">
+   
+    
+    
+    
+     <StackLayout Padding="0,10,0,0" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+       
+
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="3*" />  
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>                   
+                     <ColumnDefinition Width="*"/> 
+                
+                </Grid.ColumnDefinitions>
+                
+            
+            
+                
+             <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                         <RowDefinition Height="30"/>
+                         <RowDefinition Height="40"/>
+                         <RowDefinition Height="43"/>
+                         <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Image Source="logopages.png" Grid.Row="1" Grid.Column="1" WidthRequest="200" />
+                   
+                    <Image x:Name="Back" Source="backizq.png"  HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" /> 
+                    <Label Text="{translator:Translate MyRewards}" HorizontalTextAlignment="Center" HorizontalOptions="Center" Grid.Row="2" Grid.Column="1" FontSize="Medium"/>
+                   
+                 </Grid>
+              
+                  <ListView Grid.Row="1"  x:Name="MyListView" RowHeight="100" 
+                            VerticalOptions="Start"
+                            SeparatorColor="White" 
+                            SeparatorVisibility="Default"
+                            ItemsSource="{Binding MyListView}" 
+                            HasUnevenRows="true"
+                            RefreshCommand="{Binding LoadItemsCommand}"
+                            IsPullToRefreshEnabled="true"
+                            IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                            CachingStrategy="RecycleElement"
+                            ItemTapped="Handle_ItemTapped"  >
+                            
+                    <!--Built in Cells-->
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                                <ViewCell Height="100" >
+                                    <ViewCell.View>
+                                        <Frame  CornerRadius="5" Grid.Row="4" HasShadow="true" BackgroundColor="{StaticResource DarkBackgroundColor}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="3*"/>
+                                                <ColumnDefinition Width="3*"/>
+                                                <ColumnDefinition Width="3*"/>
+                                                 <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>    
+                                        <Grid.RowDefinitions>
+                                             <RowDefinition Height="*"/>  
+                                             <RowDefinition Height="*"/> 
+                                             <RowDefinition Height="*"/> 
+                                            
+                                            
+                                        </Grid.RowDefinitions>   
+                                     
+                                      
+                                       
+                                        
+                                        <Image Source="littleplane.png" Grid.Column="3" Grid.Row="0" HorizontalOptions="End"/>
+                                            
+                                            
+                                            
+                                        
+                                        <Label  Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="2"   Text="{Binding CountryFrom, Mode= OneTime}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
+                                        
+                                        
+                                        <Label  Grid.Column="4" Grid.Row="0" Grid.ColumnSpan="2"   Text="{Binding CountryTo, Mode= OneTime}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                
+                                        <Label Text="{translator:Translate Departure}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+                                        <Label  Grid.Column="2" Grid.Row="1"  Text="{Binding Departure, StringFormat='{0:dd/MM/yyyy}'}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
+                                             
+                                        <Label Text="{translator:Translate Arrival}" Grid.Row="1" Grid.Column="3" />
+                                        <Label  Grid.Column="4" Grid.Row="1"  Text="{Binding Arrival, StringFormat='{0:dd/MM/yyyy}'}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
+                                             
+                                         <Label Text="{translator:Translate Articles}" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"/>
+                                        <Label  Grid.Column="2" Grid.Row="2"  Text="{Binding ItemQty}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
+                                             
+                                        <Label Text="{translator:Translate RewardNoCurrency}" Grid.Row="2" Grid.Column="3" />
+                                        <Label  Grid.Column="4" Grid.Row="2"  Text="{Binding RewardTotal}" FontSize="Small" LineBreakMode="WordWrap" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                               <Label Text="{translator:Translate USD}" Grid.Row="2" Grid.Column="5" />
+                                       
+<!--                                        <Image Grid.Row="1" Grid.Column="3" Grid.RowSpan="3"   Grid.ColumnSpan="4" Source="{Binding Image}"  Aspect="AspectFit"/>-->
+                                        
+                                        <ffimageloading:CachedImage  x:Name="ImageURL" HorizontalOptions="Start"
+                                                                    VerticalOptions="FillAndExpand" 
+                                            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                                              
+                                          
+                                            Source="star.png">
+                                            <ffimageloading:CachedImage.Transformations>
+                                                <fftransformations:CornersTransformation
+                                                    CornersTransformType="BottomLeftRounded,TopRightRounded, BottomRightRounded, TopLeftRounded"
+                                                    BottomLeftCornerSize="10"
+                                                    TopRightCornerSize="10"
+                                                    BottomRightCornerSize="10"
+                                                TopLeftCornerSize="10"/>
+                                            </ffimageloading:CachedImage.Transformations>   
+                                        </ffimageloading:CachedImage> 
+                                            
+                                        
+                                
+                                       
+                                    </Grid>    
+                                        
+                                        
+                                </Frame> 
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                    </ListView.ItemTemplate>
+                    
+                  
+                  </ListView>
+               
+            </Grid>
+        </StackLayout>
+</ContentPage>

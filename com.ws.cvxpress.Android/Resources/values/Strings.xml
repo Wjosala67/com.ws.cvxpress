@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="hello">Hello World, Click Me!</string>
+	<string name="app_name">com.ws.cvxpress.Droid</string>
+	<string name="facebook_app_name">cvxpress</string>
+	<string name="facebook_app_id">344288986523204</string>
+	<string name="fb_login_protocol_scheme">fb344288986523204</string>
+ 
+</resources>

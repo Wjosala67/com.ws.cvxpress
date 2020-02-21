@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="com.ws.cvxpress.Views.Admin.AdminPage"
+             xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+             BackgroundColor="{StaticResource DarkBackgroundColor}">
+    <ContentPage.Content>
+       <StackLayout Padding="20,5,20,0">
+          
+          <BoxView HeightRequest="1" WidthRequest="1" BackgroundColor="White"/>
+            <BoxView HeightRequest="10"/>
+           <Label x:Name="bt_Atencion" Text="{translator:Translate GenInfo}" />
+           <BoxView HeightRequest="10"/>
+          <BoxView HeightRequest="1" WidthRequest="1" BackgroundColor="White"/>
+           <BoxView HeightRequest="10"/>
+           <Label x:Name="bt_Approval" Text="{translator:Translate TravelerAuth}" />
+           <BoxView HeightRequest="10"/>
+           <BoxView HeightRequest="1" WidthRequest="1" BackgroundColor="White"/>
+       </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

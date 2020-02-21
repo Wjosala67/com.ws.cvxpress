@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="com.ws.cvxpress.Views.Operation.GeneralUpdatePage"
+             BackgroundColor="{StaticResource DarkBackgroundColor}">
+    <ContentPage.Content>
+        
+          <StackLayout Padding="0,5,0,0"  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            
+         
+            <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+            
+            >
+             <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>   
+                <Grid.RowDefinitions>
+                 <RowDefinition Height="*"/>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="*"/>
+                
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="*"/>
+                 
+               
+                </Grid.RowDefinitions>
+                
+                 <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5" >
+                    <Grid.RowDefinitions>
+                         <RowDefinition Height="30"/>
+                         <RowDefinition Height="AUTO"/>
+<!--                         <RowDefinition Height="AUTO"/>-->
+                         <!--<RowDefinition Height="AUTO"/>-->
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Image x:Name="Back" Source="backizq.png" 
+                                
+                                HorizontalOptions="Center" 
+                                Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" /> 
+                    
+                    
+                   <!--<Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{translator:Translate GeneralUpdate}" HorizontalTextAlignment="Center" HorizontalOptions="Center"  FontSize="Medium"/>-->
+                   <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{translator:Translate TravelRequests}" HorizontalTextAlignment="Center" HorizontalOptions="Center"  FontSize="Small"/>
+                   
+                 </Grid>
+                
+                <Label Text="{translator:Translate From}" Grid.Row="1" Grid.Column="1"/>
+                <Label Text="{translator:Translate To}" Grid.Row="2" Grid.Column="1"/>
+                <Label Text="{translator:Translate Departure}" Grid.Row="3" Grid.Column="1"/>
+                <Label Text="{translator:Translate Arrival}" Grid.Row="3" Grid.Column="3"/>
+              
+                <Label Text="{Binding From}" Grid.Row="1" TextColor="{StaticResource LabelTextColorRed}" Grid.Column="2" Grid.ColumnSpan="2"/>
+                <Label Text="{Binding To}" Grid.Row="2" TextColor="{StaticResource LabelTextColorRed}" Grid.Column="2" Grid.ColumnSpan="2"/>
+                <Label x:Name="DateFrom" Text="{Binding DateFrom, Mode=OneTime , StringFormat={StaticResource formatdate}}" Grid.Row="3" TextColor="{StaticResource LabelTextColorRed}" Grid.Column="2"/>
+                <Label x:Name="DateTo" Text="{Binding DateTo, Mode=OneTime , StringFormat={StaticResource formatdate}}" Grid.Row="3" TextColor="{StaticResource LabelTextColorRed}" Grid.Column="4"/>
+                
+                
+                <ScrollView Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="4">
+                <Grid>
+                <Frame CornerRadius="5" Grid.Row="0" Grid.ColumnSpan="2" x:Name="frame1" BackgroundColor="Transparent" BorderColor="{Binding bColor1}"   >
+                    <Grid>
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1"/>
+                            <ColumnDefinition Width="AUTO"/>   
+                            <ColumnDefinition Width="AUTO"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding ImageSource1, Mode=TwoWay}" Grid.Column="1" Style="{StaticResource ImageStyle}" />
+                        <Label Text="{translator:Translate BuyItemText}" Grid.Column="2"/>
+                    </Grid>
+                    
+                </Frame>
+                        
+                <Frame CornerRadius="5" Grid.Row="1" Grid.Column="0" x:Name="frame2"  BackgroundColor="Transparent" BorderColor="{Binding bColor2}">
+                    <Grid>
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1"/>
+                            <ColumnDefinition Width="AUTO"/>   
+                            <ColumnDefinition Width="AUTO"/>
+                           
+                            
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding ImageSource2}" Grid.Column="1" Style="{StaticResource ImageStyle}" />
+                        <Label Text="{translator:Translate TravelStarted}" Grid.Column="2"/>
+                       
+                    </Grid>
+                    
+                </Frame>
+                        
+                <Frame CornerRadius="5" Grid.Row="1" Grid.Column="1" x:Name="frame22"  BackgroundColor="Transparent" BorderColor="{Binding bColor5}">
+                    
+                    <Grid>
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1"/>
+                            <ColumnDefinition Width="AUTO"/>   
+                            <ColumnDefinition Width="AUTO"/>
+                           
+                            
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding ImageSource22}" Grid.Column="1" Style="{StaticResource ImageStyle}" />
+                        <Label Text="{translator:Translate TravelDelayed}" Grid.Column="2"/>
+                       
+                    </Grid>
+                    
+                </Frame>  
+                        
+                <Frame CornerRadius="5" Grid.Row="2" Grid.ColumnSpan="2" x:Name="frame3"  BackgroundColor="Transparent" BorderColor="{Binding bColor3}">
+                    <Grid>
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1"/>
+                            <ColumnDefinition Width="AUTO"/>   
+                            <ColumnDefinition Width="AUTO"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding ImageSource3, Mode=TwoWay}" Grid.Column="1" Style="{StaticResource ImageStyle}"/>
+                        <Label Text="{translator:Translate ItemDelivered }" Grid.Column="2"/>
+                    </Grid>
+                    
+                </Frame>
+                        
+                <Frame CornerRadius="5" x:Name="frame4" Grid.Row="3" Grid.ColumnSpan="2"  BackgroundColor="Transparent" BorderColor="{Binding bColor4}">
+                    <Grid>
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1"/>
+                            <ColumnDefinition Width="AUTO"/>   
+                            <ColumnDefinition Width="AUTO"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding ImageSource4}"  Grid.Column="1"  Style="{StaticResource ImageStyle}" />
+                        <Label Text="{translator:Translate TravelFinished}" Grid.Column="2"/>
+                    </Grid>
+                    
+                </Frame>
+                </Grid>
+                </ScrollView>
+                <Button Text="{translator:Translate UpdateState}" Clicked="Handle_Clicked_1"  Grid.Row="5" Style="{StaticResource buttonStyle}" Grid.Column="1" Grid.ColumnSpan="4"/>
+            </Grid>
+            
+            
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

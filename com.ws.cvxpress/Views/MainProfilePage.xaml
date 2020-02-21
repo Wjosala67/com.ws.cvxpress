@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:com.ws.cvxpress.Views" 
+             xmlns:views2="clr-namespace:com.ws.cvxpress.Views.Operation" 
+             xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+             x:Class="com.ws.cvxpress.Views.MainProfilePage" >
+  <!--Pages can be added as references or inline-->
+    <TabbedPage.Children >
+        <NavigationPage x:Name="tab1"  Title="{translator:Translate MyProfile}"  Tint="White" BarBackgroundColor="{StaticResource LightBackgroundColor}" BackgroundColor="{StaticResource EntryTextColorWhite}" >
+              <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_feed.png"/>
+                    </OnPlatform>
+            </NavigationPage.Icon>
+           
+            <x:Arguments>
+                <views:ProfilePage x:Name="tab11"     />
+            </x:Arguments>
+        </NavigationPage>
+
+       <!-- <NavigationPage  x:Name="tab2" Title="{translator:Translate OfferBox}"  BarTextColor="White" BarBackgroundColor="{StaticResource NavigationPrimary}" BackgroundColor="{StaticResource EntryTextColorWhite}">
+
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_feed.png"/>
+                    </OnPlatform>
+            </NavigationPage.Icon>
+            
+            <x:Arguments >
+                <views2:OfferBoxPage x:Name="tab12" NavigationPage.TitleIcon="tab_feed.png"   />
+            </x:Arguments>
+        </NavigationPage>
+
+        <NavigationPage  x:Name="tab3" Title="{translator:Translate RequestBox}"   BarTextColor="White" BarBackgroundColor="{StaticResource NavigationPrimary}" BackgroundColor="{StaticResource EntryTextColorWhite}">
+             <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="iOS" Value="tab_feed.png"/>
+                    </OnPlatform>
+            </NavigationPage.Icon>
+            
+            <x:Arguments NavigationPage.HasNavigationBar="false">
+                
+            
+                <views2:RequestBoxPage NavigationPage.TitleIcon="tab_feed.png"   />
+            </x:Arguments>
+        </NavigationPage>-->
+    </TabbedPage.Children>
+</TabbedPage>

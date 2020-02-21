@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+             BackgroundColor="{StaticResource DarkBackgroundColor}"
+              xmlns:CustomControl="clr-namespace:com.ws.cvxpress.Custom"
+             x:Class="com.ws.cvxpress.Views.Operation.UnitUpdatePage">
+   
+  <ContentPage.Content>
+        
+          <StackLayout Padding="0,5,0,0" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            
+         
+            <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+            
+            >
+             <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>   
+                <Grid.RowDefinitions>
+                 <RowDefinition Height="*"/>
+                 <RowDefinition Height="*"/>
+                 <RowDefinition Height="*"/>
+                 <RowDefinition Height="2*"/>
+                 <RowDefinition Height="2*"/>
+                 <RowDefinition Height="4*"/>
+                 <RowDefinition Height="4*"/>
+                 <RowDefinition Height="3*"/>
+                 <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                
+                 <Grid Grid.Row="0" Padding="0,0,0,10" Grid.Column="1" Grid.ColumnSpan="5" HorizontalOptions="Center" >
+                    <Grid.RowDefinitions>
+                         <RowDefinition Height="35"/>
+                         <RowDefinition Height="AUTO"/>
+                         <RowDefinition Height="AUTO"/>
+                         <!--<RowDefinition Height="AUTO"/>-->
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    
+                     <Image x:Name="Back" Source="backizq.png" 
+                                
+                                HorizontalOptions="Center" 
+                                Grid.Row="0" Grid.Column="1"   /> 
+                    
+                  <!--  <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{translator:Translate UnitUpdate}" HorizontalTextAlignment="Center" HorizontalOptions="Center"  FontSize="Medium"/>
+                   <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{translator:Translate TravelUnitRequest}" HorizontalTextAlignment="Center" HorizontalOptions="Center"  FontSize="Small"/>
+                   -->
+                 </Grid>
+                
+                <Label Text="{translator:Translate From}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" />
+                <Label Text="{translator:Translate To}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+                <Label Text="{translator:Translate Departure}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"/>
+                <Label Text="{translator:Translate Arrival}" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="2"/>
+                <Label Text="{translator:Translate Article}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" />
+                
+                <!-- <ImageButton x:Name="bt_chat" Grid.Row="1" Clicked="Handle_Clicked_2" Grid.Column="3"  Source="chat.png" BackgroundColor="black" HeightRequest="30" WidthRequest="30" />
+               -->
+                <Label x:Name="from" Grid.Row="1" Grid.Column="3" TextColor="{StaticResource LabelTextColorRed}" Grid.ColumnSpan="3"/>
+                <Label x:Name="to" Grid.Row="2" Grid.Column="3" TextColor="{StaticResource LabelTextColorRed}" Grid.ColumnSpan="3"/>
+                <Label Text="{Binding DateFrom,Mode=OneTime, StringFormat={StaticResource formatdatenotime}}" LineBreakMode="WordWrap" Grid.Row="3" Grid.Column="3" TextColor="{StaticResource LabelTextColorRed}"/>
+                <Label  Text="{Binding DateTo,Mode=OneTime, StringFormat={StaticResource formatdatenotime}}" LineBreakMode="WordWrap" Grid.Row="3" Grid.Column="5" TextColor="{StaticResource LabelTextColorRed}"/>
+                <Label x:Name="article" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" TextColor="{StaticResource LabelTextColorRed}"/>
+                
+                <Frame Grid.Row="5" Grid.Column="1" CornerRadius="5" Grid.ColumnSpan="5" BackgroundColor="{StaticResource DarkBackgroundColor2}" >
+                    
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                           
+                            
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Text="{translator:Translate UpdateItem}" Grid.Row="0" TextColor="{StaticResource EntryTextColorWhite}" Grid.Column="0" VerticalOptions="Center" Grid.ColumnSpan="4" />
+                        <Label Text="{translator:Translate Kilos}" TextColor="White" Grid.Row="1" Grid.Column="0" />
+                         <CustomControl:CustomEntry Grid.Row="1"  Grid.Column="1" 
+                                                    x:Name="NewWeigth" 
+                                                    Text="{Binding NewWeight}" 
+                                                    Style="{StaticResource EntryStyle}"
+                                                    BorderColor="White"
+                                                    TextColor="White" 
+                                                    MaxLength="4"     FontSize="Small"
+                                                    PlaceholderColor="White">
+                               
+                                     
+                                   
+                               
+                            </CustomControl:CustomEntry >
+                         <Label Text="{translator:Translate Price}" TextColor="White" Grid.Row="1" Grid.Column="2" />
+                         <CustomControl:CustomEntry Grid.Row="1" BorderColor="White"  Grid.Column="3" 
+                                                    x:Name="NewPrice" 
+                                                    Text="{Binding NewPrice}" FontSize="Small"
+                                                    Style="{StaticResource EntryStyle}" 
+                                                    TextColor="White" 
+                                                    MaxLength="4"   
+                                                    PlaceholderColor="White">
+                               
+                                     
+                                   
+                               
+                            </CustomControl:CustomEntry >
+                    </Grid>
+                    
+                </Frame>
+
+                 <Label Text="{Binding TravelState}" HorizontalOptions="Center" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="4"/>
+             
+               
+              
+                   
+                     
+                    <Frame CornerRadius="5" x:Name="frame4" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="5"  BackgroundColor="Transparent" BorderColor="{Binding bColor4}">
+                    <Grid>
+                        
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="20"/>
+                            <ColumnDefinition Width="AUTO"/>   
+                            <ColumnDefinition Width="AUTO"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Image Source="{Binding ImageSource4}"  HeightRequest="40"  Grid.Column="1"  Style="{StaticResource ImageStyle}" />
+                        <Label Text="{translator:Translate DeliverItem}" Grid.Column="2"/>
+                    </Grid>
+                    
+                </Frame>
+                
+              
+                
+                <Button x:Name="UpdateBoton" Text="{translator:Translate Update}" Clicked="Handle_Clicked_1" Grid.Row="8" Style="{StaticResource buttonStyle}" Grid.Column="1" Grid.ColumnSpan="5"/>
+            </Grid>
+            
+            
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:com.ws.cvxpress.ViewModels"
+             xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             
+             x:Class="com.ws.cvxpress.Views.Operation.RequestBoxPage">
+   
+   
+
+    
+     <StackLayout Padding="20" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            <BoxView HeightRequest="1"/>
+
+            <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="AUTO" />
+                   
+                    <RowDefinition Height="*" />
+                    
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    
+                     <ColumnDefinition Width="*"/>
+                   
+                </Grid.ColumnDefinitions>
+                
+
+                <Label TextColor="{StaticResource LabelTextWhenLightBack}" Grid.Row="0"  Text="{translator:Translate RequestInstructions}" FontSize="Small" HorizontalTextAlignment="Center" />
+                <ScrollView Grid.Row="1">
+                  <ListView x:Name="MyListView" RowHeight="180" 
+                            
+                            SeparatorColor="White" 
+                            SeparatorVisibility="Default"
+                            ItemsSource="{Binding lstItemsShow}" 
+                            HasUnevenRows="true"
+                            RefreshCommand="{Binding LoadItemsCommand}"
+                            IsPullToRefreshEnabled="true"
+                            
+                            CachingStrategy="RecycleElement"
+                            ItemTapped="Handle_ItemTapped"  >
+                            
+                    <!--Built in Cells-->
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                                <ViewCell Height="180" >
+                                    <ViewCell.View>
+                                          <Grid RowSpacing="0" ColumnSpacing="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="1*"/>
+                                                    <RowDefinition Height="1*"/>
+                                                    <RowDefinition Height="8*"/>
+                                                </Grid.RowDefinitions>
+                                                  <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="8*" />
+                                                    <ColumnDefinition Width="1*" />
+                                                    <ColumnDefinition Width="1*" />
+                                                  </Grid.ColumnDefinitions>
+
+
+                                     <Frame  CornerRadius="5" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2" Grid.Row="1" HasShadow="true" BackgroundColor="{StaticResource DarkBackgroundColor}">
+                                        <Grid>
+                                        <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="3*"/>
+                                                <ColumnDefinition Width="3*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="2*"/>
+                                                 <ColumnDefinition Width="2*"/>
+                                        </Grid.ColumnDefinitions>    
+                                        <Grid.RowDefinitions>
+                                             <RowDefinition Height="*"/>  
+                                             <RowDefinition Height="*"/> 
+                                             <RowDefinition Height="*"/> 
+                                             <RowDefinition Height="*"/> 
+                                             <RowDefinition Height="*"/> 
+                                             <RowDefinition Height="*"/> 
+                                             
+                                            
+                                        </Grid.RowDefinitions>   
+                                     
+                                      
+                                       
+                                        
+                                        <Image Source="littleplane.png" Grid.Column="0" Grid.Row="0"/>
+                                            
+                                            
+                                            
+                                        <Label  Grid.Column="1" Grid.Row="0"  Text="{translator:Translate From}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
+                                           
+                                        <Label  Grid.Column="2" Grid.Row="0" Grid.ColumnSpan="2"  Text="{Binding requestSpecs.CountryCodeFrom, Mode= OneTime}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
+                                        
+                                        <Label  Grid.Column="1" Grid.Row="1"  Text="{translator:Translate To}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
+                                         
+                                        <Label  Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2"  Text="{Binding requestSpecs.CountryCodeTo, Mode= OneTime}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                
+                                        <Label  Grid.Column="1" Grid.Row="2"  Text="{translator:Translate Article}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
+                                         
+                                        <Label  Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="2"  Text="{Binding requestSpecs.Description, Mode= OneTime}" FontSize="Small" LineBreakMode="WordWrap" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                
+                                        <Label  Grid.Column="1" Grid.Row="3"  Text="{translator:Translate PrefArrival}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
+                                             
+                                        <Label  Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="2"  Text="{Binding requestSpecs.ToDate, Mode= OneTime,StringFormat={StaticResource formatdatenotime}}" FontSize="Small" LineBreakMode="WordWrap" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                              
+                                        <Label  Grid.Column="1" Grid.Row="4"  Text="{translator:Translate Qty}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
+                                             
+                                        <Label  Grid.Column="2" Grid.Row="4"  Text="{Binding requestSpecs.Quantity, Mode= OneTime}" FontSize="Small" LineBreakMode="WordWrap" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                              
+                                        <Label  Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="2" HorizontalTextAlignment="Start" Text="{translator:Translate ProductValue}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center"  />
+                                             
+                                        <Label  Grid.Column="4" Grid.Row="5"  Text="{Binding requestSpecs.ProductValue, Mode= OneTime, StringFormat={StaticResource CurrencyFormat}}" FontSize="Small" LineBreakMode="WordWrap" TextColor="{StaticResource LightTextColor}" HorizontalTextAlignment="Start" HorizontalOptions="Start" VerticalOptions="Center" />
+                                
+                                       
+                                        <!--<Image  Grid.Row="1" Grid.Column="3" Grid.RowSpan="3"   Grid.ColumnSpan="4" Source="{Binding Image}"  Aspect="AspectFit"/>
+                                        -->
+                                        <ffimageloading:CachedImage  x:Name="ImageURL" HorizontalOptions="EndAndExpand"
+                                                                    VerticalOptions="FillAndExpand" 
+                                            Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="4" Grid.RowSpan="4" 
+                                              
+                                          
+                                            Source="{Binding requestSpecs.imageSource}">
+                                            <ffimageloading:CachedImage.Transformations>
+                                                <fftransformations:CornersTransformation
+                                                    CornersTransformType="BottomLeftRounded,TopRightRounded, BottomRightRounded, TopLeftRounded"
+                                                    BottomLeftCornerSize="10"
+                                                    TopRightCornerSize="10"
+                                                    BottomRightCornerSize="10"
+                                                TopLeftCornerSize="10"/>
+                                            </ffimageloading:CachedImage.Transformations>   
+                                        </ffimageloading:CachedImage> 
+                                            
+                                        
+                                
+                                       
+                                    </Grid>         
+                                     </Frame>
+
+
+                                         <Image VerticalOptions="Center" HorizontalOptions="Center" IsVisible="{Binding imageShow}"
+                                                        Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2"
+                                                        Source="icon.png"/>
+                                                </Grid>
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                    </ListView.ItemTemplate>
+                    
+                  
+                  </ListView>
+                </ScrollView>
+            </Grid>
+        </StackLayout>
+</ContentPage>

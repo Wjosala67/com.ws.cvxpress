@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:MyViews ="clr-namespace:WSViews;assembly=WSViews"
+             xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+             xmlns:viewModels ="clr-namespace:com.ws.cvxpress.ViewModels"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="com.ws.cvxpress.Views.RegisterA.StepTwoPage" 
+             BackgroundColor="{StaticResource DarkBackgroundColor}">
+    
+  
+    <ContentPage.Content>
+          <StackLayout Padding="20,10,20,0"  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            <ScrollView> 
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="AUTO"/>
+                    <RowDefinition Height="*"/>
+                     <RowDefinition Height="AUTO"/>
+                </Grid.RowDefinitions>
+                
+                
+                
+                  <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                         <RowDefinition Height="30"/>
+                         <RowDefinition Height="40"/>
+                         <RowDefinition Height="43"/>
+                         <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Image Source="logopages.png" Grid.Row="1" Grid.Column="1" WidthRequest="200" />
+                   
+                    <Image x:Name="Back" Source="backizq.png" HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" /> 
+                    <Label Text="{translator:Translate ListCaMessage}" HorizontalTextAlignment="Center" HorizontalOptions="Center" Grid.Row="2" Grid.Column="1" FontSize="Medium"/>
+                    <Label Text="{translator:Translate ListNumberMessage}" HorizontalTextAlignment="Center" Grid.Row="3" Grid.Column="1" FontSize="Small"/>
+                    
+                 </Grid>
+                
+               
+                    
+                  <Grid  Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="43"/>
+                        <RowDefinition Height="{Binding TypeHeight}"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="43"/>
+                        <RowDefinition Height="{Binding CategoryHeight }"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition Height="43"/>
+                        <RowDefinition Height="{Binding CollectHeight}"/>
+                        <RowDefinition Height="43"/>
+                        <RowDefinition Height="{Binding DeliveryHeight}"/>
+                    </Grid.RowDefinitions>
+                    
+      
+                                    <Label Grid.Row="0" Text="{translator:Translate ItemType}" FontSize="Medium"/>
+                                    
+                                    <ListView x:Name="lstView1" Grid.Row="1"  VerticalScrollBarVisibility="Always"  ItemsSource="{Binding LstItemType}" >
+                                       <ListView.ItemTemplate>    
+                                        <DataTemplate>
+                                                <ViewCell Height="150" >
+                                                    <ViewCell.View>
+                                                        <Grid HeightRequest="150" >
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="AUTO" />
+                                                               
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="30" />
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="*" />
+                                                              
+                                                            </Grid.ColumnDefinitions>
+
+                                                             <Image Source="{Binding image}" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding ItemName}" HorizontalOptions="Start" VerticalOptions="Center"  FontSize="Small" LineBreakMode="TailTruncation" />
+                                                            <Switch Grid.Row="0" Grid.Column="2"    IsToggled="{Binding IsSelected}"/>
+                                                           
+                                                           
+                                                        </Grid>
+                                                    </ViewCell.View>
+                                                </ViewCell>
+                                        </DataTemplate>
+                                       </ListView.ItemTemplate>
+                                    </ListView>
+                                    
+                                    <BoxView Grid.Row="2" BackgroundColor="{StaticResource LabelTextColorDBGeneral}"  WidthRequest="1" HeightRequest="0"/>
+                                    
+                                    <Label Grid.Row="3" Text="{translator:Translate Categories}" FontSize="Medium"/>
+                             
+                                    <ListView x:Name="lstView2" Grid.Row="4" VerticalScrollBarVisibility="Always" VerticalOptions="FillAndExpand"  ItemsSource="{Binding LstItemCategories}" >
+                                       <ListView.ItemTemplate>    
+                                        <DataTemplate>
+                                                <ViewCell  >
+                                                    <ViewCell.View>
+                                                        <Grid >
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="AUTO" />
+                                                               
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="25" />
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="*" />
+                                                              
+                                                            </Grid.ColumnDefinitions>
+
+                                                            <Image Source="{Binding image}" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding ItemName}" FontSize="Small" LineBreakMode="TailTruncation" />
+                                                            <Switch Grid.Row="0" Grid.Column="2"   IsToggled="{Binding IsSelected}"/>
+                                                           
+                                                           
+                                                        </Grid>
+                                                    </ViewCell.View>
+                                                </ViewCell>
+                                        </DataTemplate>
+                                       </ListView.ItemTemplate>
+                                    </ListView>
+                                   
+                                    <BoxView Grid.Row="5" BackgroundColor="{StaticResource LabelTextColorDBGeneral}"  WidthRequest="1" HeightRequest="0"/>
+                        
+                        
+                                    <Label Grid.Row="6"   Text="{translator:Translate CollectOptions}" FontSize="Medium"/>
+                                   
+                                    <ListView x:Name="lstView3" Grid.Row="7"  VerticalScrollBarVisibility="Always" VerticalOptions="FillAndExpand"  
+                                              ItemsSource="{Binding LstCollectType}" >
+                                       <ListView.ItemTemplate>    
+                                        <DataTemplate>
+                                                <ViewCell Height="160" >
+                                                    <ViewCell.View>
+                                                        <Grid HeightRequest="160" >
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="AUTO" />
+                                                               
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="30" />
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="60" />
+                                                              
+                                                            </Grid.ColumnDefinitions>
+
+                                                             <Image Source="{Binding image}" HeightRequest="25" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding ItemName}"  HorizontalOptions="Start" VerticalOptions="Center"  FontSize="Small" LineBreakMode="WordWrap" />
+                                                            <Switch Grid.Row="0" Grid.Column="2" OnColor="Silver"  IsToggled="{Binding IsSelected}"/>
+                                                           
+                                                           
+                                                        </Grid>
+                                                    </ViewCell.View>
+                                                </ViewCell>
+                                        </DataTemplate>
+                                       </ListView.ItemTemplate>
+                                    </ListView>
+                        
+                                    <Label Grid.Row="8"   Text="{translator:Translate DeliveryOptions}" FontSize="Medium"/>
+                                   
+                                    <ListView x:Name="lstView4" Grid.Row="9"  
+                                              VerticalScrollBarVisibility="Always" 
+                                              VerticalOptions="FillAndExpand"  
+                                              ItemsSource="{Binding LstDeliverType}" >
+                                       <ListView.ItemTemplate>    
+                                        <DataTemplate>
+                                                <ViewCell Height="160" >
+                                                    <ViewCell.View>
+                                                        <Grid HeightRequest="160" >
+                                                            <Grid.RowDefinitions>
+                                                                <RowDefinition Height="AUTO" />
+                                                               
+                                                            </Grid.RowDefinitions>
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="30" />
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="60" />
+                                                              
+                                                            </Grid.ColumnDefinitions>
+
+                                                             <Image Source="{Binding image}" HeightRequest="25" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding ItemName}"  HorizontalOptions="Start" VerticalOptions="Center"  FontSize="Small" LineBreakMode="WordWrap" />
+                                                            <Switch Grid.Row="0" Grid.Column="2" OnColor="Silver"  IsToggled="{Binding IsSelected}"/>
+                                                           
+                                                           
+                                                        </Grid>
+                                                    </ViewCell.View>
+                                                </ViewCell>
+                                        </DataTemplate>
+                                       </ListView.ItemTemplate>
+                                    </ListView>
+                  </Grid>
+                
+                    <Button x:Name="bt_continue" Grid.Row="2"  Command="{Binding SubmitCommand}" Text="{translator:Translate Continue}" Style="{StaticResource buttonStyle}" />
+                
+            </Grid>
+            
+           
+            
+            
+                                
+                                
+                            
+            
+                
+             
+               
+          
+            </ScrollView>
+             
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

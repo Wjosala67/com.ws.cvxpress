@@ -1,0 +1,969 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+     <data name ="MyProfile" xml:space="preserve">
+        <value>Mi Perfil</value>
+    </data>
+     <data name ="NextMonth" xml:space="preserve">
+        <value>El Mes de vencimiento debe ser mayor al actual, utilice otra tarjeta.</value>
+    </data>
+     <data name ="OfferBox" xml:space="preserve">
+        <value>Ofrecer Box</value>
+    </data>
+    <data name ="CapacityTaken" xml:space="preserve">
+        <value>Aceptado en Kgs.</value>
+    </data>
+    
+     <data name ="NoCardsLoaded" xml:space="preserve">
+        <value>No tiene registrada ninguna tarjeta</value>
+    </data>
+    <data name ="DeleteCard" xml:space="preserve">
+        <value>Si ha solicitado un artículo con esta tarjeta y no ha sido procesado, se cancelará 
+        ¿Realmente desea eliminar la tarjeta seleccionada?</value>
+    </data>
+     <data name ="existsCard" xml:space="preserve">
+        <value>Tarjeta Existente</value>
+    </data>
+    <data name ="newCard" xml:space="preserve">
+        <value>Tarjeta Nueva</value>
+    </data>
+    
+    <data name ="MyCards" xml:space="preserve">
+        <value>Mis Tarjetas</value>
+    </data>
+    <data name ="DeliveryPrice" xml:space="preserve">
+        <value>Costo Aproximado de envío de su artículo</value>
+    </data>
+    
+     <data name ="DeletingCard" xml:space="preserve">
+        <value>Eliminando.. </value>
+    </data>
+    <data name ="SelectCard" xml:space="preserve">
+        <value>Seleccione </value>
+    </data>
+     <data name ="Required" xml:space="preserve">
+        <value>Los siguientes campos son requeridos: </value>
+    </data>
+    <data name ="ContinueRequest" xml:space="preserve">
+        <value>Presione el botón Continuar para finalizar su solicitud</value>
+    </data>
+    
+    <data name ="TotalPrice" xml:space="preserve">
+        <value>Costo de artículo + envío: </value>
+    </data>
+     <data name ="OfferBoxCreated" xml:space="preserve">
+        <value>Box creado satisfactoriamente.</value>
+    </data>
+     <data name ="RequestBox" xml:space="preserve">
+        <value>Solicitar Box </value>
+    </data>
+     <data name ="Contact" xml:space="preserve">
+        <value>Atención al Cliente </value>
+    </data>
+     <data name ="Settings" xml:space="preserve">
+        <value>Ajustes</value>
+    </data>
+     <data name ="GenInfo" xml:space="preserve">
+        <value>Atención al cliente (Admin)</value>
+    </data>
+     <data name ="AdminInfo" xml:space="preserve">
+        <value>(Administrador)</value>
+    </data>
+     <data name ="TravelerAuth" xml:space="preserve">
+        <value>Autorización de perfiles de viajero</value>
+    </data>
+     <data name ="NewTravelers" xml:space="preserve">
+        <value>Nuevos viajeros</value>
+    </data>
+    
+     <data name ="Auth" xml:space="preserve">
+        <value>Autorizar</value>
+    </data>
+     <data name ="Reject" xml:space="preserve">
+        <value>Rechazar</value>
+    </data>
+     <data name ="AdminOptions" xml:space="preserve">
+        <value>Opciones de Administrador</value>
+    </data>
+    
+      <data name ="Logout" xml:space="preserve">
+        <value>Cerrar Sesión</value>
+    </data>
+     <data name ="Email" xml:space="preserve">
+        <value>Correo electrónico</value>
+    </data>
+    <data name ="Password" xml:space="preserve">
+        <value>Contraseña</value>
+    </data>
+     <data name ="Login" xml:space="preserve">
+        <value>Iniciar Sesión</value>
+    </data>
+    <data name ="Register" xml:space="preserve">
+        <value>Registrarme</value>
+    </data>
+     <data name ="ForgotPass" xml:space="preserve">
+        <value>Recuperar contraseña</value>
+    </data>
+     <data name ="TermsConditions" xml:space="preserve">
+        <value>Términos y Condiciones</value>
+    </data>
+     <data name ="PrivacyPolicy" xml:space="preserve">
+        <value>Aviso de Privacidad</value>
+    </data>
+    <data name ="FirstName" xml:space="preserve">
+        <value>Nombres</value>
+    </data>
+    <data name ="LastName" xml:space="preserve">
+        <value>Apellidos</value>
+    </data>
+    <data name ="Name" xml:space="preserve">
+        <value>Nombre:</value>
+    </data>
+     <data name ="ZipCode" xml:space="preserve">
+        <value>Código Postal</value>
+    </data>
+     <data name ="PhoneNumber" xml:space="preserve">
+        <value>Télefono</value>
+    </data>
+     <data name ="Back" xml:space="preserve">
+        <value>Volver</value>
+    </data>
+    <data name ="Send" xml:space="preserve">
+        <value>Enviar</value>
+    </data>
+    <data name ="ChangePass" xml:space="preserve">
+        <value>Cambiar Contraseña</value>
+    </data>
+    <data name ="CurrentPass" xml:space="preserve">
+        <value>Contraseña Actual</value>
+    </data>
+    <data name ="NewPass" xml:space="preserve">
+        <value>Contraseña Nueva</value>
+    </data>
+     <data name ="ConfirmPass" xml:space="preserve">
+        <value>Confirmar Contraseña</value>
+    </data>
+    <data name ="ConfirmReq" xml:space="preserve">
+        <value>¿Confirma que solicita: {0} ?</value>
+    </data>
+    
+      <data name ="Notice" xml:space="preserve">
+        <value>Aviso</value>
+    </data>
+     <data name ="NoticeLogin" xml:space="preserve">
+        <value>Login inválido, intente de nuevo</value>
+    </data>
+    <data name ="NoticeEmptyData" xml:space="preserve">
+        <value>Debe proporcionar un valor para E-mail y Contraseña</value>
+    </data>
+     <data name ="AboutPage" xml:space="preserve">
+        <value>Nosotros</value>
+    </data>
+     <data name ="Subject" xml:space="preserve">
+        <value>Texto</value>
+    </data>
+    <data name ="Topic" xml:space="preserve">
+        <value>Título</value>
+    </data>
+     <data name ="LogoutMessage" xml:space="preserve">
+        <value>¿Está seguro que desea cerrar sesión? no recibirá ninguna notificación.</value>
+    </data>
+      <data name ="Departure" xml:space="preserve">
+        <value>Salida:</value>
+    </data>
+     <data name ="Arrival" xml:space="preserve">
+        <value>LLegada:</value>
+    </data>
+      <data name ="Error" xml:space="preserve">
+        <value>Atención</value>
+    </data>
+     <data name ="NoInternet" xml:space="preserve">
+        <value>No existe una conexión a Internet</value>
+    </data> 
+     <data name ="NoticeRegister" xml:space="preserve">
+        <value>La Operación no se ha podido completar, intente de nuevo!</value>
+    </data>
+    <data name ="NoticeEmptyRegister" xml:space="preserve">
+        <value>Debe completar todos los datos solicitados</value>
+    </data>
+     <data name ="NoticeForgot" xml:space="preserve">
+        <value>La Operación no se ha podido completar, intente de nuevo!</value>
+    </data>
+    <data name ="NoticeEmptyForgot" xml:space="preserve">
+        <value>Debe proporcionar la cuenta de correo registrada</value>
+    </data>
+    <data name ="AcceptedTerms" xml:space="preserve">
+        <value>Al iniciar sesión, acepta los </value>
+    </data>
+     
+    <data name ="NoPasswordMatch" xml:space="preserve">
+        <value>La contraseña y su confirmación no coinciden, intente de nuevo.</value>
+    </data>
+     <data name ="ConfPassword" xml:space="preserve">
+        <value>Confirmar Contraseña</value>
+    </data>
+      <data name ="NoFBPublish" xml:space="preserve">
+        <value>No se publicará ninguna información.</value>
+    </data>
+     <data name ="MyOffers" xml:space="preserve">
+        <value>Mis Viajes</value>
+    </data>
+     <data name ="MyRequests" xml:space="preserve">
+        <value>Mis Solicitudes</value>
+    </data>
+      <data name ="RequestItem" xml:space="preserve">
+        <value>Realizar Solicitud de artículo</value>
+    </data>
+     <data name ="Requests" xml:space="preserve">
+        <value>Solicitudes</value>
+    </data>
+    
+     <data name ="RequestsAcepted" xml:space="preserve">
+        <value>Artículos</value>
+    </data>
+     <data name ="Select" xml:space="preserve">
+        <value>Seleccione</value>
+    </data>
+     <data name ="From" xml:space="preserve">
+        <value>Origen:</value>
+    </data>
+     <data name ="To" xml:space="preserve">
+        <value>Destino:</value>
+    </data>
+    <data name ="Country" xml:space="preserve">
+        <value>País</value>
+    </data>
+     <data name ="Loading" xml:space="preserve">
+        <value>Cargando</value>
+    </data>
+     <data name ="Weight" xml:space="preserve">
+        <value>Peso (Kg):</value>
+    </data>
+    
+    
+    <data name ="AuthSent" xml:space="preserve">
+        <value>Autorización enviada</value>
+    </data>
+     <data name ="DeliverItem" xml:space="preserve">
+        <value>Entregar producto</value>
+    </data>
+     <data name ="autorizecharge" xml:space="preserve">
+        <value>Las especificaciones de precio y peso pueden haber cambiado. el monto total a ser cargado es de {0} {1}. ¿Desea autorizar el cargo?</value>
+    </data>
+    
+    
+     <data name ="WaitforAuth" xml:space="preserve">
+        <value>En espera de autorización</value>
+    </data>
+     <data name ="Authorized" xml:space="preserve">
+        <value>Autorizado</value>
+    </data>
+    <data name ="AuthDenied" xml:space="preserve">
+        <value>Artículo Cancelado</value>
+    </data>
+    <data name ="AuthQuestion" xml:space="preserve">
+        <value>¿Desea autorizar el cargo, por el artículo solicitado?</value>
+    </data>
+     <data name ="WeightAvail" xml:space="preserve">
+        <value>Capacidad disponible en peso (Kg):</value>
+    </data>
+    <data name ="WeightAvail2" xml:space="preserve">
+        <value>Disponibilidad en Kg:</value>
+    </data>
+    <data name ="WeightAvailtravel" xml:space="preserve">
+        <value>Capacidad de viaje(Kg): </value>
+    </data>
+    <data name ="WeightHint" xml:space="preserve">
+        <value>5.5</value>
+    </data>
+     <data name ="Volume" xml:space="preserve">
+        <value>Volumen </value>
+    </data>
+    <data name ="VolumeHint" xml:space="preserve">
+        <value>Ancho-Alto-Largo</value>
+    </data>
+     <data name ="DeliveredAt" xml:space="preserve">
+        <value>Lugar de entrega</value>
+    </data>
+    <data name ="DeliveredAtHint" xml:space="preserve">
+        <value>Aeropuerto, Centro Comercial, e.t.c</value>
+    </data>
+    
+     <data name ="Traveler" xml:space="preserve">
+        <value>Viajero</value>
+    </data>
+    <data name ="Sender" xml:space="preserve">
+        <value>Comprador</value>
+    </data>
+    <data name ="Continue" xml:space="preserve">
+        <value>Continuar</value>
+    </data>
+     <data name ="New" xml:space="preserve">
+        <value>Nuevo</value>
+    </data>
+    <data name ="NotNew" xml:space="preserve">
+        <value>Usado</value>
+    </data>
+    <data name ="ItemType" xml:space="preserve">
+        <value>Tipo de Artículo</value>
+    </data> 
+    
+    <data name ="AtLeastCategory" xml:space="preserve">
+        <value>Debe seleccionar por lo menos una categoría</value>
+    </data>
+    
+    <data name ="AtLeastType" xml:space="preserve">
+        <value>Debe seleccionar por lo menos un tipo</value>
+    </data>
+    
+    <data name ="AtLeastDelivery" xml:space="preserve">
+        <value>Debe seleccionar por lo menos una forma de entrega</value>
+    </data>
+    
+     <data name ="PassportNumber" xml:space="preserve">
+        <value>Número de pasaporte</value>
+    </data>
+     <data name ="Slogan" xml:space="preserve">
+        <value>Eso que quieres, alguien puede traertelo...</value>
+    </data>
+    <data name ="OrLoginWith" xml:space="preserve">
+        <value>O ingresa con</value>
+    </data>
+     <data name ="OrRegisterWith" xml:space="preserve">
+        <value>O regístrate con</value>
+    </data>
+    
+     <data name ="RegisterText" xml:space="preserve">
+        <value>Por favor ingrese todos los datos para su registro.</value>
+    </data>
+     <data name ="AgeLimitText" xml:space="preserve">
+        <value>Solo para mayores de 18 años.</value>
+    </data>
+    <data name ="ForgotPassText" xml:space="preserve">
+        <value>Escriba el correo electrónico registrado para recuperar su contraseña</value>
+    </data>
+    
+     <data name ="SelectProfile" xml:space="preserve">
+        <value>Seleccione el perfil con el que desea ingresar.</value>
+    </data>
+    
+     <data name ="SelectCountry" xml:space="preserve">
+        <value>País de residencia.</value>
+     </data>
+     <data name ="US" xml:space="preserve">
+        <value>Estados Unidos</value>
+     </data>
+      <data name ="VZ" xml:space="preserve">
+        <value>Venezuela</value>
+     </data>
+     <data name ="MX" xml:space="preserve">
+        <value>México</value>
+     </data>
+    
+    
+     <data name ="SelectPicture" xml:space="preserve">
+        <value>Mis Fotos</value>
+     </data>
+    
+    <data name ="AddPictures" xml:space="preserve">
+        <value>Foto del artículo</value>
+     </data>
+     <data name ="IdPhoto" xml:space="preserve">
+        <value>Foto de Identificación</value>
+     </data>
+     <data name ="TakePicture" xml:space="preserve">
+        <value>Cámara</value>
+     </data>
+    
+    
+ 
+    <data name ="LoadingResources" xml:space="preserve">
+        <value>Cargando Recursos</value>
+     </data>
+     <data name ="LookingForUpdates" xml:space="preserve">
+        <value>Validando Recursos</value>
+     </data>
+    <data name ="DeliveryOptions" xml:space="preserve">
+        <value>Opciones de entrega</value>
+     </data>
+    <data name ="ItemType" xml:space="preserve">
+        <value>Tipo del artículo</value>
+     </data>
+    <data name ="Categories" xml:space="preserve">
+        <value>Categorías</value>
+     </data>
+    <data name ="ProfileSuccess" xml:space="preserve">
+        <value>El Perfil ha sido creado satisfactoriamente!</value>
+     </data>
+    <data name ="Success" xml:space="preserve">
+        <value>Éxito!</value>
+     </data>
+     
+     <data name ="ProfileExists" xml:space="preserve">
+        <value>El correo electrónico ya está registrado!</value>
+     </data>
+    <data name ="Conflict" xml:space="preserve">
+        <value>Conflicto!</value>
+     </data>
+    
+    <data name ="Success" xml:space="preserve">
+        <value>Éxito!</value>
+     </data>
+    <data name ="ProfileWrong" xml:space="preserve">
+        <value>Algo ha salido mal, intente de nuevo más tarde!</value>
+     </data>
+     <data name ="SentCode" xml:space="preserve">
+        <value>Por favor coloca el código de seguridad enviado a tu correo electrónico.</value>
+     </data>
+    
+     <data name ="Code" xml:space="preserve">
+        <value>Código de verificación</value>
+     </data>
+     <data name ="VerifySuccess" xml:space="preserve">
+        <value>Cuenta verificada satisfactoriamente!</value>
+     </data>
+    <data name ="ListNumberMessage" xml:space="preserve">
+        <value>Selecciona al menos una opción</value>
+     </data>
+    <data name ="ListCaMessage" xml:space="preserve">
+        <value>Artículos a transportar</value>
+     </data>
+    <data name ="TravelAvailability" xml:space="preserve">
+        <value>Publicar disponibilidad de viaje</value>
+     </data>
+    
+     <data name ="Specs" xml:space="preserve">
+        <value>Detalles</value>
+     </data>
+    
+     <data name ="Wide" xml:space="preserve">
+        <value>Ancho</value>
+     </data>
+    
+     <data name ="WideHint" xml:space="preserve">
+        <value>2</value>
+     </data>
+    
+    
+    <data name ="Height" xml:space="preserve">
+        <value>Alto</value>
+     </data>
+    
+     <data name ="HeightHint" xml:space="preserve">
+        <value>2</value>
+       </data>
+    
+     <data name ="Long" xml:space="preserve">
+        <value>Largo</value>
+     </data>
+    
+     <data name ="LongHint" xml:space="preserve">
+        <value>2</value>
+     </data>
+     <data name ="TravelerPresentation" xml:space="preserve">
+        <value>Viajes Creados</value>
+     </data> 
+    <data name ="Created" xml:space="preserve">
+        <value>Solicitud enviada correctamente</value>
+     </data> 
+    <data name ="TravelerInstructions" xml:space="preserve">
+        <value>Para visualizar un viaje seleccionalo</value>
+     </data> 
+     <data name ="RequestPresentation" xml:space="preserve">
+        <value>Solicitudes Creadas</value>
+     </data> 
+    <data name ="RequestInstructions" xml:space="preserve">
+        <value>Para visualizar una solicitud seleccionela</value>
+     </data> 
+    <data name ="LoadingProfile" xml:space="preserve">
+        <value>Cargando perfil</value>
+     </data>
+    
+    <data name ="ChangeToTraveler" xml:space="preserve">
+        <value>¿Desea cambiar al perfil de Viajero?</value>
+     </data>
+    
+    <data name ="ChangeToSender" xml:space="preserve">
+        <value>¿Desea cambiar al perfil de Comprador?</value>
+     </data>
+    
+    <data name ="Yes" xml:space="preserve">
+        <value>Si</value>
+     </data>
+    <data name ="No" xml:space="preserve">
+        <value>No</value>
+     </data>
+    <data name ="Nopicture" xml:space="preserve">
+        <value>Aún no has cargado una identificación, Se necesita una para poder continuar, ¿Deseas agregarla ahora?</value>
+     </data>
+    
+     <data name ="NoTextIdents" xml:space="preserve">
+        <value>Agregue la foto de al menos una identificación oficial</value>
+     </data>
+     <data name ="ModifyPresentation" xml:space="preserve">
+        <value>Selecciona la opción que deseas modificar</value>
+     </data>
+     <data name ="MyInfo" xml:space="preserve">
+        <value>Mi Información</value>
+     </data>
+    <data name ="MyInfo" xml:space="preserve">
+        <value>Mi Información</value>
+     </data>
+    <data name ="Articles" xml:space="preserve">
+        <value>Artículos:</value>
+     </data>
+    <data name ="Article" xml:space="preserve">
+        <value>Artículo:</value>
+     </data>
+     <data name ="MyIds" xml:space="preserve">
+        <value>Mi identificación</value>
+     </data>
+     <data name ="UpdateDone" xml:space="preserve">
+        <value>Actualización realizada con éxito.</value>
+     </data>
+    <data name ="UpdateUnDone" xml:space="preserve">
+        <value>Actualización no pudo ser realizada.</value>
+     </data>
+      <data name ="TextIdents" xml:space="preserve">
+        <value>Tome o seleccione la foto del documento que desea registrar</value>
+     </data>
+   
+     <data name ="TravelInfo" xml:space="preserve">
+        <value>Información del Viaje</value>
+     </data>
+    
+       <data name ="GeneralUpdate" xml:space="preserve">
+        <value>Editar Vuelo</value>
+     </data>
+     <data name ="TravelRequests" xml:space="preserve">
+        <value>Todas las solicitudes de este viaje</value>
+     </data>
+    
+    
+    
+     <data name ="RequestOnRoute" xml:space="preserve">
+        <value>Solicitudes en esta ruta:</value>
+     </data>
+     <data name ="UnitUpdate" xml:space="preserve">
+        <value>Actualizar Solicitud</value>
+     </data>
+    <data name ="TravelUnitRequest" xml:space="preserve">
+        <value></value>
+     </data>
+       <data name ="BuyItemText" xml:space="preserve">
+        <value>El producto ha sido comprado</value>
+     </data>
+     <data name ="TravelStarted" xml:space="preserve">
+        <value>Vuelo iniciado</value>
+     </data>
+     <data name ="TravelFinished" xml:space="preserve">
+        <value>Viaje Finalizado</value>
+     </data>
+     <data name ="ItemDelivered" xml:space="preserve">
+        <value>Producto entregado</value>
+     </data>
+     <data name ="UpdateState" xml:space="preserve">
+        <value>Actualizar Estado</value>
+     </data> 
+     <data name ="UpdateInstructionsUnit" xml:space="preserve">
+        <value>Para Actualizar un estado seleccione un artículo</value>
+     </data>
+    
+     <data name ="AcceptRequest" xml:space="preserve">
+        <value>Aceptar Solicitud</value>
+     </data>
+    
+     <data name ="ItemName" xml:space="preserve">
+        <value>Nombre del Artículo</value>
+     </data>
+    <data name ="ItemDesc" xml:space="preserve">
+        <value>Descripción del Artículo</value>
+     </data>
+     <data name ="ItemFind" xml:space="preserve">
+        <value>¿Donde Conseguirlo?</value>
+     </data>
+    <data name ="ItemQty" xml:space="preserve">
+        <value>Cantidad</value>
+     </data>
+     <data name ="ItemCat" xml:space="preserve">
+        <value>Categoría del artículo</value>
+     </data>
+    <data name ="PrefArrival" xml:space="preserve">
+        <value>Entrega deseada</value>
+     </data>
+    
+     <data name ="DocDate" xml:space="preserve">
+        <value>Vencimiento documento de viaje</value>
+     </data>
+    
+    <data name ="NoCompleteObjetc" xml:space="preserve">
+        <value>No se han completado los datos requeridos.</value>
+     </data>
+     <data name ="InvalidDates" xml:space="preserve">
+        <value>La fecha de inicio no puede ser mayor a la fecha de fin.</value>
+     </data>
+     <data name ="ProductValue" xml:space="preserve">
+        <value>Valor Aprox. USD:</value>
+     </data>
+     <data name ="USD" xml:space="preserve">
+        <value>USD</value>
+     </data>
+     <data name ="Image" xml:space="preserve">
+        <value>Imagen</value>
+     </data>
+     <data name ="Qty" xml:space="preserve">
+        <value>Cantidad:</value>
+     </data>
+     <data name ="UserPhoto" xml:space="preserve">
+        <value>Foto de Perfil</value>
+     </data>
+    <data name ="Articlestitle" xml:space="preserve">
+        <value>Artículos</value>
+     </data>
+    
+     <data name ="Date" xml:space="preserve">
+        <value>Fecha:</value>
+     </data>
+     <data name ="ProductPhoto" xml:space="preserve">
+        <value>Foto de Producto</value>
+     </data>
+     <data name ="OnlyOnePick" xml:space="preserve">
+        <value>Solo puede cargar una foto en este caso</value>
+     </data>
+      <data name ="Only3" xml:space="preserve">
+        <value>Solo puede cargar 3 fotos en este caso</value>
+     </data>
+     <data name ="InfoForYou" xml:space="preserve">
+        <value>Hay información para ti, desliza</value>
+     </data>
+     <data name ="WelcomeTitle" xml:space="preserve">
+        <value>Bienvenido a {APP} una comunidad de compradores y viajeros donde todos ganan</value>
+     </data>
+    
+    <data name ="WelcomeSubTitleTraveler" xml:space="preserve">
+        <value>Para crear un viaje utilice el botón '{button}'</value>
+     </data>
+    
+    <data name ="WelcomeSubTitleSender" xml:space="preserve">
+        <value>Para crear una solicitud utilice el botón '{button}'</value>
+     </data>
+     <data name ="AppName" xml:space="preserve">
+        <value>FlightBox</value>
+     </data>
+     <data name ="ActualPassNo" xml:space="preserve">
+        <value>La Contraseña Actual no coincide</value>
+     </data>
+     <data name ="selectDestiny" xml:space="preserve">
+        <value>Debe Seleccionar un destino para continuar</value>
+     </data>
+     <data name ="DestinyInfo" xml:space="preserve">
+        <value>Confirmo haber leído documento de objetos permitidos en equipaje de mano y documentado. </value>
+     </data>
+     <data name ="SeeFile" xml:space="preserve">
+        <value>Ver archivo</value>
+     </data>
+     <data name ="CheckReaded" xml:space="preserve">
+        <value>Debe confirmar que ha leído las restricciones en el destino.</value>
+     </data>
+     <data name ="revdoc" xml:space="preserve">
+        <value> Tu documentación está bajo revisión, pronto podrás crear tu primer viaje. Si no has cargado una identificación, dirígete a Ajustes -> Mi Identificación</value>
+     </data>
+   
+    <data name ="RecoveryEmailSend" xml:space="preserve">
+        <value>Su contraseña ha sido enviada al correo registrado.</value>
+     </data>
+     <data name ="Resp" xml:space="preserve">
+        <value>Respuesta:</value>
+     </data>
+     <data name ="CServicePresentation" xml:space="preserve">
+        <value>Preguntas de los usuarios</value>
+     </data>
+    <data name ="RequestInfo" xml:space="preserve">
+        <value>Información de la solicitud</value>
+     </data>
+     <data name ="ResponseUser" xml:space="preserve">
+        <value>Responder a usuario</value>
+     </data>
+     <data name ="InProgress" xml:space="preserve">
+        <value>En Progreso</value>
+     </data>
+     <data name ="Finished" xml:space="preserve">
+        <value>Finalizados</value>
+     </data>
+     <data name ="Finish" xml:space="preserve">
+        <value>Finalizar</value>
+     </data>
+    <data name ="AdjustingImage" xml:space="preserve">
+        <value>Ajustando imagen</value>
+     </data>
+     <data name ="DesiredArrival" xml:space="preserve">
+        <value>Entrega deseada:</value>
+     </data>
+    <data name ="Capacity" xml:space="preserve">
+        <value>Capacidad (Kg): </value>
+     </data>
+    
+     <data name ="TravelDelayed" xml:space="preserve">
+        <value>Viaje con demora</value>
+     </data>
+    <data name ="TransportQuestion" xml:space="preserve">
+        <value>¿Confirma que puede transportar este artículo?</value>
+     </data>
+     <data name ="ItineraryChange" xml:space="preserve">
+        <value>Cambio de itinerario</value>
+     </data>
+    <data name ="Update" xml:space="preserve">
+        <value>Actualizar</value>
+     </data>
+     <data name ="Comments" xml:space="preserve">
+        <value>Comentarios</value>
+     </data>
+     <data name ="Reward" xml:space="preserve">
+        <value>Recompensa USD:</value>
+     </data>
+     <data name ="RewardNoCurrency" xml:space="preserve">
+        <value>Recompensa:</value>
+     </data>
+     <data name ="ItemTaken" xml:space="preserve">
+        <value>El artículo ha sido aceptado por otro viajero antes que Ud.</value>
+     </data>
+     <data name ="ItemTakenbyYou" xml:space="preserve">
+        <value>Has aceptado transportar este artículo.</value>
+     </data>
+     <data name ="NotEnoughRoom" xml:space="preserve">
+        <value>No hay capacidad suficiente para aceptar este artículo</value>
+     </data>
+     <data name ="SelectCountry" xml:space="preserve">
+        <value>Seleccione el código de país</value>
+     </data>
+    <data name ="AcceptedOnRoute" xml:space="preserve">
+        <value>Artículos Aceptados en la ruta:</value>
+     </data>
+     <data name ="CollectOptions" xml:space="preserve">
+        <value>Opciones de recolecta:</value>
+     </data>
+     <data name ="AtLeastCollect" xml:space="preserve">
+        <value>Seleccione por lo menos una opción de recolecta:</value>
+     </data>
+    <data name ="DeleteItem" xml:space="preserve">
+        <value>Eliminar artículo</value>
+     </data>
+    <data name ="OtherConf" xml:space="preserve">
+        <value>Configuraciones</value>
+     </data>
+     <data name ="Notification" xml:space="preserve">
+        <value>Notificaciones </value>
+     </data>
+      <data name ="RequestsOnRoute" xml:space="preserve">
+        <value>Solicitudes Aceptadas en esta ruta </value>
+     </data>
+    
+    <data name ="AproxWeight" xml:space="preserve">
+        <value> Peso Aprox. (Kg): </value>
+     </data>
+    
+    
+    <data name ="OpenDate" xml:space="preserve">
+        <value> Entrega abierta </value>
+     </data>
+     <data name ="rangedays" xml:space="preserve">
+        <value> +/- 5 Días </value>
+     </data>
+      <data name ="MyRewards" xml:space="preserve">
+        <value>Mis Recompensas</value>
+     </data>
+     <data name ="FlexDelivery" xml:space="preserve">
+        <value>Tolerancia:</value>
+     </data>
+     <data name ="Cancel" xml:space="preserve">
+        <value>Cancelar</value>
+     </data>
+     <data name ="DeliverArticle" xml:space="preserve">
+        <value>Puede Finalizar la entrega de este artículo.</value>
+     </data>
+    <data name ="NoDeliverArticle" xml:space="preserve">
+        <value>No se ha finalizado el viaje.</value>
+     </data>
+    <data name ="UpdateAllItems" xml:space="preserve">
+        <value>¿Está de Acuerdo con actualizar este viaje?</value>
+     </data>
+    <data name ="UpdateAllItemsAndEnd" xml:space="preserve">
+        <value>¿Está de Acuerdo con finalizar este viaje?</value>
+     </data>
+    <data name ="NoAccepted" xml:space="preserve">
+        <value>En espera de que algún viajero acepte llevar este artículo.</value>
+     </data>
+    <data name ="UserStatusBought" xml:space="preserve">
+        <value>Comprado</value>
+     </data>
+    <data name ="UserStatusStarted" xml:space="preserve">
+        <value>Iniciado</value>
+     </data>
+    <data name ="UserStatusDelivered" xml:space="preserve">
+        <value>Entregado</value>
+     </data>
+    <data name ="UserStatusEnded" xml:space="preserve">
+        <value>Finalizado</value>
+     </data>
+    <data name ="UserStatusDelayed" xml:space="preserve">
+        <value>Demorado</value>
+     </data>
+     <data name ="NotAllAreUpdated" xml:space="preserve">
+        <value>Debe entregar cada uno de los artículos para poder actualizar el status del viaje a Producto entregado</value>
+     </data>
+    
+    <data name ="someoneaccepted" xml:space="preserve">
+        <value>Ha aceptado llevar tu artículo.</value>
+     </data>
+     <data name ="someoneDelivered" xml:space="preserve">
+        <value>Ha entregado tu artículo.</value>
+     </data>
+    
+      <data name ="TravelerRating" xml:space="preserve">
+        <value>Valoración de viajero.</value>
+     </data>
+      <data name ="Rating" xml:space="preserve">
+        <value>Valorar</value>
+     </data>
+    <data name ="Bad" xml:space="preserve">
+        <value>Malo</value>
+     </data>
+    <data name ="Regular" xml:space="preserve">
+        <value>Regular</value>
+     </data>
+     <data name ="Good" xml:space="preserve">
+        <value>Bueno</value>
+     </data>
+    <data name ="VeryGood" xml:space="preserve">
+        <value>Muy Bueno</value>
+     </data>
+     <data name ="Excellent" xml:space="preserve">
+        <value>Excelente</value>
+     </data>
+    
+     <data name ="SendRating" xml:space="preserve">
+        <value>¿Desea enviar la valoración seleccionada?</value>
+     </data>
+    <data name ="RatingDone" xml:space="preserve">
+        <value>Valorado:</value>
+     </data>
+    <data name ="Rating" xml:space="preserve">
+        <value>Valorar</value>
+     </data>
+  
+     <data name ="OpenChat" xml:space="preserve">
+        <value>Chat</value>
+     </data>
+     <data name ="NoPossibleDelete" xml:space="preserve">
+        <value>Debido al estado del viaje, ya no es posible eliminar el artículo.</value>
+     </data>
+     <data name ="WhantDelete" xml:space="preserve">
+        <value>El monto cobrado por el/los artículo(s) será abonado en la tarjeta del cliente, considere que puede verse reflejado luego de 1 a 3 días hábiles. 
+        ¿Realmente desea eliminar este artículo?</value>
+     </data>
+     <data name ="Kilos" xml:space="preserve">
+        <value>Kg:</value>
+     </data>
+     <data name ="Price" xml:space="preserve">
+        <value>USD:</value>
+     </data>
+     <data name ="UpdateItem" xml:space="preserve">
+        <value>Si el peso o precio especificados han cambiado, edítelos y actualice</value>
+     </data>
+     <data name ="InvalidDepArr" xml:space="preserve">
+        <value>El orígen y el destino no pueden ser iguales</value>
+     </data>
+     <data name ="TypeMessage" xml:space="preserve">
+        <value>Escriba su mensaje</value>
+     </data>
+    <data name ="OneNotification" xml:space="preserve">
+        <value>Notificación</value>
+     </data>
+     <data name ="ClientServiceNot" xml:space="preserve">
+        <value>Nueva notificación de atención al cliente</value>
+     </data>
+    <data name ="CreditCardInfo" xml:space="preserve">
+        <value>Información de medio de pago</value>
+     </data>
+     <data name ="CardHolder" xml:space="preserve">
+        <value>Nombre en tarjeta</value>
+     </data>
+     <data name ="CardNumber" xml:space="preserve">
+        <value>Número de tarjeta</value>
+     </data>
+     <data name ="CardNumberRequired" xml:space="preserve">
+        <value>Número de tarjeta requerido</value>
+     </data>
+     <data name ="Month" xml:space="preserve">
+        <value>Mes</value>
+     </data>
+     <data name ="Year" xml:space="preserve">
+        <value>Year</value>
+     </data>
+    <data name ="MonthAndYear" xml:space="preserve">
+        <value>Mes y Año de vencimiento</value>
+     </data>
+     <data name ="Crop" xml:space="preserve">
+        <value>Recortar</value>
+     </data>
+    <data name ="Rotate" xml:space="preserve">
+        <value>Rotar</value>
+     </data>
+    
+     <data name ="NoChargeYet" xml:space="preserve">
+        <value>Ningun Cargo será realizado hasta que un viajero acepte llevar su artículo.</value>
+     </data>
+    
+    <data name ="InThatMoment" xml:space="preserve">
+        <value>En ese momento el cargo a realizar será de: {0} </value>
+     </data>
+    
+    <data name ="Line1" xml:space="preserve">
+        <value>Dirección de facturación </value>
+     </data>
+    
+     <data name ="PaymentInfo" xml:space="preserve">
+        <value>Información de facturación </value>
+     </data>
+     <data name ="SState" xml:space="preserve">
+        <value>Estado </value>
+     </data>
+    
+     <data name ="SCity" xml:space="preserve">
+        <value>Ciudad </value>
+     </data>
+    
+     <data name ="SCountry" xml:space="preserve">
+        <value>Código País </value>
+     </data>
+    
+     <data name ="ValidDate" xml:space="preserve">
+        <value>Debe proporcionar mes y año de vencimiento</value>
+    </data>
+     <data name ="NoStartDate" xml:space="preserve">
+        <value>No se puede iniciar el viaje antes de la fecha establecida.</value>
+    </data>
+     <data name ="NoUpdateDate" xml:space="preserve">
+        <value>No se puede Modificar el viaje antes de la fecha establecida.</value>
+    </data>
+     <data name ="NoDeliveredDate" xml:space="preserve">
+        <value>No se puede entregar el artículo antes de iniciar el viaje.</value>
+    </data>
+      <data name ="NoEndtravelDate" xml:space="preserve">
+        <value>No se puede finalizar el viaje antes de su inicio.</value>
+    </data>
+     <data name ="ProcessNotCompleted" xml:space="preserve">
+        <value>No se ha podido completar la operación, intente mas tarde.</value>
+    </data>
+</root>

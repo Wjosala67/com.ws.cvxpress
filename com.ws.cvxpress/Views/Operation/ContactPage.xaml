@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:MyViews ="clr-namespace:WSViews;assembly=WSViews"
+             xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers" 
+             xmlns:CustomControl="clr-namespace:com.ws.cvxpress.Custom"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="com.ws.cvxpress.Views.Operation.ContactPage"
+             BackgroundColor="{StaticResource DarkBackgroundColor}">
+    <ContentPage.Content>
+        <Grid x:Name="BigGrid" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10" />
+                <RowDefinition Height="43" />
+                <RowDefinition Height="43" />
+                <RowDefinition Height="70" />
+                <RowDefinition Height="*"  />
+                <RowDefinition Height="10"  />
+                <RowDefinition Height="*"   />
+                <RowDefinition Height="10"  />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"  />
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <CustomControl:CustomEntry x:Name="Topic" Text="{Binding Topic}" Placeholder="{translator:Translate Topic}" PlaceholderColor="White"  Style="{StaticResource EntryStyle}" Grid.Column="1" Grid.Row="1" HorizontalOptions="FillAndExpand"/>
+            
+            <Frame Padding="20" CornerRadius="5" Grid.Column="1"  Grid.Row="2"  Grid.RowSpan="4"   BackgroundColor="Transparent" BorderColor="Silver">
+                <Editor AutoSize="TextChanges" MaxLength="599" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+                 RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"  x:Name="Subject" Placeholder="{translator:Translate Subject}" PlaceholderColor="Silver" BackgroundColor="{StaticResource DarkBackgroundColor}" TextColor="White">
+                </Editor>
+            </Frame>
+            
+            <Button Grid.Row="6" Clicked="Handle_Clicked" Grid.Column="1" x:Name="SendAnswers" Text="{translator:Translate Send}" Style="{StaticResource buttonStyle}" HorizontalOptions="Center" VerticalOptions="Center"/>
+        
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

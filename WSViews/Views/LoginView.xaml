@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local1="clr-namespace:WSViews" x:Class="WSViews.LoginView">
+    <ContentView.Content>
+          <StackLayout Orientation="Vertical" Padding="30" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+
+
+            <Image HorizontalOptions="Center" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} " Source="logowhite.png"/>
+            <Label x:Name="lb_GOV" Text="THE GOVERNMENT YOU WANT" HorizontalOptions="Center" TextColor="{StaticResource EntryTextColorWhite}" >
+                
+            </Label>
+            <Label Grid.Row="11" Grid.ColumnSpan="4" x:Name="lb_ONE" Text="ONE POLL AT A TIME" FontAttributes="Bold" HorizontalOptions="Center" TextColor="{StaticResource EntryTextColorWhite}"  >
+               
+            </Label>
+            <BoxView HeightRequest="70"/>
+            
+           
+                
+                
+            <!--<Frame BackgroundColor="Transparent" WidthRequest="400"  HasShadow="True">-->
+                <StackLayout Orientation="Vertical"   Spacing="5">
+                <Entry x:Name="Email" Text="{Binding Email}" Placeholder="Email" Style="{StaticResource EntryStyle}" TextColor="{StaticResource LabelTextColorGeneral}"    PlaceholderColor="{StaticResource LabelTextColorGeneral}"
+                               
+                           Keyboard="Email"  
+                           >
+                        <Entry.Behaviors>
+                            <local1:EmailValidatorBehavior min="6" max="50"/>
+                        </Entry.Behaviors>
+                   
+                </Entry>
+                <Entry x:Name="Password" Text="{Binding Password}" Placeholder="Password" Style="{StaticResource EntryStyle}"  TextColor="{StaticResource LabelTextColorGeneral}" PlaceholderColor="{StaticResource LabelTextColorGeneral}"
+                              
+                           IsPassword="True"  
+                           >
+                     <Entry.Behaviors>
+                        <local1:LengthValidatorBehavior min="5" max="30" type="C"/>
+                    </Entry.Behaviors>
+                        
+                   
+                </Entry>
+               
+            </StackLayout>
+            <!--</Frame>-->
+            <Button Command="{Binding SubmitCommand}"  IsEnabled="false"  Text="Login" Style="{StaticResource buttonStyle}" >
+                <Button.Triggers>
+                    <MultiTrigger TargetType="Button">
+                        <MultiTrigger.Conditions>
+                            <BindingCondition Binding="{Binding Source={x:Reference Email}, Path=TextColor}" Value="Green" />
+                            <BindingCondition Binding="{Binding Source={x:Reference Password}, Path=TextColor}" Value="Green" />
+                        </MultiTrigger.Conditions>
+                        <Setter Property="IsEnabled" Value="True" />
+                    </MultiTrigger>
+                </Button.Triggers>
+              
+
+            </Button>
+            <BoxView HeightRequest="5"/>
+            
+            
+            <Label  x:Name="lb_signup" Text="SignUp" HorizontalOptions="Center" TextColor="{StaticResource EntryTextColorSpecial}" FontAttributes="None" >
+               
+            </Label>
+             <BoxView HeightRequest="10"/>
+            <Label  x:Name="lb_forgot" Text="Forgot your password?" HorizontalOptions="Center" TextColor="{StaticResource EntryTextColorSpecial}" FontAttributes="None" >
+              
+            </Label>
+             <BoxView HeightRequest="20"/>
+             <Label  x:Name="lb_terms" Text="Terms of Service" HorizontalOptions="Center" TextColor="{StaticResource EntryTextColorSpecial}" FontAttributes="None" />
+              <BoxView HeightRequest="10"/>
+             <Label  x:Name="lb_privacy" Text="Privacy Policy" HorizontalOptions="Center" TextColor="{StaticResource EntryTextColorSpecial}" FontAttributes="None" />
+             <BoxView HeightRequest="10"/>
+            
+            
+            
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

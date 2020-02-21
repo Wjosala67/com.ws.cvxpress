@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+             xmlns:CustomControl="clr-namespace:com.ws.cvxpress.Custom"
+             x:Class="com.ws.cvxpress.Views.Operation.MyCardsPage"
+             BackgroundColor="{StaticResource DarkBackgroundColor}">
+   
+    
+    
+    
+     <StackLayout Padding="20,10,20,10" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+       
+
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="AUTO" />
+                    <RowDefinition Height="AUTO" />  
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>                   
+                     <ColumnDefinition Width="10*"/> 
+                     <ColumnDefinition Width="*"/> 
+                </Grid.ColumnDefinitions>
+                
+            
+            
+                
+             <Grid Grid.Row="0" Grid.ColumnSpan="2">
+                    <Grid.RowDefinitions>
+                         <RowDefinition Height="30"/>
+                         <RowDefinition Height="40"/>
+                         <RowDefinition Height="43"/>
+                         <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Image Source="logopages.png" Grid.Row="1" Grid.Column="1" WidthRequest="200" />
+                   
+                    <Image x:Name="Back" Source="backizq.png"  HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" /> 
+                    <Label Text="{translator:Translate MyCards}" HorizontalTextAlignment="Center" HorizontalOptions="Center" Grid.Row="2" Grid.Column="1" FontSize="Medium"/>
+                   
+             </Grid>
+              <Label x:Name="LabelCard" Text="{translator:Translate NoCardsLoaded}" IsVisible="false" HorizontalOptions="Center" Grid.Column="0"  Grid.Row="1"/>
+             <CustomControl:CustomPicker x:Name="CardsList"  Grid.Column="0"  Grid.Row="1"
+                      
+                     TextColor="{StaticResource EntryTextColor}"
+                                                ItemsSource="{Binding cards}"
+                                                ItemDisplayBinding="{Binding Number}"
+                    
+                     TitleColor="{StaticResource EntryTextColor}" 
+                                  FontSize="Small"
+                       HorizontalOptions="FillAndExpand"
+                     HeightRequest="40" 
+                     Image="card"
+                     Title="{translator:Translate SelectCard}">
+                      
+             </CustomControl:CustomPicker>  
+
+             <Image x:Name="bt_delete" Source="delete.png" HeightRequest="25" WidthRequest="25" Grid.Row="1" Grid.Column="1"/>
+            </Grid>
+        </StackLayout>
+</ContentPage>

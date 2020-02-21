@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+              xmlns:MyViews ="clr-namespace:WSViews;assembly=WSViews"
+             xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+             xmlns:CustomControl="clr-namespace:com.ws.cvxpress.Custom"
+             xmlns:viewModels ="clr-namespace:com.ws.cvxpress.ViewModels"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="com.ws.cvxpress.Views.Start.RegisterPage" 
+             BackgroundImageSource="background.png">
+    <!--<Frame  HasShadow="True">-->
+     <ContentPage.BindingContext>
+        <viewModels:RegisterPageViewModel/>
+    </ContentPage.BindingContext>
+    
+     <StackLayout Orientation="Vertical" Padding="20,10,20,10" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+
+           <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            <Grid.RowDefinitions>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="AUTO"/>  
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="AUTO"/>
+                 
+            </Grid.RowDefinitions>
+            
+           <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                         <RowDefinition Height="30"/>
+                         <RowDefinition Height="60"/>
+                         <RowDefinition Height="40"/>
+                         <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="20"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="20"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Image Source="logopages.png" Grid.Row="1" Grid.Column="1" WidthRequest="200" />
+                     <Image x:Name="b_Back" HorizontalOptions="Center" VerticalOptions="Center" Source="backizq.png"  Grid.Row="0" Grid.Column="1"  >
+                    
+                    </Image>
+    
+                    <Label Text="{translator:Translate RegisterText}" HorizontalTextAlignment="Center" HorizontalOptions="Center" Grid.Row="2" Grid.Column="1" FontSize="Medium"/>
+                    <Label Text="{translator:Translate AgeLimitText}" HorizontalTextAlignment="Center"  HorizontalOptions="Center" Grid.Row="3" Grid.Column="1" FontSize="Small"/>
+                    
+            </Grid>
+                      
+           <StackLayout Orientation="Vertical" Grid.Row="1" >
+                
+                    <Grid ColumnSpacing="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="1"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions >
+                            <ColumnDefinition Width="40"/>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                    
+                    <Image Source="email.jpg" Grid.Row="0"/>
+                     <CustomControl:CustomEntry x:Name="Email" BorderColor="White"  Grid.Row="0" Grid.Column="1" Text="{Binding Email, Mode=TwoWay}" Style="{StaticResource EntryStyle}" MaxLength="60" Placeholder="{translator:Translate Email}" PlaceholderColor="{StaticResource EntryTextColor}" Keyboard="Email"  >
+                       <Entry.Behaviors>
+                         <MyViews:EmailValidatorBehavior min="6" max="30" />                 
+                       </Entry.Behaviors>
+                     </CustomControl:CustomEntry>
+            
+                    <Image Source="lock.jpg" Grid.Row="1"/>
+                    <CustomControl:CustomEntry x:Name="Password" BorderColor="White"  Grid.Row="1" Grid.Column="1"   Text="{Binding Password, Mode=TwoWay}" Style="{StaticResource EntryStyle}" MaxLength="30" Placeholder="{translator:Translate Password}" PlaceholderColor="{StaticResource EntryTextColor}"  IsPassword="True"  >
+                       <Entry.Behaviors>
+                         <MyViews:LengthValidatorBehavior min="5" max="15" type="C"  />
+                       </Entry.Behaviors>
+                    </CustomControl:CustomEntry>
+                    <Image Source="lock.jpg" Grid.Row="2"/>
+                    <CustomControl:CustomEntry x:Name="ConfirmPassword" BorderColor="White"  Grid.Row="2" Grid.Column="1"  Text="{Binding ConfirmPassword}" Style="{StaticResource EntryStyle}" MaxLength="30" Placeholder="{translator:Translate ConfPassword}" PlaceholderColor="{StaticResource EntryTextColor}"  IsPassword="True"  >
+                       <Entry.Behaviors>
+                         <MyViews:LengthValidatorBehavior min="5" max="15" type="C"  />
+                       </Entry.Behaviors>
+                    </CustomControl:CustomEntry>
+                   <!-- <Image Source="teclado.png" Grid.Row="3"/>
+                    <CustomControl:CustomEntry x:Name="E_Phone" Grid.Row="3" Grid.Column="1"  Text="{Binding Phone, Mode=TwoWay}" Style="{StaticResource EntryStyle}" Placeholder="{translator:Translate PhoneNumber}" PlaceholderColor="{StaticResource EntryTextColor}" MaxLength="14" Keyboard="Numeric"  >
+                       <Entry.Behaviors>
+                         <MyViews:MaskedBehavior Mask="XX-XX-XX-XX-XX" />
+                       </Entry.Behaviors>
+                    </CustomControl:CustomEntry> -->
+                    
+                    </Grid>
+                
+                 
+                
+             </StackLayout>
+                           
+           <Button Command="{Binding SubmitCommand}" Grid.Row="2"  Text="{translator:Translate Register}" IsEnabled="false" Style="{StaticResource buttonStyle}" >
+                <Button.Triggers>
+                    <MultiTrigger TargetType="Button">
+                        <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference Email}, Path=TextColor}" Value="Green" />
+                                <BindingCondition Binding="{Binding Source={x:Reference Password}, Path=TextColor}" Value="Green" />
+                                <BindingCondition Binding="{Binding Source={x:Reference ConfirmPassword}, Path=TextColor}" Value="Green" />
+                               <!-- <BindingCondition Binding="{Binding Source={x:Reference E_Phone}, Path=TextColor}" Value="Green" />
+                               -->
+                            </MultiTrigger.Conditions>
+                        <Setter Property="IsEnabled" Value="True" />
+                    </MultiTrigger>
+                </Button.Triggers>
+            </Button>
+             
+           <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="AUTO"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="AUTO"/>
+                    </Grid.RowDefinitions>
+                     
+                    <Grid Grid.Column="0"  HeightRequest="1" VerticalOptions="Center" >
+                         <Grid.RowDefinitions>
+                        <RowDefinition Height="1"/>
+                        </Grid.RowDefinitions>
+                        <BoxView BackgroundColor="{StaticResource LabelTextColorDBGeneral}"  WidthRequest="1" HeightRequest="0"/>
+                     
+                   </Grid>
+                     
+                     <Label   Grid.Column="1" Text="{translator:Translate OrRegisterWith}" HorizontalOptions="Center"  FontSize="Small" ></Label>
+                
+                     
+                    <Grid Grid.Column="2"  HeightRequest="1" VerticalOptions="Center">
+                         <Grid.RowDefinitions>
+                        <RowDefinition Height="1"/>
+                        </Grid.RowDefinitions>
+                        <BoxView BackgroundColor="{StaticResource LabelTextColorDBGeneral}"   WidthRequest="1" HeightRequest="0"/>
+                     
+                   </Grid>
+                </Grid>
+            
+             <Image x:Name="buttonFacebook" Grid.Row="9" Source="facebook.png"  
+                        
+                        IsVisible="{Binding IsLoggedIn, Converter={StaticResource InverseBoolConverter}}"
+                       
+                        />
+                           
+           <Grid Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                     <ColumnDefinition Width="*"/>
+                     <ColumnDefinition Width="2"/>
+                     <ColumnDefinition Width="*"/>
+                    
+                     
+                </Grid.ColumnDefinitions>
+                
+                
+                
+                 <CustomControl:Underline   x:Name="lb_terms" Grid.Column="0" Text="{translator:Translate TermsConditions}" HorizontalOptions="Center" TextColor="{StaticResource LabelTextColorDBGeneral}" FontAttributes="None" />
+                 <Label  Text="|" Grid.Column="1" />
+                 <CustomControl:Underline   x:Name="lb_privacy" Grid.Column="2"  Text="{translator:Translate PrivacyPolicy}" HorizontalOptions="Center" TextColor="{StaticResource LabelTextColorDBGeneral}" FontAttributes="None" />
+             
+            </Grid>
+            
+        </Grid>
+        
+        
+     
+               
+        
+
+
+                            
+                
+                 
+                             
+           
+           
+               
+               
+            
+   
+        
+         
+       
+           
+       
+       
+           
+        
+        
+        
+       
+            
+                
+        
+            
+               
+    </StackLayout>
+   
+    <!--</Frame>-->
+</ContentPage>

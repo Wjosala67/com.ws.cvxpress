@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+             x:Class="com.ws.cvxpress.Views.Start.SelectProfilePage" BackgroundImage="Back">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Padding="30"  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" >
+
+            <Image Source="logopages.png" />
+
+            <BoxView HeightRequest="100"/>
+            
+            <Label Text="{translator:Translate SelectProfile}" HorizontalTextAlignment="Center" HorizontalOptions="Center" />
+             <BoxView HeightRequest="40"/>
+            <Button x:Name="bt_traveler" Clicked="Handle_Clicked_1" Text="{translator:Translate Traveler}" Style="{StaticResource buttonStyle}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+            <BoxView HeightRequest="100"/>
+            
+            <Button x:Name="bt_sender" Clicked="Handle_Clicked" Text="{translator:Translate Sender}" Style="{StaticResource buttonStyle}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

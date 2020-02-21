@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                 x:Class="com.ws.cvxpress.Views.RegisterA.SpecificsView"
+                 xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+                 xmlns:CustomControl="clr-namespace:com.ws.cvxpress.Custom"
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+   
+    
+    <StackLayout
+        Margin="10"
+        Padding="10"
+        Spacing="10"
+        
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        
+      
+        
+         
+            <Frame CornerRadius="5" 
+           HorizontalOptions="Center" 
+           VerticalOptions="Start"
+           HasShadow="True"
+           BackgroundColor="{StaticResource DarkBackgroundColor}"
+           Padding="0">
+         
+        
+        
+        <Grid Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Label Text="{translator:Translate Specs}"  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" FontSize="Medium" HorizontalTextAlignment="Center"/>
+        
+           
+            <Label Text="{translator:Translate Weight}" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center" />
+            <Label Text="{translator:Translate Qty}"  Grid.Row="1" Grid.Column="1"  VerticalTextAlignment="Center"/>
+        
+            <CustomControl:CustomEntry x:Name="Weight"  Grid.Row="2" Grid.Column="0" Keyboard="Numeric"  MaxLength="5" Placeholder="{translator:Translate WeightHint}" Style="{StaticResource EntryStyle}" PlaceholderColor="{StaticResource EntryTextColor}"  />
+            
+                <CustomControl:CustomPicker x:Name="PickerQty" 
+                      
+                     TextColor="{StaticResource EntryTextColor}" 
+                     TitleColor="{StaticResource EntryTextColor}" 
+                     SelectedItem="{Binding SelectedQty, Mode=TwoWay}"
+                                         
+                     Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand"
+                     HeightRequest="50" 
+                     Image="quantity"
+                     Title="{translator:Translate Qty}">
+                      
+                 </CustomControl:CustomPicker> 
+            
+            <Label Text="{translator:Translate Wide}"   Grid.Row="3" Grid.Column="0"/>
+            <CustomControl:CustomEntry x:Name="Wide"    Grid.Row="4" Grid.Column="0" Keyboard="Numeric"  MaxLength="2" Placeholder="{translator:Translate WideHint}" Style="{StaticResource EntryStyle}" PlaceholderColor="{StaticResource EntryTextColor}" />
+       
+            <Label Text="{translator:Translate Height}" Grid.Row="3" Grid.Column="1"/>
+            <CustomControl:CustomEntry x:Name="Height"  Grid.Row="4" Grid.Column="1" Keyboard="Numeric"  MaxLength="2" Placeholder="{translator:Translate HeightHint}" Style="{StaticResource EntryStyle}" PlaceholderColor="{StaticResource EntryTextColor}" />
+            
+             <Label Text="{translator:Translate Long}" Grid.Row="3"  Grid.Column="2"/>
+            <CustomControl:CustomEntry x:Name="Long"   Grid.Row="4"  Grid.Column="2" Keyboard="Numeric"  MaxLength="2" Placeholder="{translator:Translate LongHint}" Style="{StaticResource EntryStyle}" PlaceholderColor="{StaticResource EntryTextColor}" />
+        
+            <Label Text="{translator:Translate DeliveredAt}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" />
+            <CustomControl:CustomEntry x:Name="DeliveredAt" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" MaxLength="60" Placeholder="{translator:Translate DeliveredAtHint}" Style="{StaticResource EntryStyle}" PlaceholderColor="{StaticResource EntryTextColor}" />
+            
+            <Button Clicked="Handle_Clicked" Grid.Row="7"  Grid.Column="0" Grid.ColumnSpan="3"  Text="{translator:Translate Continue}"  Style="{StaticResource buttonStyle}" >
+               
+          </Button>
+        </Grid>
+         </Frame>
+    </StackLayout>
+   
+</ContentPage >

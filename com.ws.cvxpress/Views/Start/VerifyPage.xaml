@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+              xmlns:MyViews ="clr-namespace:WSViews;assembly=WSViews"
+              xmlns:CustomControl="clr-namespace:com.ws.cvxpress.Custom"
+             xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="com.ws.cvxpress.Views.Start.VerifyPage" BackgroundColor="{StaticResource VerifyBackground}">
+     <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Padding="30" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" >
+
+              
+           <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            <Grid.RowDefinitions>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="AUTO"/>
+             </Grid.RowDefinitions>   
+                
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                         <RowDefinition Height="30"/>
+                         <RowDefinition Height="102"/>
+                         <RowDefinition Height="43"/>
+                         <RowDefinition Height="1"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="10"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Image x:Name="b_Back" Source="backizq.png" Grid.Row="0" Grid.Column="1"  >
+                   
+                    </Image>
+                    
+                    <Image Source="logopages.png" Grid.Row="1" Grid.Column="1" WidthRequest="200" />
+                    
+                    <Label Text="{translator:Translate SentCode}" HorizontalTextAlignment="Center"  HorizontalOptions="Center" Grid.Row="2" Grid.Column="1" FontSize="Medium"/>
+                    
+                </Grid>
+                
+                
+            </Grid>
+            
+            
+           
+           
+           
+            <BoxView HeightRequest="20"/>
+            <!--<Frame BackgroundColor="Transparent" WidthRequest="400"  HasShadow="True">-->
+            <StackLayout Orientation="Vertical" Spacing="5">
+                
+                
+                <Image x:Name="centerImage" Source="roundcheck.png"/>
+                
+                <BoxView HeightRequest="50"/>
+                
+                <CustomControl:CustomEntry x:Name="Code" FontSize="Large" HorizontalOptions="Center" Text="{Binding Code, Mode=TwoWay}"  HorizontalTextAlignment="Center" Placeholder="{translator:Translate Code}" Style="{StaticResource EntryStyle}" PlaceholderColor="{StaticResource EntryTextColor}"  
+                               
+                           Keyboard="Numeric"  
+                           >
+                     <Entry.Behaviors>
+                                <MyViews:LengthValidatorBehavior min="5" max="6" type="N"/>
+                     </Entry.Behaviors>
+
+                </CustomControl:CustomEntry>
+               
+            </StackLayout>
+            <!--</Frame>-->
+            <Button Command="{Binding SubmitCommand}" Text="{translator:Translate Send}" Style="{StaticResource buttonStyle}" >
+                <Button.Triggers>
+                    <MultiTrigger TargetType="Button">
+                        <MultiTrigger.Conditions>
+                            <BindingCondition Binding="{Binding Source={x:Reference Code}, Path=TextColor}" Value="LightGray" />
+                           
+                        </MultiTrigger.Conditions>
+                        <Setter Property="IsEnabled" Value="True" />
+                    </MultiTrigger>
+                </Button.Triggers>
+
+
+            </Button>
+            <BoxView HeightRequest="20"/>
+     
+          
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

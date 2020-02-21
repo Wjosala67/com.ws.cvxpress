@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+                         xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+            xmlns:views = "clr-namespace:com.ws.cvxpress.Views.Operation"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="com.ws.cvxpress.Views.Operation.TravelsList">
+    <!--Pages can be added as references or inline-->
+    <TabbedPage.Children>
+        <NavigationPage x:Name="tab1" Title="{translator:Translate InProgress}" >
+            <x:Arguments>
+                <views:OfferBoxPage/>
+            </x:Arguments>
+        </NavigationPage>
+          <NavigationPage x:Name="tab2" Title="{translator:Translate Finished}">
+            <x:Arguments>
+                <views:OfferBoxFinished/>
+            </x:Arguments>
+        </NavigationPage>
+    </TabbedPage.Children>
+</TabbedPage>

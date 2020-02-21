@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:viewModels="clr-namespace:com.ws.cvxpress.ViewModels"
+             xmlns:MyViews ="clr-namespace:WSViews;assembly=WSViews"
+              xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="com.ws.cvxpress.Views.End.LogoutPage">
+    <ContentPage.BindingContext>
+        <viewModels:LogoutPageViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Padding="30" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+
+
+            <Image HorizontalOptions="Center" HeightRequest="40" Source="logopagesdark.png"/>
+            
+            <BoxView HeightRequest="100"/>
+            
+            <Label Grid.Row="11" Grid.ColumnSpan="4"  Text="{translator:Translate LogoutMessage}" HorizontalTextAlignment="Center" FontAttributes="Italic" HorizontalOptions="Center" TextColor="{StaticResource Primary}"  >
+               
+            </Label>
+                
+                
+            <!--<Frame BackgroundColor="Transparent" WidthRequest="400"  HasShadow="True">-->
+                <StackLayout Orientation="Vertical"   Spacing="5">
+                
+               
+            </StackLayout>
+            <!--</Frame>-->
+       
+            <Button Command="{Binding OnLogoutCommand}" Text="{translator:Translate Logout}" Style="{StaticResource buttonStyle}" >
+               
+              
+
+            </Button>
+           
+            
+            
+            
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

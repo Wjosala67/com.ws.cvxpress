@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:MyViews ="clr-namespace:WSViews;assembly=WSViews"
+             xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+             xmlns:CustomControl="clr-namespace:com.ws.cvxpress.Custom"
+             xmlns:viewModels ="clr-namespace:com.ws.cvxpress.ViewModels"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="com.ws.cvxpress.Views.RegisterA.StepOnePage" 
+             BackgroundColor="{StaticResource DarkBackgroundColor}">
+
+    
+    <ContentPage.Content>
+         <StackLayout Padding="0,10,0,0"   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            
+            
+            <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
+            
+            >
+             <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>   
+                <Grid.RowDefinitions>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="AUTO"/>
+                 <RowDefinition Height="AUTO"/>
+                 
+                </Grid.RowDefinitions>
+                
+                 <Grid Grid.Row="0" Grid.Column="1" >
+                    <Grid.RowDefinitions>
+                         <RowDefinition Height="30"/>
+                         <RowDefinition Height="40"/>
+                         <RowDefinition Height="43"/>
+                         <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Image Source="logopages.png" Grid.Row="1" Grid.Column="1" WidthRequest="200" />
+                   
+                    <Image x:Name="Back" Source="backizq.png"  HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  /> 
+                    <Label Grid.Row="2" Grid.Column="1" Text="{translator:Translate RegisterText}" HorizontalTextAlignment="Center" HorizontalOptions="Center"  FontSize="Medium"/>
+                    <Label Grid.Row="3" Grid.Column="1" Text="{translator:Translate AgeLimitText}" HorizontalTextAlignment="Center"  HorizontalOptions="Center"  FontSize="Small"/>
+                    
+                 </Grid>
+                
+                
+                <CustomControl:CustomEntry x:Name="FirstNames" Grid.Row="1" Grid.Column="1" Text="{Binding FirstName}"  Style="{StaticResource EntryStyle}" MaxLength="50" HorizontalOptions="FillAndExpand" PlaceholderColor="{StaticResource EntryTextColor}"  Placeholder="{translator:Translate FirstName}" Keyboard="Default"  >
+                    <Entry.Behaviors>
+                        <MyViews:LengthValidatorBehavior  max="30" type="C" />
+                    </Entry.Behaviors>
+                </CustomControl:CustomEntry>
+                
+                <CustomControl:CustomEntry x:Name="LastNames" Grid.Row="2" Grid.Column="1" Text="{Binding LastName}" Style="{StaticResource EntryStyle}" MaxLength="50" HorizontalOptions="FillAndExpand"  Placeholder="{translator:Translate LastName}" PlaceholderColor="{StaticResource EntryTextColor}"  >
+                    <Entry.Behaviors>
+                        <MyViews:LengthValidatorBehavior  max="30" type="C"  />
+                    </Entry.Behaviors>
+                </CustomControl:CustomEntry>
+               <!-- <Entry x:Name="PassportNumber" Grid.Row="2" Grid.Column="1" Text="{Binding Passport}" Style="{StaticResource EntryStyle}" MaxLength="50" HorizontalOptions="FillAndExpand"  Placeholder="{translator:Translate PassportNumber}"   >
+                    <Entry.Behaviors>
+                        <MyViews:LengthValidatorBehavior min="5" max="15" type="C"  />
+                    </Entry.Behaviors>
+                </Entry>-->
+                
+                 <CustomControl:CustomEntry x:Name="Email" Grid.Row="3" IsVisible="false" Grid.Column="1" Text="{Binding Email}" Style="{StaticResource EntryStyle}" MaxLength="60" Placeholder="{translator:Translate Email}" PlaceholderColor="{StaticResource EntryTextColor}" Keyboard="Email"  >
+                    <Entry.Behaviors>
+                        <MyViews:EmailValidatorBehavior min="6" max="30" />
+                    </Entry.Behaviors>
+                 </CustomControl:CustomEntry>
+                
+                 <Label x:Name="Lb_Doc" Text="{translator:Translate DocDate}" TextColor="{StaticResource EntryTextColor}"  Grid.Row="4" Grid.Column="1"  />
+                 <CustomControl:CustomDatePicker x:Name="DocDate" 
+                      
+                     TextColor="{StaticResource EntryTextColor}" Date="{Binding PassDate, Mode=TwoWay}"                   
+                     Grid.Row="5" Grid.Column="1" HorizontalOptions="FillAndExpand"
+                     Format="dd/MM/yyyy" 
+                     HeightRequest="50" 
+                     Image="calendar">
+                      
+                 </CustomControl:CustomDatePicker> 
+                 
+                <CustomControl:CustomPicker x:Name="PickerCountry" 
+                      
+                     TextColor="{StaticResource EntryTextColor}" 
+                     SelectedIndexChanged="Handle_SelectedIndexChanged"
+                     TitleColor="{StaticResource EntryTextColor}" 
+                     SelectedItem="{Binding SelectedCountry, Mode=TwoWay}"
+                     ItemDisplayBinding="{Binding CountryName}"                       
+                     Grid.Row="6" Grid.Column="1" HorizontalOptions="FillAndExpand"
+                     HeightRequest="40" 
+                     Image="mundo"
+                     Title="{translator:Translate SelectCountry}">
+                      
+                 </CustomControl:CustomPicker> 
+                
+                 <Grid Grid.Row="7" Grid.Column="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Source="{Binding FlagImage}" Grid.Column="0"/>
+                    
+                    <Label x:Name="E_Code" HorizontalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="Medium"  Grid.Column="1"  Text="{Binding CountryCode}"     />
+                    
+                    
+                    
+                    <CustomControl:CustomEntry x:Name="E_Phone"  Grid.Column="2" PlaceholderColor="{StaticResource EntryTextColor}" Text="{Binding Phone}"   Style="{StaticResource EntryStyle}" Placeholder="{translator:Translate PhoneNumber}" MaxLength="14" Keyboard="Numeric"  >
+                    
+                    </CustomControl:CustomEntry>
+                </Grid>
+                
+                
+                <Button Command="{Binding SubmitCommand}" Grid.Row="8" Grid.Column="1"  Text="{translator:Translate Continue}" IsEnabled="false" Style="{StaticResource buttonStyle}" >
+                <Button.Triggers>
+                    <MultiTrigger TargetType="Button">
+                        <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference FirstNames}, Path=TextColor}" Value="LightGray" />
+                                <BindingCondition Binding="{Binding Source={x:Reference LastNames}, Path=TextColor}" Value="LightGray" />
+                                <BindingCondition Binding="{Binding Source={x:Reference Email}, Path=TextColor}" Value="LightGray" />
+                                <BindingCondition Binding="{Binding Source={x:Reference E_Phone}, Path=TextColor}" Value="LightGray" />
+                               
+                            </MultiTrigger.Conditions>
+                        <Setter Property="IsEnabled" Value="True" />
+                    </MultiTrigger>
+                </Button.Triggers>
+                </Button>
+            </Grid>
+            
+            
+            
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

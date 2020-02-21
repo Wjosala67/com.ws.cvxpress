@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local = "clr-namespace:com.ws.cvxpress.ChatViews"
+             xmlns:partials = "clr-namespace:com.ws.cvxpress.ChatViews"
+             xmlns:controls = "clr-namespace:com.ws.cvxpress.Custom"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             x:Class="com.ws.cvxpress.ChatViews.ChatPage"
+             BackgroundColor="{StaticResource DarkBackgroundColor}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ChatTemplateSelector x:Key="MessageTemplateSelector"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+     <Grid RowSpacing="0" ColumnSpacing="0" Padding="10,5,10,5">
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="rowone" Height="35" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="1" />
+            <RowDefinition Height="AUTO" />
+      
+       
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50"/>
+            <ColumnDefinition Width="*" />  
+        </Grid.ColumnDefinitions>
+        <Image x:Name="Back" Source="backizq.png" 
+                     
+                     HorizontalOptions="Center" 
+                     Grid.Row="0" Grid.Column="0" 
+                     Grid.ColumnSpan="2"  />
+
+          <ffimageloading:CachedImage  x:Name="ImageURL"  HorizontalOptions="Start"
+                                                                    VerticalOptions="FillAndExpand" 
+                                            Grid.Row="1"
+                                             Grid.Column="0" 
+                                          
+                                            Source="{Binding imageSource}">
+                                            <ffimageloading:CachedImage.Transformations>
+                                                <fftransformations:CornersTransformation
+                                                    CornersTransformType="BottomLeftRounded,TopRightRounded, BottomRightRounded, TopLeftRounded"
+                                                    BottomLeftCornerSize="10"
+                                                    TopRightCornerSize="10"
+                                                    BottomRightCornerSize="10"
+                                                TopLeftCornerSize="10"/>
+                                            </ffimageloading:CachedImage.Transformations>   
+                                        </ffimageloading:CachedImage>
+        
+        <Label x:Name="chaterName" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1"
+               HorizontalOptions="Start" VerticalOptions="Center" VerticalTextAlignment="Center"/>
+        <ListView  Grid.Row="2" Grid.ColumnSpan="2" 
+                 ItemTemplate="{StaticResource MessageTemplateSelector}" 
+                 ItemsSource="{Binding Messages}" 
+                 Margin="0" x:Name="ChatList"
+                 HasUnevenRows="True" 
+                 VerticalOptions="FillAndExpand" 
+                 SeparatorColor="Transparent" >
+        </ListView>
+        <BoxView HorizontalOptions="FillAndExpand" 
+                 HeightRequest="1" Grid.Column="0" Grid.ColumnSpan="2"
+                 BackgroundColor="LightGray"
+                 Grid.Row="3"/>
+        <partials:ChatIntpuBarView Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"
+                                   Margin="0,0,10,0"/>
+    </Grid>
+</ContentPage>

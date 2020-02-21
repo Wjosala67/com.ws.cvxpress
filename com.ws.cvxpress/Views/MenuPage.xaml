@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:CustomControl="clr-namespace:com.ws.cvxpress.Custom"
+             x:Class="com.ws.cvxpress.Views.MenuPage" Title="Menu"
+             xmlns:translator   ="clr-namespace:com.ws.cvxpress.Helpers"
+             xmlns:MyViews ="clr-namespace:WSViews;assembly=WSViews"
+             >
+  
+    <StackLayout Orientation="Vertical"  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+        
+        <ListView x:Name="ListViewMenu" 
+                 
+                  HasUnevenRows="True" 
+                  SeparatorVisibility="Default"
+                  CachingStrategy="RecycleElement"
+                  
+                  BackgroundColor="{StaticResource DarkBackgroundColor}" 
+                  SeparatorColor="{StaticResource EntryTextColorSpecial}" >
+            <ListView.Header>
+                <StackLayout Padding="10,5,0,5" BackgroundColor="{StaticResource DarkBackgroundColor}">
+                    
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="43" />
+                            <RowDefinition Height="AUTO" />
+                            <RowDefinition Height="10" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1" />
+                            <ColumnDefinition Width="AUTO" />
+                            
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Row="1" x:Name="UserEmail"  Grid.Column="1" Text="{Binding User}" FontAttributes="Bold" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Start" />
+                        
+                        
+                        <Image Grid.Row="0" Grid.Column="1"  x:Name="logo" HorizontalOptions="Start" VerticalOptions="End" Source="logopages.png" HeightRequest="40" />
+                        
+                    </Grid>
+                   
+                </StackLayout>
+            </ListView.Header>
+            <ListView.Footer>
+                   <Grid Padding="0,30,0,0" HorizontalOptions="CenterAndExpand">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                       <!-- <RowDefinition Height="30"/>-->
+                        
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions>
+                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="12*"/>
+                        <ColumnDefinition Width="*"/>
+                        
+                    </Grid.ColumnDefinitions>
+                    <MyViews:ToggleButton  Grid.Row="0" Grid.Column="1"  x:Name="Toggle"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                  
+                    
+                    CheckedImage="viajero"
+                    UnCheckedImage="comprador"/>
+                  
+                  <!--  <Label Grid.Row="1" Grid.Column="0" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Small" Text="{translator:Translate Traveler}"/>
+                    
+                    <Label  Grid.Row="1" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Small" Text="{translator:Translate Sender}"/>
+                -->
+                </Grid>
+            </ListView.Footer>
+            <ListView.ItemTemplate >
+                <DataTemplate>
+                    <CustomControl:ExtendedViewCell SelectedBackgroundColor="Blue">
+                   <ViewCell.View>
+                        
+                        <StackLayout>   
+                            
+                      <Grid Padding="5"  >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="40" />
+                             
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1" />
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="220" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="{Binding Title}" Grid.Row="0" Grid.Column="2"  TextColor="{StaticResource LabelTextColorWhite}" FontSize="Small" VerticalOptions="Center"/>
+                            <Image x:Name="image" Grid.Row="0" Grid.Column="1" Source="{Binding Icon}" WidthRequest="30" HeightRequest="30"/>
+                        </Grid>
+                                </StackLayout>
+                    </ViewCell.View>
+                    </CustomControl:ExtendedViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="com.ws.cvxpress.Views.Admin.AuthPage"
+             xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+              BackgroundColor="{StaticResource DarkBackgroundColor}">
+   <ContentPage.Content>
+         <Grid Padding="0,10,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="15*"/>
+                <RowDefinition Height="1"/>
+                
+                
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Image x:Name="Back" Source="backizq.png" 
+                                
+                                HorizontalOptions="Center" 
+                                Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"  /> 
+          
+            <Frame Padding="0,0,0,0"
+                BackgroundColor="Silver" CornerRadius="5" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="3" > 
+             <Image x:Name="Imagecropped" Source="{Binding _ImageSource}" Aspect="AspectFit"/>
+            </Frame>
+            <Button x:Name="bt_auth" Text="{translator:Translate Auth}" Clicked="Handle_Auth" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="1" />
+            <Button x:Name="bt_reject" Text="{translator:Translate Reject}" Clicked="Handle_Reject" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="1" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

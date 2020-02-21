@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                 x:Class="com.ws.cvxpress.Views.RegisterA.SpecificsTravelView"
+                 xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+                 xmlns:CustomControl="clr-namespace:com.ws.cvxpress.Custom"
+           
+                 xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+   
+    
+    <StackLayout
+        Margin="10"
+        Padding="10"
+        Spacing="10"
+        
+        HorizontalOptions="Center"
+        VerticalOptions="Center">
+        
+      
+        
+         
+            <Frame CornerRadius="5" 
+           HorizontalOptions="Center" 
+           VerticalOptions="Start"
+           HasShadow="True"
+           BackgroundColor="{StaticResource DarkBackgroundColor}"
+           Padding="0">
+         
+        
+        
+        <Grid Padding="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Label Text="{translator:Translate Specs}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" FontSize="Medium" HorizontalTextAlignment="Center"/>
+        
+            <Label  Text="{translator:Translate WeightAvail}" VerticalTextAlignment="Center" Grid.Row="1" Grid.ColumnSpan="3" Grid.Column="0"/>
+            <CustomControl:CustomEntry x:Name="WeightAvail" Grid.Row="2" Grid.Column="0"  Keyboard="Numeric"  MaxLength="2" Grid.ColumnSpan="3" Placeholder="{translator:Translate WeightHint}" Style="{StaticResource EntryStyle}" HorizontalTextAlignment="Center" PlaceholderColor="{StaticResource EntryTextColor}"  />
+            
+            
+           <!-- <Label Text="{translator:Translate Wide}" Grid.Row="2" Grid.Column="0"/>
+            <CustomControl:CustomEntry  Grid.Row="3" Grid.Column="0" Keyboard="Numeric"  MaxLength="2" Placeholder="{translator:Translate WideHint}" Style="{StaticResource EntryStyle}" PlaceholderColor="{StaticResource EntryTextColor}" />
+       
+            <Label Text="{translator:Translate Height}" Grid.Row="2" Grid.Column="1"/>
+            <CustomControl:CustomEntry  Grid.Row="3" Grid.Column="1" Keyboard="Numeric"  MaxLength="2" Placeholder="{translator:Translate HeightHint}" Style="{StaticResource EntryStyle}" PlaceholderColor="{StaticResource EntryTextColor}" />
+            
+             <Label Text="{translator:Translate Long}" Grid.Row="2" Grid.Column="2"/>
+            <CustomControl:CustomEntry  Grid.Row="3" Grid.Column="2" Keyboard="Numeric"  MaxLength="2" Placeholder="{translator:Translate LongHint}" Style="{StaticResource EntryStyle}" PlaceholderColor="{StaticResource EntryTextColor}" />
+        -->
+            <Label Text="{translator:Translate DeliveredAt}" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" />
+            
+            
+                
+            <CustomControl:CustomEntry x:Name="DeliveredAt" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" MaxLength="60" Placeholder="{translator:Translate DeliveredAtHint}" Style="{StaticResource EntryStyle}" PlaceholderColor="{StaticResource EntryTextColor}" />
+            
+           
+                
+          <Button  Grid.Row="6"  Grid.Column="0" Grid.ColumnSpan="3" Clicked="Handle_Clicked"  Text="{translator:Translate Continue}" Style="{StaticResource buttonStyle}" >
+               
+          </Button>
+        </Grid>
+         </Frame>
+        
+        
+         <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="AUTO"/>
+                <RowDefinition Height="AUTO"/>
+            </Grid.RowDefinitions>
+        
+         <CheckBox x:Name="DestinyMessage"   Grid.RowSpan="2"  Grid.Row="0" Grid.Column="1"  IsVisible="false" >
+                    
+         </CheckBox> 
+            <ImageButton x:Name="imgButton" IsVisible="false" Source="seefile.png" BackgroundColor="Transparent" Clicked="Handle_Clicked_1" Grid.Row="0" Grid.Column="0" HeightRequest="45"/>
+            <Label x:Name="Lb_File" Grid.Column="0" TextColor="Gray" Grid.Row="1" HorizontalTextAlignment="Center" />
+            </Grid>
+    </StackLayout>
+   
+</ContentPage >

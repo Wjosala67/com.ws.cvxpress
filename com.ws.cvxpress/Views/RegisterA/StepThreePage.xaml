@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:MyViews ="clr-namespace:WSViews;assembly=WSViews"
+             xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+             xmlns:viewModels ="clr-namespace:com.ws.cvxpress.ViewModels"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="com.ws.cvxpress.Views.RegisterA.StepThreePage" BackgroundColor="{StaticResource DarkBackgroundColor}">
+    <!--<ContentPage.BindingContext>
+        <viewModels:StepThreeViewModel/>
+    </ContentPage.BindingContext>-->
+    <ContentPage.Content>
+          <StackLayout Padding="20,10,20,0"  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="AUTO"/>
+                    <RowDefinition Height="AUTO"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="AUTO"/>
+                </Grid.RowDefinitions>
+                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="5"/>
+                </Grid.ColumnDefinitions>   
+               
+                
+                <Grid Grid.Row="0" Grid.Column="1" >
+                    <Grid.RowDefinitions>
+                         <RowDefinition Height="30"/>
+                         <RowDefinition Height="40"/>
+                         <RowDefinition Height="43"/>
+                        
+                    </Grid.RowDefinitions>
+                    
+                    <Grid.ColumnDefinitions >
+                        <ColumnDefinition Width="30"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    <Image Source="logopages.png" Grid.Row="1" Grid.Column="1" WidthRequest="200" />
+                   
+                    <Image Source="backizq.png" x:Name="Back"  HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" /> 
+                    <Label x:Name="CamTitle" Grid.Row="2" Grid.Column="1" HorizontalTextAlignment="Center" HorizontalOptions="Center"  FontSize="Medium"/>
+                    
+                 </Grid>
+                
+                <Frame Grid.Row="1" BackgroundColor="{StaticResource LightBackgroundColor}" Grid.Column="1" CornerRadius="5">
+                    <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="AUTO"/>
+                        <RowDefinition Height="AUTO"/>
+                       
+                    </Grid.RowDefinitions>
+                    
+                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    
+                    
+                 
+                    <ImageButton Source="camera" Grid.Row="0" Grid.Column="0" x:Name="TakePicture" HorizontalOptions="Center" VerticalOptions="Center" />
+                    <ImageButton Source="gallery" Grid.Row="0" Grid.Column="2" x:Name="SelectPicture" HorizontalOptions="Center" VerticalOptions="Center" />
+     
+                    <Label Text="{translator:Translate TakePicture}" TextColor="{StaticResource DarkBackgroundColor}" FontSize="Small" Grid.Row="1" Grid.Column="0" HorizontalOptions="Center" />
+                    <Label Text="{translator:Translate SelectPicture}" TextColor="{StaticResource DarkBackgroundColor}" FontSize="Small" Grid.Row="1" Grid.Column="2" HorizontalOptions="Center"  />
+                </Grid>
+                    
+                </Frame>
+                
+                <Frame Grid.Row="2" Grid.Column="1" CornerRadius="5" VerticalOptions="FillAndExpand" BorderColor="Gray" BackgroundColor="Transparent">
+                     <ListView x:Name="lstView2" ItemsSource="{Binding IdInfos}" >
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <!--comment and uncomment lines to see each cell type-->
+                                           
+                                            <ImageCell Text="{Binding name}" Detail="{Binding comments}" DetailColor="{StaticResource LabelTextColorWhite}" ImageSource="{Binding Image}" />
+<!--                                            <SwitchCell  Text="{Binding ItemName}" On="{Binding IsSelected}" />-->
+                                            <!--<EntryCell Label="{Binding name}" Text="{Binding comment}" />-->
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                     </ListView>
+                </Frame>
+                
+                <Button x:Name="bt_continue" Grid.Row="3" Grid.Column="1"  HeightRequest="43" Command="{Binding SubmitCommand}" Text="{translator:Translate Continue}" Style="{StaticResource buttonStyle}" />
+            
+            </Grid>
+           
+              
+                
+                
+                   
+            
+           
+           
+            
+            <!--<ListView x:Name="lstView2" ItemsSource="{Binding LstItemIDS}" >
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                               
+                               
+                                <ImageCell Text="{Binding name}" Detail="{Binding comment}" ImageSource="{Binding image}" />
+
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+            </ListView>-->
+            
+           
+            
+           
+            
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

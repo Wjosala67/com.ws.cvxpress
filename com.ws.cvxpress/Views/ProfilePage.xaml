@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+             xmlns:viewModels="clr-namespace:com.ws.cvxpress.ViewModels" 
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+             xmlns:control="clr-namespace:PanCardView.Controls;assembly=PanCardView"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+           
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="com.ws.cvxpress.Views.ProfilePage" BackgroundColor="{StaticResource LightBackgroundColor}">
+    
+    
+    <ContentPage.Content>
+      
+        <StackLayout Padding="20,2,20,20" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            <BoxView HeightRequest="1"/>
+
+            <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="6*" />
+                   
+                   
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    
+                     <ColumnDefinition Width="*"/>
+                   
+                </Grid.ColumnDefinitions>
+                
+                <Label TextColor="{StaticResource LabelTextWhenLightBack}" Grid.Row="0"  Text="{Binding TitleText}" FontSize="Small"  HorizontalTextAlignment="Center" />
+                <Label TextColor="{StaticResource LabelTextWhenLightBack}" Grid.Row="1"  Text="{Binding SubTitleText }" FontSize="Small" HorizontalTextAlignment="Center" />
+                      
+                <Frame CornerRadius="5" Padding="15,15,15,15" Grid.Row="2" HasShadow="true" BackgroundColor="{StaticResource DarkBackgroundColor}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>    
+                        <Grid.RowDefinitions>
+                             <RowDefinition Height="2*"/>  
+                             <RowDefinition Height="*"/> 
+                             <RowDefinition Height="2*"/> 
+                             
+                        </Grid.RowDefinitions>   
+                     
+                        <Grid Grid.Column="0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="20"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Image Source="littleplane.png" Grid.Row="0" Grid.Column="0"/>
+                            <Label x:Name="adjustprofile" Grid.Row="0"  Grid.Column="1" TextDecorations="Underline" Text="{Binding Name, Mode= OneTime}" FontSize="Small" TextColor="{StaticResource LabelTextColorRed}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
+                            <Label x:Name="rewards" IsVisible="false" Grid.Row="1" Grid.Column="1" TextDecorations="Underline" FontSize="Small" Text="{translator:Translate MyRewards}"/>
+                        </Grid>
+                        
+                       
+                        <ffimageloading:CachedImage  x:Name="ImageURL" HorizontalOptions="EndAndExpand" 
+                                                    VerticalOptions="FillAndExpand" 
+                            Grid.Column="1"   Grid.Row="0" Grid.RowSpan="3" 
+                            
+                          
+                            Source="{Binding UserImage}">
+                            <ffimageloading:CachedImage.Transformations>
+                                <fftransformations:CornersTransformation
+                                    CornersTransformType="BottomLeftRounded,TopRightRounded, BottomRightRounded, TopLeftRounded"
+                                    BottomLeftCornerSize="5"
+                                    TopRightCornerSize="5"
+                                    BottomRightCornerSize="5"
+                                TopLeftCornerSize="5"/>
+                            </ffimageloading:CachedImage.Transformations>   
+                        </ffimageloading:CachedImage>
+                        
+                     
+                        <Button x:Name="offerBox" 
+                                Clicked="Handle_Clicked" 
+                                TextColor="{StaticResource LabelTextColorRed}" 
+                                Grid.Column="0" Grid.Row="2"  FontSize="Small"
+                                
+                                Text="{Binding ButtonText}" 
+                                Style="{StaticResource buttonStyle}" >
+                
+                        </Button> 
+                    </Grid>    
+                        
+                        
+                </Frame>    
+                    
+          <!--<CarouselView ItemsSource="{Binding myItemsSource}"  Grid.Row="3" IsVisible="{Binding ViewCarrousel}" IsSwipeEnabled="True">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout>
+                        <Frame HasShadow="True"
+                               BorderColor="DarkGray"
+                               CornerRadius="5"
+                               BackgroundColor="LightGray"
+                               Margin="20"
+                               HeightRequest="300" 
+                               HorizontalOptions="Fill"
+                               VerticalOptions="Fill">
+                           
+                        
+                         <StackLayout>
+                                <Label Text="{Binding Title}"
+                                       FontAttributes="Bold"
+                                       FontSize="Large"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center" />
+                               <ffimageloading:CachedImage  x:Name="ImageURL" HorizontalOptions="Fill" 
+                                                                VerticalOptions="Fill" 
+                                                              Aspect="AspectFill"
+                                                                Source="{Binding Image}">
+                                                                <ffimageloading:CachedImage.Transformations>
+                                                                    <fftransformations:CornersTransformation
+                                                                        CornersTransformType="BottomLeftRounded,TopRightRounded, BottomRightRounded, TopLeftRounded"
+                                                                        BottomLeftCornerSize="10"
+                                                                        TopRightCornerSize="10"
+                                                                        BottomRightCornerSize="10"
+                                                                    TopLeftCornerSize="10"/>
+                                                                </ffimageloading:CachedImage.Transformations>   
+                                                            </ffimageloading:CachedImage>
+
+
+                               
+                            </StackLayout>
+                            </Frame>
+                    </StackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>-->
+                
+              <cards:CarouselView 
+                Grid.Row="3" IsVisible="{Binding ViewCarrousel}" ItemsSource="{Binding myItemsSource}" 
+                SelectedIndex="{Binding Position}"> 
+                <cards:CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView>
+                            <Frame CornerRadius="5" BackgroundColor="{StaticResource DarkBackgroundColor}">
+                                
+                                    <!--<Label Text="{Binding Title}" FontSize="Small" TextColor="{StaticResource LabelTextWhenLightBack}"/>-->
+                                     <ffimageloading:CachedImage  x:Name="ImageURL" HorizontalOptions="FillAndExpand" 
+                                                                VerticalOptions="FillAndExpand" 
+                                                              Aspect="AspectFill"
+                                                                Source="{Binding Image}">
+                                                                <ffimageloading:CachedImage.Transformations>
+                                                                    <fftransformations:CornersTransformation
+                                                                        CornersTransformType="BottomLeftRounded,TopRightRounded, BottomRightRounded, TopLeftRounded"
+                                                                        BottomLeftCornerSize="10"
+                                                                        TopRightCornerSize="10"
+                                                                        BottomRightCornerSize="10"
+                                                                    TopLeftCornerSize="10"/>
+                                                                </ffimageloading:CachedImage.Transformations>   
+                                                            </ffimageloading:CachedImage>
+                                   
+                                </Frame>
+                        </ContentView>
+                    </DataTemplate>
+                </cards:CarouselView.ItemTemplate>
+
+                    <control:LeftArrowControl/>
+                    <control:RightArrowControl/>
+                    <control:IndicatorsControl/>
+                </cards:CarouselView>
+
+
+            </Grid>
+        
+        </StackLayout>
+           
+       
+       
+         
+    </ContentPage.Content>
+</ContentPage>
