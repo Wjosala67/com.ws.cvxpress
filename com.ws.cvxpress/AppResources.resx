@@ -536,7 +536,7 @@
         <value>Actualización no pudo ser realizada.</value>
      </data>
       <data name ="TextIdents" xml:space="preserve">
-        <value>Tome o seleccione la foto del documento que desea registrar</value>
+        <value>Agregue la foto de al menos una identificación oficial</value>
      </data>
    
      <data name ="TravelInfo" xml:space="preserve">
@@ -636,7 +636,7 @@
         <value>Fecha:</value>
      </data>
      <data name ="ProductPhoto" xml:space="preserve">
-        <value>Foto de Producto</value>
+        <value>Foto del Artículo</value>
      </data>
      <data name ="OnlyOnePick" xml:space="preserve">
         <value>Solo puede cargar una foto en este caso</value>
