@@ -24,10 +24,24 @@
                 <ColumnDefinition Width="*"  />
                 <ColumnDefinition Width="10"/>
             </Grid.ColumnDefinitions>
-            <CustomControl:CustomEntry x:Name="Topic" Text="{Binding Topic}" Placeholder="{translator:Translate Topic}" PlaceholderColor="White"  Style="{StaticResource EntryStyle}" Grid.Column="1" Grid.Row="1" HorizontalOptions="FillAndExpand"/>
+            
+
+              <CustomControl:CustomPicker x:Name="Topic" Grid.Column="1" Grid.Row="1"
+                      
+                     TextColor="{StaticResource EntryTextColor}" 
+                     TitleColor="{StaticResource EntryTextColor}" 
+                     SelectedItem="{Binding Topic, Mode=TwoWay}" FontSize="Small"
+                                       
+                      HorizontalOptions="FillAndExpand"
+                     HeightRequest="50" 
+                     Image="icon"
+                     Title="{translator:Translate SelectOption}">
+                      
+                 </CustomControl:CustomPicker> 
+
             
             <Frame Padding="20" CornerRadius="5" Grid.Column="1"  Grid.Row="2"  Grid.RowSpan="4"   BackgroundColor="Transparent" BorderColor="Silver">
-                <Editor AutoSize="TextChanges" MaxLength="599" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+                <Editor AutoSize="TextChanges" FontSize="Small" MaxLength="599" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
                  RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"  x:Name="Subject" Placeholder="{translator:Translate Subject}" PlaceholderColor="Silver" BackgroundColor="{StaticResource DarkBackgroundColor}" TextColor="White">
                 </Editor>
             </Frame>

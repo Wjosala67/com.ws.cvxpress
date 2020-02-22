@@ -23,8 +23,23 @@ namespace com.ws.cvxpress.Views.Operation
             {
                 await DisplayAlert(Translator.getText("Notice"), Translator.getText("Created"), "OK");
                 Subject.Text = "";
-                Topic.Text = "";
+                Topic.SelectedIndex = -1;
             };
+
+            //
+            //
+            //
+            //
+
+            List<string> options = new List<string>();
+            options.Add(Translator.getText("ProcessQuestions"));
+            options.Add(Translator.getText("AppQuestions"));
+            options.Add(Translator.getText("AppComents"));
+            options.Add(Translator.getText("IHaveAProblem"));
+
+            Topic.ItemsSource = options;
+
+
         }
 
        

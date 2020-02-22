@@ -1780,5 +1780,35 @@ namespace com.ws.cvxpress {
                 return ResourceManager.GetString("ProcessNotCompleted", resourceCulture);
             }
         }
+        
+        internal static string ProcessQuestions {
+            get {
+                return ResourceManager.GetString("ProcessQuestions", resourceCulture);
+            }
+        }
+        
+        internal static string AppQuestions {
+            get {
+                return ResourceManager.GetString("AppQuestions", resourceCulture);
+            }
+        }
+        
+        internal static string AppComents {
+            get {
+                return ResourceManager.GetString("AppComents", resourceCulture);
+            }
+        }
+        
+        internal static string IHaveAProblem {
+            get {
+                return ResourceManager.GetString("IHaveAProblem", resourceCulture);
+            }
+        }
+        
+        internal static string SelectOption {
+            get {
+                return ResourceManager.GetString("SelectOption", resourceCulture);
+            }
+        }
     }
 }

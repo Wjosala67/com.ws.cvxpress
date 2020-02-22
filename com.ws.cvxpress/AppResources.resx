@@ -966,4 +966,22 @@
      <data name ="ProcessNotCompleted" xml:space="preserve">
         <value>No se ha podido completar la operación, intente mas tarde.</value>
     </data>
+    
+    
+     <data name ="ProcessQuestions" xml:space="preserve">
+        <value>Pregunta sobre el proceso</value>
+    </data>
+     <data name ="AppQuestions" xml:space="preserve">
+        <value>Pregunta sobre la aplicación</value>
+    </data>
+     <data name ="AppComents" xml:space="preserve">
+        <value>Comentarios</value>
+    </data>
+      <data name ="IHaveAProblem" xml:space="preserve">
+        <value>Tengo un Problema</value>
+    </data>
+    
+      <data name ="SelectOption" xml:space="preserve">
+        <value>Seleccione una opción</value>
+    </data>
 </root>
