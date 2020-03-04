@@ -39,7 +39,7 @@
                             HasUnevenRows="true"
                             RefreshCommand="{Binding LoadItemsCommand}"
                             IsPullToRefreshEnabled="true"
-                            
+                            IsRefreshing="{Binding IsBusy}"
                             CachingStrategy="RecycleElement"
                             ItemTapped="Handle_ItemTapped"  >
                             

@@ -25,36 +25,34 @@ namespace com.ws.cvxpress.Views.Operation
             InitializeComponent();
             IdInfo = idInfo;
             Title = Translator.getText("TravelInfo");
-
+          
             BindingContext = viewModel = new TravelInfoPageViewModel( idInfo);
+            viewModel.IsBusy = false;
             SearchBox.Placeholder = Translator.getText("AcceptedOnRoute").Replace(":","");
             SearchBox.PlaceholderColor = Color.Black;
-            MessagingCenter.Subscribe<UnitListPage, string>(this, "UpdateItems", async (obj, item) => {
 
-                if (item == "Done")
+            #region Updates From GeneralUpdatePage
+
+            MessagingCenter.Subscribe<GeneralUpdatePage, string>(this, "CloseTravel", async (obj, item) => {
+
+                if (item == "Close")
                 {
-                    using (UserDialogs.Instance.Loading(Translator.getText("Loading"), null, null, true, MaskType.Gradient))
-                    {
-                        await viewModel.onsomecomandAsync();
-                        MyListView.ItemsSource = viewModel.LstItemsShow;
-                        MyListView2.ItemsSource = viewModel.LstItemsShow2;
-
-                    }
+                    await Navigation.PopModalAsync();
 
                 }
 
             });
 
 
-            MessagingCenter.Subscribe<GeneralUpdatePage, string>(this, "UpdateItems", async (obj, item) => {
+            MessagingCenter.Subscribe<GeneralUpdateViewModel, string>(this, "UpdateItems", async (obj, item) => {
 
                 if (item == "Done")
                 {
                     using (UserDialogs.Instance.Loading(Translator.getText("Loading"), null, null, true, MaskType.Black))
                     {
                         await viewModel.onsomecomandAsync();
-                        MyListView.ItemsSource =  viewModel.LstItemsShow;
-                        MyListView2.ItemsSource = viewModel.LstItemsShow2;
+                        updatePage();
+                       
 
                     }
 
@@ -68,7 +66,7 @@ namespace com.ws.cvxpress.Views.Operation
 
                 viewModel.DateFrom = item.FromDate;
                 viewModel.DateTo = item.ToDate;
-               
+
                 DateFrom.Text = Convert.ToDateTime(item.FromDate.ToString()).ToString("dd/MM/yyyy hh:mm tt");
                 DateTo.Text = Convert.ToDateTime(item.ToDate.ToString()).ToString("dd/MM/yyyy hh:mm tt");
 
@@ -77,33 +75,55 @@ namespace com.ws.cvxpress.Views.Operation
             });
 
 
-            MessagingCenter.Subscribe<GeneralUpdateViewModel, string>(this, "UpdateTravelInfoClose", async (obj, item) => {
+          
 
+            #endregion
 
-                await Navigation.PopModalAsync();
+            MessagingCenter.Subscribe<UnitUpdateViewModel, string>(this, "UnitUpdateFrom", async (obj, item) => {
 
-
-
-            });
-
-
-            MessagingCenter.Subscribe<UnitUpdateViewModel, string>(this, "UpdateTravelInfo", async (obj, item) => {
-
-
-                if(item == "NoContent")
+                if (item == "NoContent")
                 {
 
                     await viewModel.onsomecomandAsync();
-                    MyListView.ItemsSource = viewModel.LstItemsShow;
-                    MyListView2.ItemsSource = viewModel.LstItemsShow2;
+                    updatePage();
+                   
 
-
-
-                    //MyListView.ItemsSource = viewModel.LstItemsShow;
-                    dismissBottomSheet();
                 }
 
+            });
 
+            
+
+            MessagingCenter.Subscribe<TravelInfoPageViewModel, string>(this, "DeletedItem1", async (obj, item) => {
+
+                if (item != "No Content")
+                {
+                    
+                
+                  await  DisplayAlert(Translator.getText("Notice"), Translator.getText("NoDelete"), "Ok");
+                }
+
+            });
+
+            MessagingCenter.Subscribe<App, string>(this, "NewItemsUpdate", async (obj, item) => {
+
+                if (item == "Update")
+                {
+                    await viewModel.onsomecomandAsync();
+                    updatePage();
+                  
+                }
+
+            });
+
+            MessagingCenter.Subscribe<UnitUpdatePage, string>(this, "UpdateFromUnit", async (obj, item) => {
+
+                if (item == "Update")
+                {
+                    await viewModel.onsomecomandAsync();
+                    updatePage();
+
+                }
 
             });
 
@@ -158,7 +178,19 @@ namespace com.ws.cvxpress.Views.Operation
             }
         }
 
-     
+        void updatePage()
+        {
+           
+            MyListView.ItemsSource = null;
+            MyListView2.ItemsSource = null;
+            MyListView.ItemsSource = viewModel.LstItemsShow;
+            MyListView2.ItemsSource = viewModel.LstItemsShow2;
+            MyListView.IsRefreshing = false;
+            MyListView2.IsRefreshing = false;
+            IdInfo = viewModel.TravelInfo.travelerSpecs;
+
+
+        }
 
         async void Handle_ItemTapped(object sender, Xamarin.Forms.ItemTappedEventArgs e)
         {
@@ -183,8 +215,8 @@ namespace com.ws.cvxpress.Views.Operation
                     App.WaitScreenStart(Translator.getText("Loading"));
 
                     bool added = await viewModel.ReserveItem(requestSpecs, IdInfo);
-
-                        if (!added)
+                    App.WaitScreenStop();
+                    if (!added)
                         {
 
 
@@ -193,16 +225,14 @@ namespace com.ws.cvxpress.Views.Operation
                         }
                         else
                         {
-                            // UPDATE requestspecs
-                            //await viewModel.UpdateRequestspecsSelectedAsync(requestSpecs, Constants.ItemTaken);
+                          
                            
                             await viewModel.onsomecomandAsync();
-
-                            MyListView.ItemsSource = viewModel.LstItemsShow;
-                            MyListView2.ItemsSource = viewModel.LstItemsShow2;
+                            updatePage();
+                          
                         await DisplayAlert(Translator.getText("Notice"), Translator.getText("ItemTakenbyYou"), "Ok");
                     }
-                    App.WaitScreenStop();
+                   
                     }
                 }
 
@@ -447,7 +477,7 @@ namespace com.ws.cvxpress.Views.Operation
                 var menuItem = sender as Button;
                 var selectedItem = menuItem.CommandParameter as RequestSpecs;
                 Ro.requestSpecs = selectedItem;
-                //viewModel.DeleteItem(Ro);
+                viewModel.DeleteItem(Ro);
 
 
 

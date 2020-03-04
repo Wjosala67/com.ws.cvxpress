@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿
 using System.Threading.Tasks;
 using System.Windows.Input;
 using com.ws.cvxpress.Classes;
 using com.ws.cvxpress.Models;
 using com.ws.cvxpress.Services;
-using com.ws.cvxpress.Views.Operation;
 using Xamarin.Forms;
 
 

@@ -22,73 +22,14 @@ namespace com.ws.cvxpress.Views.Operation
             from.Text = Ro.travelerSpecs.CountryCodeFrom;
             to.Text = Ro.travelerSpecs.CountryCodeTo; 
              profile = DatabaseHelper.GetProfile(App.Os_Folder);
-            if(Ro.requestSpecs.status < 3)
-            {
-                NewPrice.IsEnabled = true;
-                NewWeigth.IsEnabled = true;
-            }else
-            {
-                NewPrice.IsEnabled = false;
-                NewWeigth.IsEnabled = false;
-            }
-           
             BindingContext = viewModel = new UnitUpdateViewModel(Ro);
 
-            if (Ro.requestSpecs.status <= 3)
-            {
-                frame4.IsEnabled = true;
-                viewModel.TravelState = "";
-                UpdateBoton.IsEnabled = true;
-            }
-            else if(Ro.requestSpecs.status == 9)
-            {
-                //bt_chat.IsEnabled = false;
-                frame4.IsEnabled = false;
-                UpdateBoton.IsEnabled = false;
-                viewModel.TravelState = Translator.getText("ItemDelivered");
-                viewModel.frameFourAction();
-            }else if(Ro.requestSpecs.status == 21)
-            {
-                //bt_chat.IsEnabled = false;
-                frame4.IsEnabled = false;
-                UpdateBoton.IsEnabled = false;
-                viewModel.Level4 = true;
-                viewModel.TravelState = Translator.getText("WaitforAuth");
-               
-
-            }
-            else if (Ro.requestSpecs.status == 22)
-            {
-                //bt_chat.IsEnabled = false;
-                frame4.IsEnabled = true;
-                UpdateBoton.IsEnabled = true;
-                viewModel.TravelState = Translator.getText("Authorized");
-                viewModel.Level4 = true;
-                viewModel.frameFourAction();
-
-            }
+            updateItemStatus(Ro.requestSpecs.status);
 
            
 
             article.Text = Ro.requestSpecs.Description;
-            //lb_star5Func();
-
-            //void lb_star5Func()
-            //{
-            //    try
-            //    {
-            //        bt_chat.GestureRecognizers.Add(new TapGestureRecognizer()
-            //        {
-            //            Command = new Command(() =>
-            //            {
-
-
-            //            }
-            //                )
-            //        });
-            //    }
-            //    catch (Exception ex) { Debug.WriteLine(ex); }
-            //}
+          
 
             lb_frame4Func();
 
@@ -150,7 +91,9 @@ namespace com.ws.cvxpress.Views.Operation
         {
 
             viewModel.UpdateItem();
-          
+
+            MessagingCenter.Send<UnitUpdatePage, string>(this, "UpdateFromUnit", "Update");
+
             Navigation.PopModalAsync();
 
         }
@@ -161,6 +104,59 @@ namespace com.ws.cvxpress.Views.Operation
             base.OnDisappearing();
         }
 
+        public void updateItemStatus(int ActualStatus)
+        {
+
+            if (ActualStatus < 3)
+            {
+                NewPrice.IsEnabled = true;
+                NewWeigth.IsEnabled = true;
+            }
+            else
+            {
+                NewPrice.IsEnabled = false;
+                NewPrice.BackgroundColor = Color.LightGray;
+                NewWeigth.BackgroundColor = Color.LightGray;
+                NewWeigth.IsEnabled = false;
+            }
+
+            
+
+            if (ActualStatus <= 3)
+            {
+                frame4.IsEnabled = false;
+                viewModel.TravelState = "";
+                UpdateBoton.IsEnabled = true;
+            }
+            else if (ActualStatus == Constants.Finished)
+            {
+                //bt_chat.IsEnabled = false;
+                frame4.IsEnabled = false;
+                UpdateBoton.IsEnabled = false;
+                viewModel.TravelState = Translator.getText("ItemDelivered");
+                viewModel.frameFourAction();
+            }
+            else if (ActualStatus == Constants.RequestAuth)
+            {
+                //bt_chat.IsEnabled = false;
+                frame4.IsEnabled = false;
+                UpdateBoton.IsEnabled = false;
+                viewModel.Level4 = true;
+                viewModel.TravelState = Translator.getText("WaitforAuth");
+
+
+            }
+            else if (ActualStatus == Constants.Confirmed)
+            {
+                //bt_chat.IsEnabled = false;
+                frame4.IsEnabled = true;
+                UpdateBoton.IsEnabled = true;
+                viewModel.TravelState = Translator.getText("Authorized");
+                viewModel.Level4 = true;
+                viewModel.frameFourAction();
+
+            }
+        }
 
     }
 

@@ -113,6 +113,12 @@ namespace com.ws.cvxpress {
             }
         }
         
+        internal static string NoDelete {
+            get {
+                return ResourceManager.GetString("NoDelete", resourceCulture);
+            }
+        }
+        
         internal static string SelectCard {
             get {
                 return ResourceManager.GetString("SelectCard", resourceCulture);
@@ -386,6 +392,12 @@ namespace com.ws.cvxpress {
         internal static string NoInternet {
             get {
                 return ResourceManager.GetString("NoInternet", resourceCulture);
+            }
+        }
+        
+        internal static string Internet {
+            get {
+                return ResourceManager.GetString("Internet", resourceCulture);
             }
         }
         

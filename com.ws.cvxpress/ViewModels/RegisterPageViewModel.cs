@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Acr.UserDialogs;
@@ -10,16 +8,12 @@ using com.ws.cvxpress.Classes;
 using com.ws.cvxpress.Helpers;
 using com.ws.cvxpress.Models;
 using com.ws.cvxpress.Services;
-using com.ws.cvxpress.Views;
 using com.ws.cvxpress.Views.Start;
-//using Microsoft.AppCenter;
 using Newtonsoft.Json.Linq;
-using Plugin.Connectivity;
 using Plugin.FacebookClient;
-using Plugin.Messaging;
 using WSViews;
-using WSViews.Classes;
 using WSViews.Models;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace com.ws.cvxpress.ViewModels
@@ -204,11 +198,11 @@ namespace com.ws.cvxpress.ViewModels
         public async void OnSubmit()
         {
 
-         
 
 
-            // Check connectivity 
-            if (CrossConnectivity.Current.IsConnected)
+            var current = Connectivity.NetworkAccess;
+
+            if (current == NetworkAccess.Internet)
             {
                 if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(confirmpassword)  )
                 {
@@ -249,9 +243,8 @@ namespace com.ws.cvxpress.ViewModels
             }
             else
             {
-               
-                MessagingCenter.Send<RegisterPageViewModel, string>(this, "RegisterMessages", Translator.getText("Error") + "-" + Translator.getText("NoInternet"));
 
+                App.ToastMessage(Translator.getText("NoInternet"), Color.Black);
             }
         }
 
@@ -269,7 +262,7 @@ namespace com.ws.cvxpress.ViewModels
 
                 if (isSuccess == "Created")
                 {
-
+                    
                     //MessagingCenter.Send<RegisterPageViewModel, string>(this, "RegisterMessages", Translator.getText("Success") + "-" + Translator.getText("ProfileSuccess"));
                     Application.Current.MainPage = new VerifyPage();
 

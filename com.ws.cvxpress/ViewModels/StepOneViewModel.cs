@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Acr.UserDialogs;
 using com.ws.cvxpress.Classes;
@@ -11,9 +9,9 @@ using com.ws.cvxpress.Models;
 using com.ws.cvxpress.Services;
 using com.ws.cvxpress.Views;
 using com.ws.cvxpress.Views.RegisterA;
-using Plugin.Connectivity;
 using WSViews;
 using WSViews.Classes;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace com.ws.cvxpress.ViewModels
@@ -286,8 +284,9 @@ namespace com.ws.cvxpress.ViewModels
             using (UserDialogs.Instance.Loading(Translator.getText("Loading"), null, null, true, MaskType.Black))
             {
 
+                var current = Connectivity.NetworkAccess;
 
-                if (CrossConnectivity.Current.IsConnected)
+                if (current == NetworkAccess.Internet)
                 {
                     if (string.IsNullOrEmpty(firstName) || string.IsNullOrEmpty(lastName) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(phone))
                     {
@@ -304,7 +303,7 @@ namespace com.ws.cvxpress.ViewModels
                         profile.FirstName = firstName;
                         profile.LastName = lastName;
                         profile.PassportNumber = "";
-                        profile.Password = password;
+                        if(Calledfrom == Constants.RegisterCall) profile.Password = password;
                         profile.PhoneNumber = criptografia.encryptar(phone, Constants.AppCode);
                         profile.Picture = "";
                         
@@ -353,7 +352,7 @@ namespace com.ws.cvxpress.ViewModels
                 else
                 {
 
-                    DisplayNoInternet();
+                    App.ToastMessage(Translator.getText("NoInternet"), Color.Red);
 
                 }
             }

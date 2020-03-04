@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 namespace com.ws.cvxpress.ViewModels
 {
     public class ClientResViewModel: BaseViewModel

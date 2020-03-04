@@ -2,15 +2,13 @@
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Acr.UserDialogs;
 using com.ws.cvxpress.Classes;
 using com.ws.cvxpress.Helpers;
 using com.ws.cvxpress.Models;
 using com.ws.cvxpress.Services;
 using com.ws.cvxpress.Views;
-using com.ws.cvxpress.Views.RegisterA;
-using Plugin.Media.Abstractions;
 using WSViews.Classes;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace com.ws.cvxpress.ViewModels
@@ -58,7 +56,13 @@ namespace com.ws.cvxpress.ViewModels
 
         async void OnSubmit(object obj)
         {
-            App.WaitScreenStart(Translator.getText("Loading"));
+            var current = Connectivity.NetworkAccess;
+
+            if (current == NetworkAccess.Internet)
+            {
+
+
+                App.WaitScreenStart(Translator.getText("Loading"));
             if (CalledFrom == Constants.RegisterCall)
             {
                 Application.Current.MainPage = new MainPage();
@@ -110,6 +114,9 @@ namespace com.ws.cvxpress.ViewModels
                 App.WaitScreenStop();
                
             }
+
+            }
+            else { App.ToastMessage(Translator.getText("NoInternet"), Color.Red); }
         }
 
         public StepThreeViewModel (string calledfrom) 

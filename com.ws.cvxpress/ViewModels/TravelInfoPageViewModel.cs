@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using com.ws.cvxpress.Classes;
 using com.ws.cvxpress.Helpers;
@@ -11,6 +9,8 @@ using WSViews.Classes;
 using Xamarin.Forms;
 using System.Linq;
 using Acr.UserDialogs;
+using System.Diagnostics;
+using System.Windows.Input;
 
 namespace com.ws.cvxpress.ViewModels
 {
@@ -204,6 +204,17 @@ namespace com.ws.cvxpress.ViewModels
                 OnPropertyChanged();
             }
         }
+        private TravelInfoClass travelInfo;
+        public TravelInfoClass TravelInfo
+        {
+            get { return travelInfo; }
+            set
+            {
+                travelInfo = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         private decimal capacityNumber;
         public decimal CapacityNumber
@@ -228,7 +239,7 @@ namespace com.ws.cvxpress.ViewModels
         }
 
         TravelerSpecs IdInfo;
-
+        public ICommand SubmitCommand { protected set; get; }
         #endregion
 
         public TravelInfoPageViewModel(TravelerSpecs idInfo)
@@ -253,123 +264,95 @@ namespace com.ws.cvxpress.ViewModels
 
             LoadItemsCommand = new Command(async () => await onsomecomandAsync());
             LoadItemsCommand.Execute(true);
+
            
-
         }
 
-        private async Task InitializeAsync(string sEmail)
-        {
-            //await onsomecomandAsync();
-
-        }
+      
         public async Task onsomecomandAsync()
         {
+            if (IsBusy)
+                return;
 
-            App.WaitScreenStart(Translator.getText("Loading"));
-            ApiService _apiService = new ApiService();
-            LstItems = new ObservableCollection<RequestSpecs>();
-            lstitemsshow = new ObservableCollection<RequestSpecs>();
-            lstitemsshow2 = new ObservableCollection<RequestSpecs>();
-            TravelInfoClass travelInfo = new TravelInfoClass();
+            IsBusy = true;
 
-            travelInfo = await _apiService.GetInfoTravelLists(IdInfo.Id ,0, from.Split(' ')[0].Trim(), to.Split(' ')[0].Trim(), email);
-
-            foreach (RequestSpecs item in travelInfo.lstRequestSpecsNew)
+            try
             {
-                if (item.status == 0)
+                App.WaitScreenStart(Translator.getText("Loading"));
+                ApiService _apiService = new ApiService();
+                LstItems = new ObservableCollection<RequestSpecs>();
+                lstitemsshow = new ObservableCollection<RequestSpecs>();
+                lstitemsshow2 = new ObservableCollection<RequestSpecs>();
+
+
+                LstItems.Clear();
+                lstitemsshow.Clear();
+                lstitemsshow2.Clear();
+
+                travelInfo = new TravelInfoClass();
+
+                travelInfo = await _apiService.GetInfoTravelLists(IdInfo.Id, 0, from.Split(' ')[0].Trim(), to.Split(' ')[0].Trim(), email);
+
+                TotalCapacityAccepted = 0;
+
+                if (travelInfo != null) { 
+                foreach (RequestSpecs item in travelInfo.lstRequestSpecsNew)
                 {
-                    item.CountryCodeFrom = item.CountryCodeFrom + " - " + ProvideCountries.GetCountryName(item.CountryCodeFrom);
-                    item.CountryCodeTo = item.CountryCodeTo + " - " + ProvideCountries.GetCountryName(item.CountryCodeTo);
-                    item.imageSource = ImageManager.BytesToImage(item.ProductImage);
-                    if (item.OpenDays == "Yes") item.Tolerance = Translator.getText("OpenDate");
-                    if (item.OpenDelivery == "Yes") item.Tolerance = Translator.getText("rangedays");
-                    lstitemsshow.Add(item);
+                    if (item.status == 0)
+                    {
+                        item.CountryCodeFrom = item.CountryCodeFrom + " - " + ProvideCountries.GetCountryName(item.CountryCodeFrom);
+                        item.CountryCodeTo = item.CountryCodeTo + " - " + ProvideCountries.GetCountryName(item.CountryCodeTo);
+                        item.imageSource = ImageManager.BytesToImage(item.ProductImage);
+                        if (item.OpenDays == "Yes") item.Tolerance = Translator.getText("OpenDate");
+                        if (item.OpenDelivery == "Yes") item.Tolerance = Translator.getText("rangedays");
+                        lstitemsshow.Add(item);
+                    }
                 }
-            }
-
-            
-            decimal result;
-            CapacityNumber = (decimal.TryParse(IdInfo.Capacity, out result)) ? decimal.Parse(IdInfo.Capacity) : 0;
-
-            TotalCapacityAccepted = 0;
-
-            TotalCapacityAccepted = travelInfo.lstRequestSpecsAccepted.Select(x => x.Weight).Sum();
 
 
+                decimal result;
+                CapacityNumber = (decimal.TryParse(IdInfo.Capacity, out result)) ? decimal.Parse(IdInfo.Capacity) : 0;
 
-            CapacityTaken = TotalCapacityAccepted.ToString();
-            CapacityNumber = CapacityNumber - TotalCapacityAccepted;
-            TextRequestsAcepted = Translator.getText("RequestsAcepted"); //+ "(" + lstrequestsAccepted.Count + ")";
+               
 
-         
-            foreach (RequestSpecs item in travelInfo.lstRequestSpecsAccepted)
-            {
+                TotalCapacityAccepted = travelInfo.lstRequestSpecsAccepted.Select(x => x.Weight).Sum();
+                }
+
+                CapacityTaken = TotalCapacityAccepted.ToString();
+                CapacityNumber = CapacityNumber - TotalCapacityAccepted;
+                TextRequestsAcepted = Translator.getText("RequestsAcepted"); //+ "(" + lstrequestsAccepted.Count + ")";
 
 
+                foreach (RequestSpecs item in travelInfo.lstRequestSpecsAccepted)
+                {
 
-          
-
-              
                     item.CountryCodeFrom = item.CountryCodeFrom + " - " + ProvideCountries.GetCountryName(item.CountryCodeFrom);
                     item.CountryCodeTo = item.CountryCodeTo + " - " + ProvideCountries.GetCountryName(item.CountryCodeTo);
                     ImageSource imasource = ImageManager.BytesToImage(item.ProductImage);
                     item.imageSource = imasource;
-                    item.canDelete = (IdInfo.status == 0) ? true : false;
+                    item.canDelete = (IdInfo.status == 0 && item.status != 22 && item.status != 9) ? true : false;
                     lstitemsshow2.Add(item);
-                
+
+
+                }
+
+                IsBusy = false;
 
             }
-
-
-            App.WaitScreenStop();
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                App.WaitScreenStop();
+                IsBusy = false;
+            }
 
         }
 
 
 
-
-        //public async Task onsomecomandAsync()
-        //{
-
-        //    App.WaitScreenStart(Translator.getText("Loading"));
-        //        ApiService _apiService = new ApiService();
-        //        LstItems = new ObservableCollection<RequestSpecs>();
-        //        lstitemsshow = new ObservableCollection<RequestSpecs>();
-        //        LstItems = await _apiService.GetRequestToTravelAsync(0, from.Split(' ')[0].Trim(), to.Split(' ')[0].Trim(), email);
-
-        //        foreach (RequestSpecs item in LstItems)
-        //        {
-        //            if (item.status == 0)
-        //            {
-        //                item.CountryCodeFrom = item.CountryCodeFrom + " - " + ProvideCountries.GetCountryName(item.CountryCodeFrom);
-        //                item.CountryCodeTo = item.CountryCodeTo + " - " + ProvideCountries.GetCountryName(item.CountryCodeTo);
-        //                item.imageSource = ImageManager.BytesToImage(item.ProductImage);
-        //                if(item.OpenDays == "Yes") item.Tolerance = Translator.getText("OpenDate");
-        //                if (item.OpenDelivery == "Yes") item.Tolerance = Translator.getText("rangedays");
-        //                lstitemsshow.Add(item);
-        //            }
-        //        }
-
-        //        lstrequestsAccepted = await _apiService.getRequestesAcceptedbyTravelerAsync(IdInfo);
-        //        decimal result;
-        //         CapacityNumber = (decimal.TryParse(IdInfo.Capacity, out result)) ? decimal.Parse(IdInfo.Capacity) : 0;
-               
-        //        TotalCapacityAccepted = 0;
-        //        foreach (Traveler_Request item in lstrequestsAccepted.ToList())
-        //        {
-        //            //TotalCapacityAccepted += (from t in LstItems.ToList() where t.Id == item.IdRequestSpecs select t.Weight).FirstOrDefault<decimal>();
-        //        TotalCapacityAccepted += LstItems.ToList().Where(x => x.Id == item.IdRequestSpecs).Select(x => x.Weight).FirstOrDefault<decimal>();
-        //        }
-
-         
-
-        //    CapacityTaken = TotalCapacityAccepted.ToString();
-        //    CapacityNumber = CapacityNumber - TotalCapacityAccepted;
-        //    TextRequestsAcepted = Translator.getText("RequestsAcepted"); //+ "(" + lstrequestsAccepted.Count + ")";
-
-        //    App.WaitScreenStop();
-
-        //}
 
       
 
@@ -438,7 +421,7 @@ namespace com.ws.cvxpress.ViewModels
                 if (responde == "NoContent")
                 {
 
-                    MessagingCenter.Send<TravelInfoPageViewModel, string>(this, "DeletedItem1", "No Content");
+                    await onsomecomandAsync();
 
 
 

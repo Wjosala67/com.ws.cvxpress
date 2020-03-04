@@ -5,7 +5,7 @@ using Acr.UserDialogs;
 using com.ws.cvxpress.Classes;
 using com.ws.cvxpress.Models;
 using com.ws.cvxpress.Services;
-using Plugin.Connectivity;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace com.ws.cvxpress.ViewModels
@@ -444,8 +444,9 @@ namespace com.ws.cvxpress.ViewModels
             using (UserDialogs.Instance.Loading(Translator.getText("Loading"), null, null, true, MaskType.Black))
             {
 
+                var current = Connectivity.NetworkAccess;
 
-                if (CrossConnectivity.Current.IsConnected)
+                if (current == NetworkAccess.Internet)
                 {
                     IdInfo.status = status;
                     ApiService _apiservice = new ApiService();
@@ -464,20 +465,18 @@ namespace com.ws.cvxpress.ViewModels
 
 
                             onsomecomandAsync();
-                            MessagingCenter.Send<GeneralUpdateViewModel, string>(this, "UpdateTravelInfoClose", "Close");
+                           
 
                         }
-
-
                         MessagingCenter.Send<GeneralUpdateViewModel, string>(this, "CloseTravel", "Close");
-                      
-                     
+                        MessagingCenter.Send<GeneralUpdateViewModel, string>(this, "UpdateItems", "Done");
+
                     }
                 }
                 else
                 {
 
-                    //DisplayNoInternet();
+                    App.ToastMessage(Translator.getText("NoInternet"), Color.Red);
 
                 }
             }
@@ -492,15 +491,6 @@ namespace com.ws.cvxpress.ViewModels
                 ApiService _apiService = new ApiService();
               
                  await _apiService.GetRequestRewardsTravelAsync(IdInfo);
-
-
-
-               
-
-
-
-
-
 
 
             }

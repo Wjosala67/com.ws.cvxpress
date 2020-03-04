@@ -1898,11 +1898,18 @@ namespace com.ws.cvxpress.Services
                 if (response.StatusCode.ToString() == "Created")
                 {
 
+                   
+                   
+                    
+                   
+                    
 
+                    
 
                     // 2- when we get the answer save it to database.
                     Profile profile = new Profile();
-
+                    DatabaseHelper.Delete(ref profile, App.Os_Folder, "Profile", "");
+                    profile = new Profile();
                     profile.Email = email;
                     profile.FirstName = "";
                     profile.Picture = "";

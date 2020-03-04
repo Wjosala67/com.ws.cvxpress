@@ -10,6 +10,8 @@ namespace com.ws.cvxpress.ViewModels
     public class UnitUpdateViewModel : BaseViewModel
     {
         #region Definitions
+
+        ApiService _apiService;
         private Color color1;
         public Color bColor1
         {
@@ -19,6 +21,15 @@ namespace com.ws.cvxpress.ViewModels
                 color1 = value;
                 OnPropertyChanged();
             }
+        }
+        private RequestSpecs updatedrequestspecs;
+        public RequestSpecs UpdatedRequestSpecs
+        {
+            get { return updatedrequestspecs; }
+            set {
+                updatedrequestspecs = value;
+                OnPropertyChanged();
+                }
         }
 
         private Color color2;
@@ -51,6 +62,9 @@ namespace com.ws.cvxpress.ViewModels
                 OnPropertyChanged();
             }
         }
+
+     
+
         private bool level1;
         public bool Level1
         {
@@ -168,38 +182,7 @@ namespace com.ws.cvxpress.ViewModels
             }
         }
 
-        public async void UpdateItem()
-        {
-           
-                using (UserDialogs.Instance.Loading(Translator.getText("Loading"), null, null, true, MaskType.Black))
-                {
-                    ApiService _apiService = new ApiService();
-
-                    RIO.requestSpecs.ProductValue = newprice;
-                    RIO.requestSpecs.Weight = newweight;
-                    RIO.requestSpecs.Reward = Functions.getReward(newprice, newweight, RIO.requestSpecs.Quantity);
-                    RIO.requestSpecs.Commission = Functions.getDeliveryPrice(newprice, newweight,  RIO.requestSpecs.Quantity);
-                if (RIO.requestSpecs.status < Constants.Finished)
-                        RIO.requestSpecs.status = Constants.RequestAuth;
-                    else RIO.requestSpecs.status = status;
-
-                if (RIO.requestSpecs.status == Constants.Confirmed) RIO.requestSpecs.status = Constants.Finished;
-                   string sResponse =  await _apiService.UpdateItemFTravel(RIO);
-
-                if (sResponse == "NoContent")
-                {
-                    // Update Lists
-
-
-
-                  
-
-                    Xamarin.Forms.MessagingCenter.Send<UnitUpdateViewModel, string>(this, "UpdateTravelInfo", "NoContent");
-                }
-
-                }
-            
-        }
+     
 
         private DateTime dateto;
         public DateTime DateTo
@@ -270,9 +253,45 @@ namespace com.ws.cvxpress.ViewModels
         }
 
 
-     
+        public async void UpdateItem()
+        {
+
+            using (UserDialogs.Instance.Loading(Translator.getText("Loading"), null, null, true, MaskType.Black))
+            {
+                _apiService = new ApiService();
+
+                RIO.requestSpecs.ProductValue = newprice;
+                RIO.requestSpecs.Weight = Math.Ceiling(newweight);
+                RIO.requestSpecs.Reward = Functions.getReward(newprice, Math.Ceiling(newweight), RIO.requestSpecs.Quantity);
+                RIO.requestSpecs.Commission = Functions.getDeliveryPrice(newprice, Math.Ceiling(newweight), RIO.requestSpecs.Quantity);
+
+                if (RIO.requestSpecs.status < Constants.Finished)
+                {
+
+                    RIO.requestSpecs.status = Constants.RequestAuth;
+                    status = Constants.RequestAuth;
+                }
+                else RIO.requestSpecs.status = status;
+
+                if (RIO.requestSpecs.status == Constants.Confirmed) RIO.requestSpecs.status = Constants.Finished;
+                string sResponse = await _apiService.UpdateItemFTravel(RIO);
+
+                if (sResponse == "NoContent")
+                {
+                    // Update Lists
 
 
+
+
+
+                    Xamarin.Forms.MessagingCenter.Send<UnitUpdateViewModel, string>(this, "UnitUpdateFrom", "NoContent");
+                }
+
+            }
+
+        }
+
+       
         public void frameFourAction()
         {
             if (level4)

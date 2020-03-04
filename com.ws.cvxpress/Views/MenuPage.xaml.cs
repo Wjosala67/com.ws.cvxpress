@@ -32,6 +32,9 @@ namespace com.ws.cvxpress.Views
 
             bool Admin = false;
 
+          
+
+
             App_Con isUserAdmin = lstConf.Find(x => x.Name == "EmailAdmin" && x.Value == profile.Email.Trim() );
 
             if (isUserAdmin != null) Admin = true;

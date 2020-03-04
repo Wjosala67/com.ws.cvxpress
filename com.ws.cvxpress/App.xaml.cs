@@ -44,6 +44,8 @@ namespace com.ws.cvxpress
 
         public static byte[] CroppedImage;
 
+        public bool isBackGround;
+
         public App(string os_folder)
         {
             InitializeComponent();
@@ -76,6 +78,7 @@ namespace com.ws.cvxpress
 
                     if (Notified == "True")
                     {
+                       
                         if (!redirectTo.Contains("Chat|") && !redirectTo.Contains("TripEnded|") && !redirectTo.Contains("RequestList|") && !redirectTo.Contains("ItemAccepted|"))
                         {
                             switch (redirectTo)
@@ -192,6 +195,7 @@ namespace com.ws.cvxpress
                                 TravelerSpecs travelerSpecs = new TravelerSpecs();
                                 travelerSpecs.Id = int.Parse(redirectTo.Split('|')[1]);
                                 App.WaitScreenStart(Translator.getText("Loading"));
+
                                 Task.Run(async () => {
                                     ApiService apiService = new ApiService();
                                     travelerSpecs = await apiService.GetTravelSpecsAsync(travelerSpecs.Id);
@@ -231,7 +235,7 @@ namespace com.ws.cvxpress
 
 
         }
-         protected override void OnStart()         {
+        protected override void OnStart()         {
            
                if (!AppCenter.Configured)                 Push.PushNotificationReceived += Push_PushNotificationReceived;
 
@@ -254,6 +258,8 @@ namespace com.ws.cvxpress
    
 
          private void Push_PushNotificationReceived(object sender, PushNotificationReceivedEventArgs e)         {
+
+            try { 
             // Add the notification message and title to the message
 
             Application.Current.Properties["notifiedItemRoute"] = null;
@@ -268,21 +274,24 @@ namespace com.ws.cvxpress
                     }
                  }
 
-                if (GotoPage.Contains("Chat|"))
-                {
-                    MessagingCenter.Send<App, string>(this, "ChatUpdate", "Update");
-                }
-                else if (GotoPage.Contains("BoxList"))
-                {
-                    if(e.Message != null) { 
-                    Application.Current.Properties["notifiedItemRoute"] += e.Message.Split(':')[1].Trim();
-                    Application.Current.SavePropertiesAsync();
+                    if (GotoPage.Contains("Chat|"))
+                    {
+                        MessagingCenter.Send<App, string>(this, "ChatUpdate", "Update");
                     }
-                }
-               
+                    else if (GotoPage.Contains("BoxList"))
+                    {
+                        if (e.Message != null)
+                        {
+                            Application.Current.Properties["notifiedItemRoute"] += e.Message.Split(':')[1].Trim();
+                            Application.Current.SavePropertiesAsync();
+                            MessagingCenter.Send<App, string>(this, "NewItemsUpdate", "Update");
+                        }
+                    }
+
+                    if (!isBackGround) ToastMessage(e.Message, Color.Aquamarine);
 
 
-                Application.Current.Properties["notified"] = "True";
+                        Application.Current.Properties["notified"] = "True";
                 Application.Current.Properties["Goto"] = GotoPage;
              
                 
@@ -293,7 +302,10 @@ namespace com.ws.cvxpress
 
             // Send the notification summary to debug output
             System.Diagnostics.Debug.WriteLine(summary);
-                     }
+            }
+            catch (Exception x) { }
+
+        }
 
 
       
@@ -345,7 +357,8 @@ namespace com.ws.cvxpress
                         if (fromwebservice > fromDatabase)
                         {
                             updateCatalogs = true;
-                        }
+                        }else
+                        { updateCatalogs = false; }
 
                     }
                     else
@@ -460,12 +473,12 @@ namespace com.ws.cvxpress
 
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
+            isBackGround = true;
         }
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
+            isBackGround = false;
         }
 
         public static void WaitScreenStart(string message)
@@ -477,6 +490,31 @@ namespace com.ws.cvxpress
         public static void WaitScreenStop()
         {
             UserDialogs.Instance.HideLoading();
+        }
+
+        public static void ToastMessage(string message, Color color)
+        {
+            Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+            {
+                ToastConfig tc = new ToastConfig(message);
+                tc.SetBackgroundColor(color);
+
+                if (color == Color.Aquamarine)
+                {
+                    tc.SetMessageTextColor(Color.Black);
+                    tc.SetPosition(ToastPosition.Bottom);
+                }
+                else
+                {
+                    tc.SetMessageTextColor(Color.White);
+                    tc.SetPosition(ToastPosition.Bottom);
+                }
+
+               
+                tc.SetDuration(TimeSpan.FromSeconds(5.0));
+             
+                UserDialogs.Instance.Toast(tc);
+            });
         }
     }
 }

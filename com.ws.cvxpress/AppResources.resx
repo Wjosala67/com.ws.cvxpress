@@ -49,6 +49,9 @@
      <data name ="DeletingCard" xml:space="preserve">
         <value>Eliminando.. </value>
     </data>
+     <data name ="NoDelete" xml:space="preserve">
+        <value>No se ha podido eliminar, intente más tarde.</value>
+    </data>
     <data name ="SelectCard" xml:space="preserve">
         <value>Seleccione </value>
     </data>
@@ -190,6 +193,9 @@
     </data>
      <data name ="NoInternet" xml:space="preserve">
         <value>No existe una conexión a Internet</value>
+    </data> 
+     <data name ="Internet" xml:space="preserve">
+        <value>El Internet esta de vuelta, Continuemos!</value>
     </data> 
      <data name ="NoticeRegister" xml:space="preserve">
         <value>La Operación no se ha podido completar, intente de nuevo!</value>

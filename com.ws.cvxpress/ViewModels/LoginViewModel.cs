@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using com.ws.cvxpress.Classes;
@@ -8,7 +7,6 @@ using com.ws.cvxpress.Helpers;
 using com.ws.cvxpress.Models;
 using com.ws.cvxpress.Views;
 using Newtonsoft.Json.Linq;
-using Plugin.Connectivity;
 using Plugin.FacebookClient;
 using Xamarin.Forms;
 using Acr.UserDialogs;
@@ -16,7 +14,8 @@ using com.ws.cvxpress.Views.Start;
 using com.ws.cvxpress.Services;
 using WSViews;
 using Microsoft.AppCenter;
-//using Microsoft.AppCenter;
+using Xamarin.Essentials;
+
 
 
 namespace com.ws.cvxpress.ViewModels
@@ -123,10 +122,10 @@ namespace com.ws.cvxpress.ViewModels
             {
                 using (UserDialogs.Instance.Loading(Translator.getText("Loading"), null, null, true, MaskType.Black))
                 {
+                    var current = Connectivity.NetworkAccess;
 
-
-                    if (CrossConnectivity.Current.IsConnected)
-                        {
+                    if (current == NetworkAccess.Internet)
+                    {
                             if (email != null && password != null)
                             {
                                 // if empty show message
@@ -157,8 +156,8 @@ namespace com.ws.cvxpress.ViewModels
                         }
                         else
                         {
-                           
-                            DisplayNoInternet();
+
+                        App.ToastMessage(Translator.getText("NoInternet"), Color.Black);
 
                         }
                 }
@@ -299,11 +298,13 @@ namespace com.ws.cvxpress.ViewModels
 
                 System.Guid? Token = await AppCenter.GetInstallIdAsync();
 
+                if(isUser != null && Token != null) { 
                 if(isUser.Address.Trim() != Token.ToString())
                 {
                     isUser.Address = Token.ToString().Trim();
                     await apiService.UpdateUserAsync(isUser);
 
+                }
                 }
             }
             else

@@ -60,7 +60,7 @@ namespace com.ws.cvxpress.Droid
             FacebookClientManager.Initialize(this);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             UserDialogs.Init(this);
-
+            Xamarin.Essentials.Platform.Init(this, savedInstanceState);
 
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: false);
           
@@ -92,9 +92,9 @@ namespace com.ws.cvxpress.Droid
            string[] permissions, Android.Content.PM.Permission[] grantResults)
         {
             Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-         
-            base.OnRequestPermissionsResult(requestCode, permissions,
-                grantResults);
+            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+
+            base.OnRequestPermissionsResult(requestCode, permissions,grantResults);
         }
         protected override void OnNewIntent(Android.Content.Intent intent)
         {

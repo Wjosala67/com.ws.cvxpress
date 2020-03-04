@@ -26,12 +26,12 @@
                     <ColumnDefinition Width="20"/>
                 </Grid.ColumnDefinitions>   
                 <Grid.RowDefinitions>
-                 <RowDefinition Height="*"/>
+                 <RowDefinition Height="2*"/>
                  <RowDefinition Height="*"/>
                  <RowDefinition Height="*"/>
                  <RowDefinition Height="2*"/>
                  <RowDefinition Height="2*"/>
-                 <RowDefinition Height="4*"/>
+                 <RowDefinition Height="5*"/>
                  <RowDefinition Height="4*"/>
                  <RowDefinition Height="3*"/>
                  <RowDefinition Height="2*"/>
@@ -39,7 +39,7 @@
                 
                  <Grid Grid.Row="0" Padding="0,0,0,10" Grid.Column="1" Grid.ColumnSpan="5" HorizontalOptions="Center" >
                     <Grid.RowDefinitions>
-                         <RowDefinition Height="35"/>
+                         <RowDefinition Height="45"/>
                          <RowDefinition Height="AUTO"/>
                          <RowDefinition Height="AUTO"/>
                          <!--<RowDefinition Height="AUTO"/>-->
@@ -122,7 +122,7 @@
                     
                 </Frame>
 
-                 <Label Text="{Binding TravelState}" HorizontalOptions="Center" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="4"/>
+                 <Label Text="{Binding TravelState}" HorizontalOptions="Center" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="5"/>
              
                
               

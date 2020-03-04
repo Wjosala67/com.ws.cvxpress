@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-using Xamarin.Forms;
-
-using com.ws.cvxpress.Models;
-using com.ws.cvxpress.Services;
 
 namespace com.ws.cvxpress.ViewModels
 {

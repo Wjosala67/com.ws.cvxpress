@@ -1,5 +1,4 @@
-﻿using System;
-using com.ws.cvxpress.Models;
+﻿using com.ws.cvxpress.Models;
 using Newtonsoft.Json.Linq;
 
 namespace com.ws.cvxpress.ViewModels

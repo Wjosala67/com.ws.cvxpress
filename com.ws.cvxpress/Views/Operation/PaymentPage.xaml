@@ -252,7 +252,7 @@
                 </CustomControl:CustomEntry>
 
 
-                <Button  Grid.Row="12" Grid.Column="1" Grid.ColumnSpan="3"   Clicked="Handle_Clicked_1"  Text="{translator:Translate Continue}" IsEnabled="false" Style="{StaticResource buttonStyle}" >
+                <Button  Grid.Row="11" Grid.Column="1" Grid.ColumnSpan="3"   Clicked="Handle_Clicked_1"  Text="{translator:Translate Continue}" IsEnabled="false" Style="{StaticResource buttonStyle}" >
                 <Button.Triggers>
                     <MultiTrigger TargetType="Button">
                         <MultiTrigger.Conditions>

@@ -144,10 +144,17 @@ namespace com.ws.cvxpress.Views.RegisterA
 
                 if (!string.IsNullOrEmpty(E_ItemQty.Text) && !string.IsNullOrEmpty(E_ItemWeigth.Text) && !string.IsNullOrEmpty(E_ItemValue.Text))
             {
+
+                int peso = int.Parse(Math.Ceiling(decimal.Parse(E_ItemWeigth.Text)).ToString());
+
+                
+
+                if (peso < 0) peso = 1;
+
                 //decimal dectotal = ((decimal.Parse(E_ItemValue.Text) * viewModel.RecoxValorArt / 100) + decimal.Parse(E_ItemWeigth.Text) * viewModel.ValorPorPeso) * int.Parse(E_ItemQty.Text);
-                decimal dectotal = Functions.getDeliveryPrice(decimal.Parse(E_ItemValue.Text), decimal.Parse(E_ItemWeigth.Text), int.Parse(E_ItemQty.Text));
-                LabelDesc.Text = Translator.getText("DeliveryPrice") + ": " + dectotal.ToString() +  App.strCurrency;
-                LabelTotal.Text = Translator.getText("TotalPrice")  + (( decimal.Parse(E_ItemValue.Text) * decimal.Parse(E_ItemQty.Text)) + dectotal).ToString() + App.strCurrency ;
+                decimal dectotal = Functions.getDeliveryPrice(decimal.Parse(E_ItemValue.Text), peso, int.Parse(E_ItemQty.Text));
+                LabelDesc.Text = Translator.getText("DeliveryPrice") + ": " + Math.Round(dectotal, 2).ToString() +  App.strCurrency;
+                LabelTotal.Text = Translator.getText("TotalPrice")  + Math.Round(( decimal.Parse(E_ItemValue.Text) * decimal.Parse(E_ItemQty.Text)) + dectotal, 2).ToString() + App.strCurrency ;
                 ContinueReq.Text = Translator.getText("ContinueRequest");
 
             }

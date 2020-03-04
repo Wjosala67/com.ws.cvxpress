@@ -25,7 +25,7 @@
                 <Grid.RowDefinitions>
                  <RowDefinition Height="AUTO"/>
                  <RowDefinition Height="*"/>
-                 <RowDefinition Height="*"/>
+                 <RowDefinition Height="1"/>
                  <RowDefinition Height="*"/>
                  <RowDefinition Height="*"/>
                  <RowDefinition Height="*"/>
@@ -67,7 +67,7 @@
                      TitleColor="{StaticResource EntryTextColor}" 
                      SelectedItem="{Binding SelectedCountry, Mode=TwoWay}" FontSize="Small"
                      ItemDisplayBinding="{Binding CountryName}"                       
-                     Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand"
+                     Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" HorizontalOptions="FillAndExpand"
                      HeightRequest="50" 
                      Image="takeoff"
                      Title="{translator:Translate From}">
@@ -80,7 +80,7 @@
                      TitleColor="{StaticResource EntryTextColor}" 
                      SelectedItem="{Binding SelectedCountryTo, Mode=TwoWay}" FontSize="Small"
                      ItemDisplayBinding="{Binding CountryName}"                       
-                     Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" 
+                     Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" HorizontalOptions="FillAndExpand" 
                      HeightRequest="50" 
                      Image="landing"
                      Title="{translator:Translate To}">
@@ -193,7 +193,7 @@
                       
                      TextColor="{StaticResource EntryTextColor}" 
                      Date="{Binding SelectedArrivalDate, Mode=TwoWay}" FontSize="Small"
-                      BorderColor="White"
+                     BorderColor="White" MinimumDate="{Binding MinDate}" 
                      Format="dd/MM/yyyy"                     
                      Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand"
                      VerticalOptions="Center"

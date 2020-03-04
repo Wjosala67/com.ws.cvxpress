@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using Acr.UserDialogs;
 using com.ws.cvxpress.Classes;
 using com.ws.cvxpress.Helpers;
 using com.ws.cvxpress.Models;

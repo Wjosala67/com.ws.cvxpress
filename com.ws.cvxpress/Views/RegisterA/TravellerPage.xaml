@@ -92,7 +92,7 @@
                  <CustomControl:CustomDatePicker x:Name="PickDeparture" 
                       
                      TextColor="{StaticResource EntryTextColor}"  
-                     Date="{Binding SelectedDepartureDate, Mode=TwoWay}"
+                     Date="{Binding SelectedDepartureDate, Mode=TwoWay}" MinimumDate="{Binding MinDate}" 
                      Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" FontSize="Small"
                      Format="dd/MM/yyyy"  BorderColor="White"
                      HeightRequest="50" 
@@ -103,7 +103,7 @@
                 <CustomControl:CustomTimePicker x:Name="PickDepartureTime" 
                       
                      TextColor="{StaticResource EntryTextColor}"  
-                     Time="{Binding TimeDeparture, Mode=TwoWay}"
+                     Time="{Binding TimeDeparture, Mode=TwoWay}" 
                      Grid.Row="4" Grid.Column="2" HorizontalOptions="FillAndExpand" FontSize="Small"
                       BorderColor="White"
                      HeightRequest="50" 
@@ -118,7 +118,7 @@
                      TextColor="{StaticResource EntryTextColor}" 
                       BorderColor="White"
                      MinimumDate="{Binding Source={x:Reference PickDeparture}, Path=Date, Mode=TwoWay}"
-                     Date="{Binding SelectedArrivalDate, Mode=TwoWay}"
+                     Date="{Binding SelectedArrivalDate, Mode=TwoWay}" 
                      Format="dd/MM/yyyy"                    
                      Grid.Row="6" Grid.Column="1" HorizontalOptions="FillAndExpand" FontSize="Small"
                      HeightRequest="50" 

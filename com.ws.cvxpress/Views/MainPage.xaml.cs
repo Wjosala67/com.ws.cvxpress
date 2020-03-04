@@ -1,4 +1,5 @@
-﻿using com.ws.cvxpress.Classes;
+﻿using Acr.UserDialogs;
+using com.ws.cvxpress.Classes;
 using com.ws.cvxpress.Models;
 using com.ws.cvxpress.Views.Admin;
 using com.ws.cvxpress.Views.End;
@@ -8,6 +9,7 @@ using com.ws.cvxpress.Views.Start;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -83,6 +85,28 @@ namespace com.ws.cvxpress.Views
 
                 IsPresented = false;
             }
+        }
+
+        protected override void OnAppearing()
+        {
+            Connectivity.ConnectivityChanged += connectivitychanged;
+            base.OnAppearing();
+        }
+
+        private void connectivitychanged(object sender, ConnectivityChangedEventArgs e)
+        {
+            var access = e.NetworkAccess;
+            string message = (access == NetworkAccess.Internet) ? Translator.getText("Internet") : Translator.getText("NoInternet");
+            var profiles = e.ConnectionProfiles;
+
+            App.ToastMessage(message, Color.Red);
+
+        }
+
+        protected override void OnDisappearing()
+        {
+            Connectivity.ConnectivityChanged -= connectivitychanged;
+            base.OnDisappearing();
         }
     }
 }

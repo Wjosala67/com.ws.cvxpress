@@ -23,6 +23,8 @@ namespace com.ws.cvxpress.Classes
         public const string Sender = "S";
         public const string currency = "USD ";
         public const string ServerUrl = "http://wjosala67-001-site1.ctempurl.com/";
+        //public const string ServerUrl = "http://192.168.43.208/CVXPRSService/"; // citytowers Con
+
         //public const string ServerUrl = "http://192.168.100.47/CVXPRSService/";
 
         //public const string ServerUrl = "http://www.passbox.com.mx/";

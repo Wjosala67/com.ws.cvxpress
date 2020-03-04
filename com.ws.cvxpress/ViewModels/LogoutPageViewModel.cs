@@ -1,5 +1,4 @@
-﻿using System;
-using com.ws.cvxpress.Helpers;
+﻿using com.ws.cvxpress.Helpers;
 using com.ws.cvxpress.Models;
 using com.ws.cvxpress.Views.Start;
 using Plugin.FacebookClient;

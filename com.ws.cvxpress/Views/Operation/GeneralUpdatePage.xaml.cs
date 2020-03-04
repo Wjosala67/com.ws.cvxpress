@@ -76,7 +76,7 @@ namespace com.ws.cvxpress.Views.Operation
 
                 if (item == "Close")
                 {
-                    MessagingCenter.Send<GeneralUpdatePage, string>(this, "UpdateItems", "Done");
+                    //MessagingCenter.Send<GeneralUpdatePage, string>(this, "UpdateItems", "Done");
                     MessagingCenter.Send<GeneralUpdatePage, TravelerSpecs>(this, "UpdateTravelInfo", IdInfo);
 
                     Navigation.PopModalAsync();
@@ -234,8 +234,7 @@ namespace com.ws.cvxpress.Views.Operation
         void Handle_Clicked(object sender, System.EventArgs e)
         {
             // async of the view model for travel state update
-            MessagingCenter.Send<GeneralUpdatePage, string>(this, "UpdateItems", "Done");
-
+           
            
             Navigation.PopModalAsync();
         }
@@ -249,6 +248,7 @@ namespace com.ws.cvxpress.Views.Operation
                 if (action)
                 {
                     viewModel.SubmitCommand.Execute(true);
+                    MessagingCenter.Send<GeneralUpdatePage, string>(this, "CloseTravel", "Close");
                 }
             }else
             {

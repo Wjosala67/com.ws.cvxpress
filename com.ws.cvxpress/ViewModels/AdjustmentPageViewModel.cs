@@ -1,4 +1,4 @@
-﻿using System;
+﻿
 using System.Collections.ObjectModel;
 using com.ws.cvxpress.Classes;
 using com.ws.cvxpress.Models;

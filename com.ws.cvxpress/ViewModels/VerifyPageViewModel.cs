@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Windows.Input;
 using Acr.UserDialogs;
 using com.ws.cvxpress.Classes;
@@ -7,7 +6,7 @@ using com.ws.cvxpress.Helpers;
 using com.ws.cvxpress.Models;
 using com.ws.cvxpress.Services;
 using com.ws.cvxpress.Views.Start;
-using Plugin.Connectivity;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace com.ws.cvxpress.ViewModels
@@ -82,8 +81,10 @@ namespace com.ws.cvxpress.ViewModels
 
             using (UserDialogs.Instance.Loading(Translator.getText("Loading"), null, null, true, MaskType.Black))
             {
-                // Check connectivity 
-                if (CrossConnectivity.Current.IsConnected)
+
+                var current = Connectivity.NetworkAccess;
+
+                if (current == NetworkAccess.Internet)
                 {
 
 

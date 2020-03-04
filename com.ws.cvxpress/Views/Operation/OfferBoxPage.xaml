@@ -37,8 +37,8 @@
                             ItemsSource="{Binding LstItemsShow}" 
                             HasUnevenRows="true"
                             RefreshCommand="{Binding LoadItemsCommand}"
-                            IsPullToRefreshEnabled="true"
-                            
+                            IsPullToRefreshEnabled="False"
+                            IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
                             CachingStrategy="RecycleElement"
                             ItemTapped="Handle_ItemTapped"  >
                             

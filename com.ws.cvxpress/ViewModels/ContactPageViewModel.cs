@@ -6,8 +6,7 @@ using com.ws.cvxpress.Classes;
 using com.ws.cvxpress.Helpers;
 using com.ws.cvxpress.Models;
 using com.ws.cvxpress.Services;
-using Plugin.Connectivity;
-using Xamarin.Forms;
+using Xamarin.Essentials;
 
 namespace com.ws.cvxpress.ViewModels
 {
@@ -54,7 +53,9 @@ namespace com.ws.cvxpress.ViewModels
         {
             using (UserDialogs.Instance.Loading(Translator.getText("Loading"), null, null, true, MaskType.Black))
             {
-                if (CrossConnectivity.Current.IsConnected)
+                 var current = Connectivity.NetworkAccess;
+
+                if (current == NetworkAccess.Internet)
                 {
 
 

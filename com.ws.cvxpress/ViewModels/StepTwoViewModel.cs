@@ -5,7 +5,6 @@ using System.Linq;
 using System.Windows.Input;
 using Acr.UserDialogs;
 using com.ws.cvxpress.Classes;
-using com.ws.cvxpress.Interfaces;
 using com.ws.cvxpress.Helpers;
 using com.ws.cvxpress.Models;
 using com.ws.cvxpress.Services;
@@ -13,6 +12,7 @@ using com.ws.cvxpress.Views.RegisterA;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 using com.ws.cvxpress.Views;
+using Xamarin.Essentials;
 
 namespace com.ws.cvxpress.ViewModels
 {
@@ -297,129 +297,137 @@ namespace com.ws.cvxpress.ViewModels
 
         async void OnSubmit(object obj)
         {
-            using (UserDialogs.Instance.Loading(Translator.getText("Loading"), null, null, true, MaskType.Black))
-            {
-                ApiService apiService = new ApiService();
-                Profile profile = DatabaseHelper.GetProfile(App.Os_Folder);
+            var current = Connectivity.NetworkAccess;
 
-                int I = 0;
-                User_Categories ItemSaveCat = new User_Categories();
-                selectedCategories = new List<User_Categories>();
-                selectedTypes = new List<User_Types>();
-                selectedCollect = new List<User_CollectTypes>();
-                selectedDelivery = new List<User_DeliveryTypes>();
-
-
-                foreach (ItemCategories item in lstitemcategories)
+            if (current == NetworkAccess.Internet)
+            { 
+                using (UserDialogs.Instance.Loading(Translator.getText("Loading"), null, null, true, MaskType.Black))
                 {
 
+               
 
-                    if (item.IsSelected)
+                        ApiService apiService = new ApiService();
+                    Profile profile = DatabaseHelper.GetProfile(App.Os_Folder);
+
+                    int I = 0;
+                    User_Categories ItemSaveCat = new User_Categories();
+                    selectedCategories = new List<User_Categories>();
+                    selectedTypes = new List<User_Types>();
+                    selectedCollect = new List<User_CollectTypes>();
+                    selectedDelivery = new List<User_DeliveryTypes>();
+
+
+                    foreach (ItemCategories item in lstitemcategories)
                     {
-                        ItemSaveCat = new User_Categories();
-                        ItemSaveCat.Email = profile.Email;
-                        ItemSaveCat.Cat_ID = item.Id;
-                        ItemSaveCat.Enabled = (item.IsSelected) ? 1 : 0;
-                        selectedCategories.Add(ItemSaveCat);
-                        DatabaseHelper.Insert(ref ItemSaveCat, App.Os_Folder);
-                        I++;
+
+
+                        if (item.IsSelected)
+                        {
+                            ItemSaveCat = new User_Categories();
+                            ItemSaveCat.Email = profile.Email;
+                            ItemSaveCat.Cat_ID = item.Id;
+                            ItemSaveCat.Enabled = (item.IsSelected) ? 1 : 0;
+                            selectedCategories.Add(ItemSaveCat);
+                            DatabaseHelper.Insert(ref ItemSaveCat, App.Os_Folder);
+                            I++;
+
+                        }
+
+
+                    }
+                    int Y = 0;
+                    User_Types ItemSaveTypes = new User_Types();
+                    foreach (ItemType item in lstitemtype)
+                    {
+                        if (item.IsSelected)
+                        {
+                            ItemSaveTypes = new User_Types();
+                            ItemSaveTypes.Email = profile.Email;
+                            ItemSaveTypes.Type_Id = item.Id;
+                            ItemSaveTypes.Enabled = (item.IsSelected) ? 1 : 0;
+                            selectedTypes.Add(ItemSaveTypes);
+                            DatabaseHelper.Insert(ref ItemSaveTypes, App.Os_Folder);
+                            Y++;
+
+                        }
+
+                    }
+                    int Z = 0;
+                    User_DeliveryTypes ItemSaveDeliv = new User_DeliveryTypes();
+                    foreach (ItemDeliveryTypes item in lstdelivertype)
+                    {
+                        if (item.IsSelected)
+                        {
+                            ItemSaveDeliv = new User_DeliveryTypes();
+                            ItemSaveDeliv.Email = profile.Email;
+                            ItemSaveDeliv.Delivery_Id = item.Id;
+                            ItemSaveDeliv.Enabled = (item.IsSelected) ? 1 : 0;
+                            selectedDelivery.Add(ItemSaveDeliv);
+                            DatabaseHelper.Insert(ref ItemSaveDeliv, App.Os_Folder);
+                            Z++;
+
+                        }
+
+
+
+                    }
+                    int W = 0;
+                    User_CollectTypes ItemSaveCollect = new User_CollectTypes();
+                    foreach (ItemCollectTypes item in lstcollecttype)
+                    {
+                        if (item.IsSelected)
+                        {
+                            ItemSaveCollect = new User_CollectTypes();
+                            ItemSaveCollect.Email = profile.Email;
+                            ItemSaveCollect.Collect_Id = item.Id;
+                            ItemSaveCollect.Enabled = (item.IsSelected) ? 1 : 0;
+                            selectedCollect.Add(ItemSaveCollect);
+                            DatabaseHelper.Insert(ref ItemSaveCollect, App.Os_Folder);
+                            W++;
+
+                        }
+
+
 
                     }
 
+                    if (Y == 0) { MessagingCenter.Send<StepTwoViewModel, string>(this, "StepTwo", Translator.getText("AtLeastType")); return; }
+                    if (I == 0) { MessagingCenter.Send<StepTwoViewModel, string>(this, "StepTwo", Translator.getText("AtLeastCategory")); return; }
+                    if (Z == 0) { MessagingCenter.Send<StepTwoViewModel, string>(this, "StepTwo", Translator.getText("AtLeastDelivery")); return; }
+                    if (W == 0) { MessagingCenter.Send<StepTwoViewModel, string>(this, "StepTwo", Translator.getText("AtLeastCollect")); return; }
 
+                    await apiService.RegisterUserCategoriesAsync(selectedCategories, profile.Email);
+                    await apiService.RegisterUserTypesAsync(selectedTypes, profile.Email);
+                    await apiService.RegisterUserDeliveryAsync(selectedDelivery, profile.Email);
+                    await apiService.RegisterUserCollectAsync(selectedCollect, profile.Email);
                 }
-                int Y = 0;
-                User_Types ItemSaveTypes = new User_Types();
-                foreach (ItemType item in lstitemtype)
+
+                string pType = "";
+                if (Application.Current.Properties.ContainsKey(Constants.UserType))
                 {
-                    if (item.IsSelected)
-                    {
-                        ItemSaveTypes = new User_Types();
-                        ItemSaveTypes.Email = profile.Email;
-                        ItemSaveTypes.Type_Id = item.Id;
-                        ItemSaveTypes.Enabled = (item.IsSelected) ? 1 : 0;
-                        selectedTypes.Add(ItemSaveTypes);
-                        DatabaseHelper.Insert(ref ItemSaveTypes, App.Os_Folder);
-                        Y++;
 
-                    }
+                    pType = (string)Application.Current.Properties[Constants.UserType];
 
                 }
-                int Z = 0;
-                User_DeliveryTypes ItemSaveDeliv = new User_DeliveryTypes();
-                foreach (ItemDeliveryTypes item in lstdelivertype)
-                {
-                    if (item.IsSelected)
-                    {
-                        ItemSaveDeliv = new User_DeliveryTypes();
-                        ItemSaveDeliv.Email = profile.Email;
-                        ItemSaveDeliv.Delivery_Id = item.Id;
-                        ItemSaveDeliv.Enabled = (item.IsSelected) ? 1 : 0;
-                        selectedDelivery.Add(ItemSaveDeliv);
-                        DatabaseHelper.Insert(ref ItemSaveDeliv, App.Os_Folder);
-                        Z++;
-
-                    }
-
-
-
-                }
-                int W = 0;
-                User_CollectTypes ItemSaveCollect = new User_CollectTypes();
-                foreach (ItemCollectTypes item in lstcollecttype)
-                {
-                    if (item.IsSelected)
-                    {
-                        ItemSaveCollect = new User_CollectTypes();
-                        ItemSaveCollect.Email = profile.Email;
-                        ItemSaveCollect.Collect_Id = item.Id;
-                        ItemSaveCollect.Enabled = (item.IsSelected) ? 1 : 0;
-                        selectedCollect.Add(ItemSaveCollect);
-                        DatabaseHelper.Insert(ref ItemSaveCollect, App.Os_Folder);
-                        W++;
-
-                    }
-
-
-
-                }
-
-                if (Y == 0) { MessagingCenter.Send<StepTwoViewModel, string>(this, "StepTwo", Translator.getText("AtLeastType")); return; }
-                if (I == 0) { MessagingCenter.Send<StepTwoViewModel, string>(this, "StepTwo", Translator.getText("AtLeastCategory")); return; }
-                if (Z == 0) { MessagingCenter.Send<StepTwoViewModel, string>(this, "StepTwo", Translator.getText("AtLeastDelivery")); return; }
-                if (W == 0) { MessagingCenter.Send<StepTwoViewModel, string>(this, "StepTwo", Translator.getText("AtLeastCollect")); return; }
-
-                await apiService.RegisterUserCategoriesAsync(selectedCategories, profile.Email);
-                await apiService.RegisterUserTypesAsync(selectedTypes, profile.Email);
-                await apiService.RegisterUserDeliveryAsync(selectedDelivery, profile.Email);
-                await apiService.RegisterUserCollectAsync(selectedCollect, profile.Email);
-            }
-
-            string pType = "";
-            if (Application.Current.Properties.ContainsKey(Constants.UserType))
-            {
-
-                pType = (string)Application.Current.Properties[Constants.UserType];
-
-            }
             
 
-           if (Calledfrom == Constants.RegisterCall)
-            {
-                if (pType != Constants.Traveler)
+               if (Calledfrom == Constants.RegisterCall)
                 {
-                    Application.Current.MainPage = new MainPage();
-                }else
-                {
-                    Application.Current.MainPage = new StepThreePage(Constants.ForIdTrav);
+                    if (pType != Constants.Traveler)
+                    {
+                        Application.Current.MainPage = new MainPage();
+                    }else
+                    {
+                        Application.Current.MainPage = new StepThreePage(Constants.ForIdTrav);
+                    }
                 }
-            }
-            else
-            {
-                NoRegisterCall();
-            }
+                else
+                {
+                    NoRegisterCall();
+                }
 
-
+            }
+            else { App.ToastMessage(Translator.getText("NoInternet"), Color.Red); }
         }
 
 

@@ -6,7 +6,7 @@
              xmlns:translator   ="clr-namespace:com.ws.cvxpress.Helpers"
              xmlns:MyViews ="clr-namespace:WSViews;assembly=WSViews"
              >
-  
+ 
     <StackLayout Orientation="Vertical"  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
         
@@ -71,7 +71,7 @@
             </ListView.Footer>
             <ListView.ItemTemplate >
                 <DataTemplate>
-                    <CustomControl:ExtendedViewCell SelectedBackgroundColor="Blue">
+                    <ViewCell>
                    <ViewCell.View>
                         
                         <StackLayout>   
@@ -91,9 +91,12 @@
                         </Grid>
                                 </StackLayout>
                     </ViewCell.View>
-                    </CustomControl:ExtendedViewCell>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
     </StackLayout>
+
+     
+
 </ContentPage>

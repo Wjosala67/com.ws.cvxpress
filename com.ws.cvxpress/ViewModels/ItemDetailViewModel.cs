@@ -1,6 +1,4 @@
-﻿using System;
-
-using com.ws.cvxpress.Models;
+﻿using com.ws.cvxpress.Models;
 
 namespace com.ws.cvxpress.ViewModels
 {

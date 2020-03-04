@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using Acr.UserDialogs;
 using com.ws.cvxpress.Classes;
 using com.ws.cvxpress.Helpers;
 using com.ws.cvxpress.Models;
-using com.ws.cvxpress.Services;
 using Xamarin.Forms;
-using System.Linq;
-using System.Globalization;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace com.ws.cvxpress.ViewModels
 {
@@ -271,6 +268,17 @@ namespace com.ws.cvxpress.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        private DateTime mindate;
+        public DateTime MinDate
+        {
+            get { return mindate; }
+            set
+            {
+                mindate = value;
+                OnPropertyChanged();
+            }
+        }
         #endregion
 
         public ICommand SubmitCommand { protected set; get; }
@@ -283,9 +291,9 @@ namespace com.ws.cvxpress.ViewModels
         public RequestPageViewModel()
         {
             lstSetting  = DatabaseHelper.getConfiguration(App.Os_Folder);
-           
+            mindate = DateTime.Now;
 
-            requestSpecs = new RequestSpecs();
+           requestSpecs = new RequestSpecs();
             selectedCountry = new Countries();
             selectedCountryto = new Countries();
             selectedarrivaldate = DateTime.Now;
@@ -378,135 +386,140 @@ namespace com.ws.cvxpress.ViewModels
 
         public async Task OnSubmit()
         {
+            var current = Connectivity.NetworkAccess;
 
+            if (current == NetworkAccess.Internet)
+            { 
+                App.WaitScreenStart(Translator.getText("Loading"));
 
-            App.WaitScreenStart(Translator.getText("Loading"));
-
-            try {
-            Profile profile = DatabaseHelper.GetProfile(App.Os_Folder);
+                try {
+                Profile profile = DatabaseHelper.GetProfile(App.Os_Folder);
 
            
 
            
 
-            requestSpecs.CountryCodeFrom = (selectedCountry != null) ? selectedCountry.CountryCode : null;
-            requestSpecs.CountryCodeTo = (selectedCountryto != null) ? selectedCountryto.CountryCode : null;
+                requestSpecs.CountryCodeFrom = (selectedCountry != null) ? selectedCountry.CountryCode : null;
+                requestSpecs.CountryCodeTo = (selectedCountryto != null) ? selectedCountryto.CountryCode : null;
 
 
 
-            requestSpecs.FromDate = selecteddeparturedate;
-            requestSpecs.ToDate = selectedarrivaldate;
-            requestSpecs.Created = DateTime.Now;
-            requestSpecs.Email = profile.Email;
-            requestSpecs.status = 0;
-            requestSpecs.Description = itemname;
-            requestSpecs.FindWhere = itemfind;
-            requestSpecs.Comments = itemdesc;
-            requestSpecs.Cat_Id = (SelectedItem != null) ?SelectedItem.Cat_Id : 0;
-            requestSpecs.ProductImage = ImageByte;
-            requestSpecs.OpenDelivery = opendelivery;
-            requestSpecs.OpenDays = opendays;
-            decimal result = 0;
-            int res = 0;
-            int qty = (int.TryParse(itemqty, out res)) ? int.Parse(itemqty) : 1;
-            requestSpecs.Quantity = qty;
+                requestSpecs.FromDate = selecteddeparturedate;
+                requestSpecs.ToDate = selectedarrivaldate;
+                requestSpecs.Created = DateTime.Now;
+                requestSpecs.Email = profile.Email;
+                requestSpecs.status = 0;
+                requestSpecs.Description = itemname;
+                requestSpecs.FindWhere = itemfind;
+                requestSpecs.Comments = itemdesc;
+                requestSpecs.Cat_Id = (SelectedItem != null) ?SelectedItem.Cat_Id : 0;
+                requestSpecs.ProductImage = ImageByte;
+                requestSpecs.OpenDelivery = opendelivery;
+                requestSpecs.OpenDays = opendays;
+                decimal result = 0;
+                int res = 0;
+                int qty = (int.TryParse(itemqty, out res)) ? int.Parse(itemqty) : 1;
+                requestSpecs.Quantity = qty;
 
 
-            result = 0;
-            requestSpecs.ProductValue = decimal.TryParse(itemvalue, out result) ? decimal.Parse(itemvalue) : 0;
+                result = 0;
+                requestSpecs.ProductValue = decimal.TryParse(itemvalue, out result) ? decimal.Parse(itemvalue) : 0;
           
 
-            if ( selectedCountry.CountryCode == null || 
-                 SelectedCountryTo.CountryCode == null || 
-                string.IsNullOrEmpty(itemname) ||
-                string.IsNullOrEmpty(itemfind) || string.IsNullOrEmpty(itemvalue) ||
-                string.IsNullOrEmpty(itemdesc)|| requestSpecs.Cat_Id == 0 || requestSpecs.ProductValue == 0)
-            {
-                DisplayInvalidTravelObject();
-                    App.WaitScreenStop();
-                    return;
-            }
+                if ( selectedCountry.CountryCode == null || 
+                     SelectedCountryTo.CountryCode == null || 
+                    string.IsNullOrEmpty(itemname) ||
+                    string.IsNullOrEmpty(itemfind) || string.IsNullOrEmpty(itemvalue) ||
+                    string.IsNullOrEmpty(itemdesc)|| requestSpecs.Cat_Id == 0 || requestSpecs.ProductValue == 0)
+                {
+                    DisplayInvalidTravelObject();
+                        App.WaitScreenStop();
+                        return;
+                }
 
 
 
            
 
-           // using (UserDialogs.Instance.Loading(Translator.getText("Loading"), null, null, true, MaskType.Black))
-            {
-
-                //if (Application.Current.Properties.ContainsKey(Constants.Sspecs))
-                //{
-
-                //    stravelerSpecs = (string)Application.Current.Properties[Constants.Sspecs];
-
-                //    if (stravelerSpecs.Contains("|"))
-                //    {
-
-                //        requestSpecs.Weight = (decimal.TryParse(stravelerSpecs.Split('|')[0].ToString(), out result)) ? decimal.Parse(stravelerSpecs.Split('|')[0]) : 0; ;
-                //        requestSpecs.Width = (decimal.TryParse(stravelerSpecs.Split('|')[1].ToString(), out result)) ? decimal.Parse(stravelerSpecs.Split('|')[1]) : 0; ;
-                //        requestSpecs.Height = (decimal.TryParse(stravelerSpecs.Split('|')[2].ToString(), out result)) ? decimal.Parse(stravelerSpecs.Split('|')[2]) : 0; ;
-                //        requestSpecs.Long = (decimal.TryParse(stravelerSpecs.Split('|')[3].ToString(), out result)) ? decimal.Parse(stravelerSpecs.Split('|')[3]) : 0; ;
-                //        requestSpecs.DeliveredAt = stravelerSpecs.Split('|')[4];
-                //        int intresult = 0;
-                //        requestSpecs.Quantity = (int.TryParse(stravelerSpecs.Split('|')[5], out intresult)) ? int.Parse(stravelerSpecs.Split('|')[5]): 1;
-                //    }
-                //}
-                decimal intresult = 0;
-                requestSpecs.DeliveredAt = "";
-                requestSpecs.Quantity = qty;
-                requestSpecs.Weight = decimal.TryParse(AproxWeight, out intresult) ? decimal.Parse(AproxWeight) :  0;
-
-                    #region Calculate the reward using Product value and Volume
-                    decimal reward = Functions.getReward(requestSpecs.ProductValue,  requestSpecs.Weight,  requestSpecs.Quantity);
-                    decimal commission = Functions.getDeliveryPrice(requestSpecs.ProductValue, requestSpecs.Weight, qty);
-
-                    requestSpecs.Commission = commission;
-
-                #endregion
-
-                requestSpecs.Reward = reward;
-
-                if (string.IsNullOrEmpty(requestSpecs.CountryCodeFrom) ||
-                   string.IsNullOrEmpty(requestSpecs.CountryCodeTo) ||
-
-                   string.IsNullOrEmpty(requestSpecs.FindWhere) ||
-
-                   requestSpecs.ToDate == DateTime.Now )
+               // using (UserDialogs.Instance.Loading(Translator.getText("Loading"), null, null, true, MaskType.Black))
                 {
 
-                    DisplayInvalidTravelObject();
-                        App.WaitScreenStop();
-                    }
-                else
-                {
+                    //if (Application.Current.Properties.ContainsKey(Constants.Sspecs))
+                    //{
 
-                    //ApiService apiService = new ApiService();
+                    //    stravelerSpecs = (string)Application.Current.Properties[Constants.Sspecs];
 
-                    //string created = await apiService.RegisterRequestSpecs(requestSpecs);
+                    //    if (stravelerSpecs.Contains("|"))
+                    //    {
 
+                    //        requestSpecs.Weight = (decimal.TryParse(stravelerSpecs.Split('|')[0].ToString(), out result)) ? decimal.Parse(stravelerSpecs.Split('|')[0]) : 0; ;
+                    //        requestSpecs.Width = (decimal.TryParse(stravelerSpecs.Split('|')[1].ToString(), out result)) ? decimal.Parse(stravelerSpecs.Split('|')[1]) : 0; ;
+                    //        requestSpecs.Height = (decimal.TryParse(stravelerSpecs.Split('|')[2].ToString(), out result)) ? decimal.Parse(stravelerSpecs.Split('|')[2]) : 0; ;
+                    //        requestSpecs.Long = (decimal.TryParse(stravelerSpecs.Split('|')[3].ToString(), out result)) ? decimal.Parse(stravelerSpecs.Split('|')[3]) : 0; ;
+                    //        requestSpecs.DeliveredAt = stravelerSpecs.Split('|')[4];
+                    //        int intresult = 0;
+                    //        requestSpecs.Quantity = (int.TryParse(stravelerSpecs.Split('|')[5], out intresult)) ? int.Parse(stravelerSpecs.Split('|')[5]): 1;
+                    //    }
+                    //}
+                    decimal intresult = 0;
+                    requestSpecs.DeliveredAt = "";
+                    requestSpecs.Quantity = qty;
+                    requestSpecs.Weight = decimal.TryParse(AproxWeight, out intresult) ? decimal.Parse(AproxWeight) :  0;
 
+                        #region Calculate the reward using Product value and Volume
+                        decimal reward = Math.Round(Functions.getReward(requestSpecs.ProductValue,  requestSpecs.Weight,  requestSpecs.Quantity),2);
+                        decimal commission = Math.Round(Functions.getDeliveryPrice(requestSpecs.ProductValue, requestSpecs.Weight, qty),2);
 
-                    //if (created == "Created")
+                        requestSpecs.Commission = commission;
+
+                    #endregion
+
+                    requestSpecs.Reward = reward;
+
+                    if (string.IsNullOrEmpty(requestSpecs.CountryCodeFrom) ||
+                       string.IsNullOrEmpty(requestSpecs.CountryCodeTo) ||
+
+                       string.IsNullOrEmpty(requestSpecs.FindWhere) ||
+
+                       requestSpecs.ToDate == DateTime.Now )
                     {
-                     //   DisplayTravelObjectCreated();
+
+                        DisplayInvalidTravelObject();
+                            App.WaitScreenStop();
+                        }
+                    else
+                    {
+
+                        //ApiService apiService = new ApiService();
+
+                        //string created = await apiService.RegisterRequestSpecs(requestSpecs);
+
+
+
+                        //if (created == "Created")
+                        {
+                         //   DisplayTravelObjectCreated();
+                        }
+
+
+
                     }
-
-
-
                 }
-            }
-            }
-            catch (Exception ex) {
+                }
+                catch (Exception ex) {
 
-                App.WaitScreenStop();
-            }
-            finally {
-                App.WaitScreenStop();
-            }
+                    App.WaitScreenStop();
+                }
+                finally {
+                    App.WaitScreenStop();
+                }
 
-            MessagingCenter.Send<RequestPageViewModel>(this, "SendObjectToPayment");
+                MessagingCenter.Send<RequestPageViewModel>(this, "SendObjectToPayment");
 
-        }
+
+            }
+            else { App.ToastMessage(Translator.getText("NoInternet"), Color.Red); }
+}
     }
 }
 

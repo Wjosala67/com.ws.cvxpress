@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using com.ws.cvxpress.Helpers;
-using com.ws.cvxpress.Models;
 using com.ws.cvxpress.Services;
 using Openpay.Xamarin.Abstractions;
 

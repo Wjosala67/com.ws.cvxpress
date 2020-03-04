@@ -41,7 +41,7 @@
                                                 HasUnevenRows="true" 
                                                 RefreshCommand="{Binding LoadItemsCommand}" 
                                                 IsPullToRefreshEnabled="true" 
-                                                IsRefreshing="{Binding IsBusy, Mode=OneWay}" 
+                                               
                                                 
                                                 CachingStrategy="RecycleElement" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}"
                                                   RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" >

@@ -8,7 +8,7 @@ using com.ws.cvxpress.Classes;
 using com.ws.cvxpress.Helpers;
 using com.ws.cvxpress.Models;
 using com.ws.cvxpress.Services;
-using WSViews.Classes;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace com.ws.cvxpress.ViewModels
@@ -207,6 +207,17 @@ namespace com.ws.cvxpress.ViewModels
                 OnPropertyChanged();
             }
         }
+
+        private DateTime mindate;
+        public DateTime MinDate
+        {
+            get { return mindate; }
+            set
+            {
+                mindate = value;
+                OnPropertyChanged();
+            }
+        }
         #endregion
 
         public ICommand SubmitCommand { protected set; get; }
@@ -224,7 +235,7 @@ namespace com.ws.cvxpress.ViewModels
             timeArrival = new TimeSpan(12, 00, 00);
             timeDeparture = new TimeSpan(12, 00, 00);
             //weight = "0.0";
-
+            mindate = DateTime.Now;
             Application.Current.Properties[Constants.Tspecs] = "";
             Application.Current.SavePropertiesAsync();
 
@@ -284,86 +295,92 @@ namespace com.ws.cvxpress.ViewModels
         async void OnSubmit(object obj)
         {
 
-            ApiService api = new ApiService();
+            var current = Connectivity.NetworkAccess;
 
-           
-
-            DateTime Dpt = Convert.ToDateTime( selecteddeparturedate.ToShortDateString() + " " + timeDeparture.ToString());
-            DateTime Dpa = Convert.ToDateTime(selectedarrivaldate.ToShortDateString() + " " + timeArrival.ToString());
-
-
-            Profile profile = DatabaseHelper.GetProfile(App.Os_Folder);
-            travelSpecs.CountryCodeFrom = (selectedCountry != null)? selectedCountry.CountryCode : null;
-            travelSpecs.CountryCodeTo = (selectedCountryto != null) ? selectedCountryto.CountryCode : null;
-            travelSpecs.FromDate = Dpt;
-            travelSpecs.ToDate = Dpa;
-            travelSpecs.Created = DateTime.Now;
-            travelSpecs.Email = profile.Email;
-            travelSpecs.status = 0;
-
-            if (selectedCountry != null)
+            if (current == NetworkAccess.Internet)
             {
-                if (selectedCountry.CountryCode == selectedCountryto.CountryCode)
+                ApiService api = new ApiService();
+
+                DateTime Dpt = Convert.ToDateTime(selecteddeparturedate.ToShortDateString() + " " + timeDeparture.ToString());
+                DateTime Dpa = Convert.ToDateTime(selectedarrivaldate.ToShortDateString() + " " + timeArrival.ToString());
+
+
+                Profile profile = DatabaseHelper.GetProfile(App.Os_Folder);
+                travelSpecs.CountryCodeFrom = (selectedCountry != null) ? selectedCountry.CountryCode : null;
+                travelSpecs.CountryCodeTo = (selectedCountryto != null) ? selectedCountryto.CountryCode : null;
+                travelSpecs.FromDate = Dpt;
+                travelSpecs.ToDate = Dpa;
+                travelSpecs.Created = DateTime.Now;
+                travelSpecs.Email = profile.Email;
+                travelSpecs.status = 0;
+
+                if (selectedCountry != null)
                 {
-                    DisplayInvalidDepArr();
-                    return;
-                }
-            }
-            else
-            {
-
-            }
-            using (UserDialogs.Instance.Loading(Translator.getText("Loading"), null, null, true, MaskType.Black))
-            {
-               
-                if (Application.Current.Properties.ContainsKey(Constants.UserType))
-                {
-
-                    stravelerSpecs = (string)Application.Current.Properties[Constants.Tspecs];
-
-                    //if (stravelerSpecs.Contains("|")) 
+                    if (selectedCountry.CountryCode == selectedCountryto.CountryCode)
                     {
-                        decimal result = 0;
-                        travelSpecs.Capacity = (decimal.TryParse(weight, out result))? decimal.Parse(weight).ToString() : "0"; 
-                        travelSpecs.DeliveredAt = "";
+                        DisplayInvalidDepArr();
+                        return;
+                    }
+                }
+                else
+                {
+
+                }
+                using (UserDialogs.Instance.Loading(Translator.getText("Loading"), null, null, true, MaskType.Black))
+                {
+
+                    if (Application.Current.Properties.ContainsKey(Constants.UserType))
+                    {
+
+                        stravelerSpecs = (string)Application.Current.Properties[Constants.Tspecs];
+
+                        //if (stravelerSpecs.Contains("|")) 
+                        {
+                            decimal result = 0;
+                            travelSpecs.Capacity = (decimal.TryParse(weight, out result)) ? decimal.Parse(weight).ToString() : "0";
+                            travelSpecs.DeliveredAt = "";
+                        }
+                    }
+
+
+                    if (string.IsNullOrEmpty(travelSpecs.CountryCodeFrom) ||
+                       string.IsNullOrEmpty(travelSpecs.CountryCodeTo) ||
+
+                       string.IsNullOrEmpty(travelSpecs.Capacity) ||
+                       travelSpecs.FromDate == DateTime.Now ||
+                       travelSpecs.ToDate == DateTime.Now || string.IsNullOrEmpty(weight))
+                    {
+
+                        DisplayInvalidTravelObject();
+                        return;
+                    }
+                    else
+                    {
+
+                        ApiService apiService = new ApiService();
+
+
+                        // No Id returns message
+                        lstitemident = await apiService.getUserIdent(profile.Email);
+
+                        if (lstitemident.Count == 0)
+                        {
+                            DisplayInvalidPrompt();
+                            return;
+                        }
+
+                        string created = await apiService.RegisterTravelSpecs(travelSpecs);
+
+                        Application.Current.Properties[Constants.Tspecs] = "";
+                        await Application.Current.SavePropertiesAsync();
+
+                        MessagingCenter.Send<TravellerViewModel, string>(this, "SaveSpecs", "Done");
+
                     }
                 }
 
-
-                if (string.IsNullOrEmpty(travelSpecs.CountryCodeFrom) ||
-                   string.IsNullOrEmpty(travelSpecs.CountryCodeTo) ||
-                  
-                   string.IsNullOrEmpty(travelSpecs.Capacity) ||
-                   travelSpecs.FromDate == DateTime.Now ||
-                   travelSpecs.ToDate == DateTime.Now || string.IsNullOrEmpty(weight) )
-                   {
-
-                    DisplayInvalidTravelObject();
-                    return; 
-                }
-                else { 
-
-                ApiService apiService = new ApiService();
-
-               
-                    // No Id returns message
-                lstitemident = await apiService.getUserIdent(profile.Email);
-
-                if(lstitemident.Count == 0)
-                {
-                    DisplayInvalidPrompt();
-                        return;
-                }
-
-                string created = await apiService.RegisterTravelSpecs(travelSpecs);
-
-                Application.Current.Properties[Constants.Tspecs] = "";
-                await Application.Current.SavePropertiesAsync();
-
-                MessagingCenter.Send<TravellerViewModel, string>(this, "SaveSpecs", "Done");
-
-                }
-            }
+           }  
+            else { App.ToastMessage(Translator.getText("NoInternet"), Color.Red); }
         }
 
         public async Task ExecuteLoadItemsCommand()

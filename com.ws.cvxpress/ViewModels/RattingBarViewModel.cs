@@ -1,8 +1,8 @@
-﻿using System;
+﻿
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using com.ws.cvxpress.Views.Operation;
+
 using Xamarin.Forms;
 
 namespace com.ws.cvxpress.ViewModels
