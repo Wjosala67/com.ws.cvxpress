@@ -17,6 +17,7 @@ using Microsoft.AppCenter.Push;
 
 
 
+
 namespace com.ws.cvxpress.Droid
 {
     [Activity(Label = "FlightBox", Icon = "@mipmap/ic_launcher", RoundIcon = "@mipmap/ic_launcher_round", Theme = "@style/MainTheme", MainLauncher = false,ScreenOrientation = ScreenOrientation.Portrait, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -43,31 +44,33 @@ namespace com.ws.cvxpress.Droid
             
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-            if(Intent.Extras != null)
-            foreach (var key in Intent.Extras.KeySet())
+           
+            if (Intent.Extras != null)
             {
-               if (key != null)
-               {
+                foreach (var key in Intent.Extras.KeySet())
+                {
+                    if (key != null)
+                    {
                         var value = Intent.Extras.GetString(key);
-                        Android.Util.Log.Debug(TAG, "Key: {0} Value: {1}", key, value);
-
-               }
+                        Log.Debug(TAG, "Key: {0} Value: {1}", key, value);
+                    }
+                }
             }
 
-          
 
             base.OnCreate(savedInstanceState);
             FacebookClientManager.Initialize(this);
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             UserDialogs.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-
+            
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: false);
           
 
             Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             bool avail = IsPlayServicesAvailable();
+
             if (avail  && (Build.VERSION.SdkInt >= BuildVersionCodes.O))
             {
 
@@ -75,7 +78,7 @@ namespace com.ws.cvxpress.Droid
 
             }
 
-            Xamarin.Forms.Forms.SetFlags("SwipeView_Experimental");
+            
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CardsViewRenderer.Preserve();
             global::Openpay.Xamarin.OpenpayAndroidImpl.Init(this);

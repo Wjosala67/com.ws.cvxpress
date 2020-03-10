@@ -34,7 +34,7 @@
     <PackageReference Include="Microsoft.AppCenter.Push" Version="3.0.0" />
     <PackageReference Include="Openpay.Xamarin" Version="1.0.25.3" />
     <PackageReference Include="XamarinFastEntry.Behaviors" Version="1.1.1" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.0" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />

@@ -476,7 +476,7 @@ namespace com.ws.cvxpress.ViewModels
                 else
                 {
 
-                    App.ToastMessage(Translator.getText("NoInternet"), Color.Red);
+                    App.ToastMessage(Translator.getText("NoInternet"), Color.Red, "");
 
                 }
             }

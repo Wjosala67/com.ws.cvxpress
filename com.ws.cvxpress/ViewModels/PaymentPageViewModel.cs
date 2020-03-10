@@ -278,7 +278,7 @@ namespace com.ws.cvxpress.ViewModels
                     App.WaitScreenStop();
 
             }
-                else { App.ToastMessage(Translator.getText("NoInternet"), Color.Red); }
+                else { App.ToastMessage(Translator.getText("NoInternet"), Color.Red, ""); }
         }
     }
 }

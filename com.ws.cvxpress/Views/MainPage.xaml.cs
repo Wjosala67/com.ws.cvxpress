@@ -99,7 +99,7 @@ namespace com.ws.cvxpress.Views
             string message = (access == NetworkAccess.Internet) ? Translator.getText("Internet") : Translator.getText("NoInternet");
             var profiles = e.ConnectionProfiles;
 
-            App.ToastMessage(message, Color.Red);
+            App.ToastMessage(message, Color.Red, "");
 
         }
 

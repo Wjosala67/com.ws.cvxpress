@@ -116,7 +116,7 @@ namespace com.ws.cvxpress.ViewModels
             }
 
             }
-            else { App.ToastMessage(Translator.getText("NoInternet"), Color.Red); }
+            else { App.ToastMessage(Translator.getText("NoInternet"), Color.Red, ""); }
         }
 
         public StepThreeViewModel (string calledfrom) 

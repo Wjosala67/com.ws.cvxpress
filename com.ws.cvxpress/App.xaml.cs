@@ -4,10 +4,12 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
+using com.ws.cvxpress.ChatViews;
 using com.ws.cvxpress.Classes;
 using com.ws.cvxpress.Helpers;
 using com.ws.cvxpress.Models;
 using com.ws.cvxpress.Services;
+using com.ws.cvxpress.ViewModels;
 using com.ws.cvxpress.Views;
 using com.ws.cvxpress.Views.Operation;
 using com.ws.cvxpress.Views.Start;
@@ -288,7 +290,7 @@ namespace com.ws.cvxpress
                         }
                     }
 
-                    if (!isBackGround) ToastMessage(e.Message, Color.Aquamarine);
+                    if (!isBackGround) ToastMessage(e.Message, Color.Aquamarine, GotoPage);
 
 
                         Application.Current.Properties["notified"] = "True";
@@ -492,7 +494,7 @@ namespace com.ws.cvxpress
             UserDialogs.Instance.HideLoading();
         }
 
-        public static void ToastMessage(string message, Color color)
+        public static void ToastMessage(string message, Color color, string goPage)
         {
             Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
             {
@@ -512,9 +514,171 @@ namespace com.ws.cvxpress
 
                
                 tc.SetDuration(TimeSpan.FromSeconds(5.0));
-             
+
+
+                tc.SetAction(x => x.SetText("Ir >").SetAction(() => App.gotopage(goPage)));
+              
+
                 UserDialogs.Instance.Toast(tc);
             });
         }
+
+        public static void gotopage(string goPage)
+        {
+            if (!goPage.Contains("Chat|") && !goPage.Contains("TripEnded|") && !goPage.Contains("RequestList|") && !goPage.Contains("ItemAccepted|"))
+            {
+                switch (goPage)
+                {
+
+                    case "ClientService":
+                        Current.MainPage = new MainPage
+                        {
+                            Title = Translator.getText("Contact"),
+                            Master = new MenuPage(),
+                            Detail = new NavigationPage(new ListClientsRequests())
+                        };
+                        break;
+                    case "BoxList":
+
+
+                        Current.MainPage = new MainPage
+                        {
+                            Title = Translator.getText("MyOffers"),
+                            Master = new MenuPage(),
+                            Detail = new NavigationPage(new TravelsList())
+                        };
+                        break;
+                    case "RequestList":
+                        Current.MainPage = new MainPage
+                        {
+                            Title = Translator.getText("MyRequests"),
+                            Master = new MenuPage(),
+                            Detail = new NavigationPage(new RequestList())
+                        };
+                        break;
+
+                    case "Chat":
+                        // agregar información del viaje y el articulo
+                        Current.MainPage = new MainPage
+                        {
+                            Title = Translator.getText("MyRequests"),
+                            Master = new MenuPage(),
+                            Detail = new NavigationPage(new RequestList())
+                        };
+                        break;
+                    case "ItemAccepted":
+                        Current.MainPage = new MainPage
+                        {
+                            Title = Translator.getText("MyRequests"),
+                            Master = new MenuPage(),
+                            Detail = new NavigationPage(new RequestList())
+                        };
+                        break;
+
+                    default:
+                        Current.MainPage = new MainPage
+                        {
+                            Title = Translator.getText("MyRequests"),
+                            Master = new MenuPage(),
+                            Detail = new NavigationPage(new ProfilePage())
+                        };
+                        break;
+
+                }
+            }
+            else
+            {
+                RequestSpecs requestSpecs = new RequestSpecs();
+                SelectedUser useraccept = new SelectedUser();
+                string idinfoName = "";
+                requestSpecs.Id = int.Parse(goPage.Split('|')[1]);
+                // agregar información del viaje y el articulo
+                if (goPage.Contains("Chat|"))
+
+                {
+                  
+                    idinfoName = goPage.Split('|')[6];
+                    App.WaitScreenStart(Translator.getText("Loading"));
+                    Task.Run(async () => {
+                        ApiService apiService = new ApiService();
+                        requestSpecs = await apiService.getRequestById(requestSpecs);
+                        useraccept = await apiService.getRequestesAcceptedbyTravelerAsync(requestSpecs);
+
+                    }).Wait();
+                    App.WaitScreenStop();
+                   
+                    Current.MainPage = new MainPage
+                    {
+                       
+                        Title = Translator.getText("MyRequests"),
+                        Master = new MenuPage(),
+                        Detail = new NavigationPage(new ChatPage(useraccept, idinfoName, requestSpecs))
+                    };
+                }
+                else if (goPage.Contains("TripEnded|") || goPage.Contains("ItemAccepted|"))
+                {
+                  
+                    App.WaitScreenStart(Translator.getText("Loading"));
+                    Task.Run(async () => {
+                        ApiService apiService = new ApiService();
+                        requestSpecs = await apiService.getRequestById(requestSpecs);
+
+
+                    }).Wait();
+                    App.WaitScreenStop();
+                    Current.MainPage = new MainPage
+                    {
+
+                        //Title = Translator.getText("MyRequests"),
+                        Master = new MenuPage(),
+                        Detail = new NavigationPage(new RequestInfoPage(requestSpecs, "0"))
+                    };
+                }
+                else if (goPage.Contains("RequestList|"))
+                {
+                  
+                    App.WaitScreenStart(Translator.getText("Loading"));
+                    Task.Run(async () => {
+                        ApiService apiService = new ApiService();
+                        requestSpecs = await apiService.getRequestById(requestSpecs);
+
+
+                    }).Wait();
+                    App.WaitScreenStop();
+                    Current.MainPage = new MainPage
+                    {
+
+                        //Title = Translator.getText("MyRequests"),
+                        Master = new MenuPage(),
+                        Detail = new NavigationPage(new RequestInfoPage(requestSpecs, "0"))
+                    };
+                }
+                else if (goPage.Contains("ItemAuth|"))
+                {
+                    TravelerSpecs travelerSpecs = new TravelerSpecs();
+                    travelerSpecs.Id = int.Parse(goPage.Split('|')[1]);
+                    App.WaitScreenStart(Translator.getText("Loading"));
+
+                    Task.Run(async () => {
+                        ApiService apiService = new ApiService();
+                        travelerSpecs = await apiService.GetTravelSpecsAsync(travelerSpecs.Id);
+
+
+                    }).Wait();
+                    App.WaitScreenStop();
+                    Current.MainPage = new MainPage
+                    {
+
+                        //Title = Translator.getText("MyRequests"),
+                        Master = new MenuPage(),
+                        Detail = new NavigationPage(new TravelInfoPage(travelerSpecs))
+                    };
+                }
+            }
+
+
+        }
+
+
     }
 }

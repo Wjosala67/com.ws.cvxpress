@@ -992,7 +992,11 @@ namespace com.ws.cvxpress.Services
                     if (response.IsSuccessStatusCode)
                     {
                         lConf.user = JsonConvert.DeserializeObject<Users>(await response.Content.ReadAsStringAsync());
-                        lConf.image = ImageManager.BytesToImage(lConf.user.UserPhoto);
+
+
+
+                        lConf.image = (lConf.user.UserPhoto == null) ? "giphy.gif": ImageManager.BytesToImage(lConf.user.UserPhoto);
+
 
                         lConf.travelerSpecs = await GetTravelSpecsAsync(result.IdTravelerSpecs);
                     }
