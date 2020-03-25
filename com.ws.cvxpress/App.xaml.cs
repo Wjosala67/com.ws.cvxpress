@@ -20,8 +20,7 @@ using Microsoft.AppCenter.Push;
 using Openpay.Xamarin;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
-
+using Device = Xamarin.Forms.Device;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace com.ws.cvxpress
@@ -66,8 +65,8 @@ namespace com.ws.cvxpress
                 Application.Current.Properties["Goto"] = "";
 
             }
-
-
+         
+         
 
 
             Profile profile = DatabaseHelper.GetProfile(Os_Folder);
@@ -238,8 +237,9 @@ namespace com.ws.cvxpress
 
         }
         protected override void OnStart()         {
-           
-               if (!AppCenter.Configured)                 Push.PushNotificationReceived += Push_PushNotificationReceived;
+            
+
+            if (!AppCenter.Configured)                 Push.PushNotificationReceived += Push_PushNotificationReceived;
 
             if (CrossOpenpay.IsSupported) CrossOpenpay.Current.Initialize(Constants.OPPrivateKey, Constants.OPID, false);
 

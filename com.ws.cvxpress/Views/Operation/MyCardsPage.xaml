@@ -4,7 +4,7 @@
              xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
              xmlns:CustomControl="clr-namespace:com.ws.cvxpress.Custom"
              x:Class="com.ws.cvxpress.Views.Operation.MyCardsPage"
-             BackgroundColor="{StaticResource DarkBackgroundColor}">
+             Style="{StaticResource DeviceStateTriggerPageStyle}">
    
     
     

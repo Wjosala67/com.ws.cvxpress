@@ -46,7 +46,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidManagedSymbols>true</AndroidManagedSymbols> 
-    <AndroidPackageFormat>aab</AndroidPackageFormat>
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
         
 <AndroidDexTool>dx</AndroidDexTool>
 <AndroidLinkTool>r8</AndroidLinkTool>
@@ -109,7 +109,7 @@
       <Version>28.0.0.3</Version>
     </PackageReference>
     <PackageReference Include="CardsView">
-      <Version>2.4.8</Version>
+      <Version>2.4.9</Version>
     </PackageReference>
     <PackageReference Include="Acr.UserDialogs">
       <Version>7.1.0.440</Version>
@@ -121,7 +121,7 @@
       <Version>1.2.0</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
-      <Version>4.5.0.356</Version>
+      <Version>4.5.0.396</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.Core.UI">
       <Version>28.0.0.3</Version>
@@ -139,16 +139,16 @@
       <Version>28.0.0.3</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Push">
-      <Version>3.0.0</Version>
+      <Version>3.1.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Crashes">
-      <Version>3.0.0</Version>
+      <Version>3.1.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter.Analytics">
-      <Version>3.0.0</Version>
+      <Version>3.1.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.AppCenter">
-      <Version>3.0.0</Version>
+      <Version>3.1.0</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.GooglePlayServices.Base">
       <Version>71.1610.0</Version>
@@ -164,9 +164,6 @@
     </PackageReference>
     <PackageReference Include="Xamarin.Firebase.Messaging">
       <Version>71.1740.0</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.Firebase.Iid">
-      <Version>71.1710.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

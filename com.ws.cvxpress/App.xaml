@@ -133,6 +133,7 @@
             
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource LabelTextColorDBGeneral}"/>
+                <Setter Property="VerticalOptions" Value="Center" />
                 
                <!-- <Setter Property="FontFamily" >
                     <OnPlatform x:TypeArguments="x:String">
@@ -223,7 +224,47 @@
                     </OnPlatform>
                 </Setter>-->
             </Style>
-            
+
+            <!--CONTENT PAGE-->
+
+            <Style x:Key="DeviceStateTriggerPageStyle"
+       TargetType="ContentPage">
+    <Setter Property="VisualStateManager.VisualStateGroups">
+        <VisualStateGroupList>
+            <VisualStateGroup>
+                <VisualState x:Name="iOS">
+                    <VisualState.StateTriggers>
+                        <DeviceStateTrigger Device="iOS" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Property="BackgroundColor"
+                                Value="Silver" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Android">
+                    <VisualState.StateTriggers>
+                        <DeviceStateTrigger Device="Android" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Property="BackgroundColor"
+                                Value="#333333" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="UWP">
+                    <VisualState.StateTriggers>
+                        <DeviceStateTrigger Device="UWP" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Property="BackgroundColor"
+                                Value="Aquamarine" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateGroupList>
+    </Setter>
+</Style>
+
+
             <converters:InverseBooleanConverter x:Key="InverseBoolConverter"/>
             <converters:StringToIntConverter x:Key="StringToIntConverter">5</converters:StringToIntConverter>
             <x:String x:Key="formatdate">{0:dd/MM/yyyy hh:mm tt}</x:String>

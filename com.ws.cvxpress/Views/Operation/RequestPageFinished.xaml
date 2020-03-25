@@ -46,7 +46,7 @@
                         <DataTemplate>
                                 <ViewCell Height="180" >
                                     <ViewCell.View>
-                                        <Frame  CornerRadius="5" Grid.Row="4" HasShadow="true" BackgroundColor="{StaticResource DarkBackgroundColor}">
+                                        <Frame  CornerRadius="5" Grid.Row="4" HasShadow="true" BackgroundColor="{StaticResource DeviceStateTriggerPageStyle}">
                                     <Grid>
                                         <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*"/>

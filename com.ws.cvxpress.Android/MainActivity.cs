@@ -77,8 +77,7 @@ namespace com.ws.cvxpress.Droid
                 notificationHelper = new NotificationHelper(this);
 
             }
-
-            
+            Xamarin.Forms.Forms.SetFlags("StateTriggers_Experimental");
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CardsViewRenderer.Preserve();
             global::Openpay.Xamarin.OpenpayAndroidImpl.Init(this);

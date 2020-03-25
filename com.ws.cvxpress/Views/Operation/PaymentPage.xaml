@@ -6,7 +6,7 @@
              xmlns:local ="clr-namespace:com.ws.cvxpress.Classes"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:fastentry="clr-namespace:XamarinFastEntrySample.FastEntry;assembly=XamarinFastEntry.Behaviors"
-             BackgroundColor="{StaticResource DarkBackgroundColor}"
+             BackgroundColor="{StaticResource DeviceStateTriggerPageStyle}"
              x:Class="com.ws.cvxpress.Views.Operation.PaymentPage">
     <ContentPage.Resources>
         <ResourceDictionary>

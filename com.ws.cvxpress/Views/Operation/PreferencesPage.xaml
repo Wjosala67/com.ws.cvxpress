@@ -3,7 +3,8 @@
              
               xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-              x:Class="com.ws.cvxpress.Views.Operation.PreferencesPage">
+              x:Class="com.ws.cvxpress.Views.Operation.PreferencesPage"
+             BackgroundColor="{StaticResource DarkBackgroundColor}">
     <ContentPage.Content>
     <StackLayout Padding="20" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
             <BoxView HeightRequest="1"/>
