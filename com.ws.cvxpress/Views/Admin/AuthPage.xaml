@@ -32,8 +32,8 @@
                 BackgroundColor="Silver" CornerRadius="5" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="3" > 
              <Image x:Name="Imagecropped" Source="{Binding _ImageSource}" Aspect="AspectFit"/>
             </Frame>
-            <Button x:Name="bt_auth" Text="{translator:Translate Auth}" Clicked="Handle_Auth" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="1" />
-            <Button x:Name="bt_reject" Text="{translator:Translate Reject}" Clicked="Handle_Reject" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="1" />
+            <Button x:Name="bt_auth" Text="{translator:Translate Auth}" Clicked="Handle_Auth" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="1" Style="{StaticResource buttonStyle}" />
+            <Button x:Name="bt_reject" Text="{translator:Translate Reject}" Clicked="Handle_Reject" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="1" Style="{StaticResource buttonStyle}" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
