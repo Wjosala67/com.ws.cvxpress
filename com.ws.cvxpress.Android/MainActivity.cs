@@ -8,7 +8,7 @@ using Android.Provider;
 using com.ws.cvxpress.Classes;
 using Plugin.FacebookClient;
 using Acr.UserDialogs;
-using Plugin.CurrentActivity;
+//using Plugin.CurrentActivity;
 using PanCardView.Droid;
 using Android.Util;
 using static Android.App.ActivityManager;
@@ -60,14 +60,14 @@ namespace com.ws.cvxpress.Droid
 
             base.OnCreate(savedInstanceState);
             FacebookClientManager.Initialize(this);
-            CrossCurrentActivity.Current.Init(this, savedInstanceState);
+            //CrossCurrentActivity.Current.Init(this, savedInstanceState);
             UserDialogs.Init(this);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             
             FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: false);
           
 
-            Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
+            //Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, savedInstanceState);
             Rg.Plugins.Popup.Popup.Init(this, savedInstanceState);
             bool avail = IsPlayServicesAvailable();
 
@@ -77,7 +77,8 @@ namespace com.ws.cvxpress.Droid
                 notificationHelper = new NotificationHelper(this);
 
             }
-            Xamarin.Forms.Forms.SetFlags("StateTriggers_Experimental");
+           
+
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CardsViewRenderer.Preserve();
             global::Openpay.Xamarin.OpenpayAndroidImpl.Init(this);
@@ -93,7 +94,7 @@ namespace com.ws.cvxpress.Droid
         public override void OnRequestPermissionsResult(int requestCode,
            string[] permissions, Android.Content.PM.Permission[] grantResults)
         {
-            Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            //Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions,grantResults);

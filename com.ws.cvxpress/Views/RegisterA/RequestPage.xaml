@@ -57,7 +57,7 @@
                    -->
                     <Image x:Name="Back" Source="backizq.png"  HorizontalOptions="Center" Grid.Row="0" HeightRequest="30" WidthRequest="30" Grid.Column="1" /> 
                    
-                    <!--<Label Grid.Row="3" Grid.Column="1" Text="{translator:Translate AgeLimitText}" HorizontalTextAlignment="Center"  HorizontalOptions="Center"  FontSize="Small"/>
+                    <!--<Label Grid.Row="3" Grid.Column="1" Text="{translator:Translate AgeLimitText}" HorizontalTextAlignment="Center"  HorizontalOptions="Center"  />
                     -->
                  </Grid>
                 
@@ -65,7 +65,7 @@
                       
                      TextColor="{StaticResource EntryTextColor}" 
                      TitleColor="{StaticResource EntryTextColor}" 
-                     SelectedItem="{Binding SelectedCountry, Mode=TwoWay}" FontSize="Small"
+                     SelectedItem="{Binding SelectedCountry, Mode=TwoWay}" Style="{StaticResource PickerStyle}"
                      ItemDisplayBinding="{Binding CountryName}"                       
                      Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" HorizontalOptions="FillAndExpand"
                      HeightRequest="50" 
@@ -78,7 +78,7 @@
                       
                      TextColor="{StaticResource EntryTextColor}" 
                      TitleColor="{StaticResource EntryTextColor}" 
-                     SelectedItem="{Binding SelectedCountryTo, Mode=TwoWay}" FontSize="Small"
+                     SelectedItem="{Binding SelectedCountryTo, Mode=TwoWay}" Style="{StaticResource PickerStyle}"
                      ItemDisplayBinding="{Binding CountryName}"                       
                      Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" HorizontalOptions="FillAndExpand" 
                      HeightRequest="50" 
@@ -91,7 +91,7 @@
                                              Text="{Binding ItemName}" BorderColor="White" 
                                              Placeholder="{translator:Translate ItemName}" 
                                              Style="{StaticResource EntryStyle}" 
-                                             TextColor="{StaticResource EntryTextColor}" FontSize="Small"
+                                             TextColor="{StaticResource EntryTextColor}" 
                                              MaxLength="30" Keyboard="Default"    
                                              PlaceholderColor="{StaticResource EntryTextColor}">                                         
                   </CustomControl:CustomEntry >
@@ -101,7 +101,7 @@
                                              Text="{Binding ItemDesc}" BorderColor="White" 
                                              Placeholder="{translator:Translate ItemDesc}" 
                                              Style="{StaticResource EntryStyle}" 
-                                             TextColor="{StaticResource EntryTextColor}" FontSize="Small"
+                                             TextColor="{StaticResource EntryTextColor}" 
                                              MaxLength="60"    Keyboard="Default"
                                              PlaceholderColor="{StaticResource EntryTextColor}">                                         
                   </CustomControl:CustomEntry >
@@ -109,7 +109,7 @@
                   <CustomControl:CustomEntry x:Name="E_ItemFind" 
                                              Grid.Row="5"  Grid.Column="1" Grid.ColumnSpan="1"
                                              Text="{Binding ItemFind}" BorderColor="White" 
-                                             Placeholder="{translator:Translate ItemFind}" FontSize="Small"
+                                             Placeholder="{translator:Translate ItemFind}" 
                                              Style="{StaticResource EntryStyle}" 
                                              TextColor="{StaticResource EntryTextColor}" 
                                              MaxLength="60"    Keyboard="Default"
@@ -118,7 +118,7 @@
                 
                    <CustomControl:CustomEntry x:Name="E_ItemQty" TextChanged="Handle_TextChanged"                                              Grid.Row="5"  Grid.Column="2" Grid.ColumnSpan="1"
                                              Text="{Binding ItemQty}" BorderColor="White" 
-                                             Placeholder="{translator:Translate ItemQty}" FontSize="Small"
+                                             Placeholder="{translator:Translate ItemQty}" 
                                              Style="{StaticResource EntryStyle}" 
                                              TextColor="{StaticResource EntryTextColor}" 
                                              MaxLength="1"    Keyboard="Numeric"
@@ -130,7 +130,7 @@
                                              Text="{Binding AproxWeight}" BorderColor="White" 
                                              Placeholder="{translator:Translate AproxWeight}" 
                                              Style="{StaticResource EntryStyle}" 
-                                             TextColor="{StaticResource EntryTextColor}" FontSize="Small"
+                                             TextColor="{StaticResource EntryTextColor}" 
                                              MaxLength="6" Keyboard="Numeric"    
                                              PlaceholderColor="{StaticResource EntryTextColor}">
                     </CustomControl:CustomEntry>
@@ -139,15 +139,15 @@
                                              Text="{Binding ItemValue}" BorderColor="White" 
                                              Placeholder="{translator:Translate ProductValue}" 
                                              Style="{StaticResource EntryStyle}" 
-                                             TextColor="{StaticResource EntryTextColor}" FontSize="Small"
+                                             TextColor="{StaticResource EntryTextColor}" 
                                              MaxLength="6" Keyboard="Numeric"    
                                              PlaceholderColor="{StaticResource EntryTextColor}">                                         
                   </CustomControl:CustomEntry >
                  <CustomControl:CustomPicker x:Name="PickerCat" 
                       ItemsSource="{Binding LstItemCategories}"
                      TextColor="{StaticResource EntryTextColor}" 
-                     TitleColor="{StaticResource EntryTextColor}" FontSize="Small"
-                     SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                     TitleColor="{StaticResource EntryTextColor}" 
+                     SelectedItem="{Binding SelectedItem, Mode=TwoWay}" Style="{StaticResource PickerStyle}"
                      ItemDisplayBinding="{Binding Description}"                       
                      Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand"
                      HeightRequest="40" 
@@ -192,8 +192,8 @@
                 <CustomControl:CustomDatePicker x:Name="PickArrival" 
                       
                      TextColor="{StaticResource EntryTextColor}" 
-                     Date="{Binding SelectedArrivalDate, Mode=TwoWay}" FontSize="Small"
-                     BorderColor="White" MinimumDate="{Binding MinDate}" 
+                     Date="{Binding SelectedArrivalDate, Mode=TwoWay}" 
+                     BorderColor="White" MinimumDate="{Binding MinDate}" Style="{StaticResource PickerStyle}"
                      Format="dd/MM/yyyy"                     
                      Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand"
                      VerticalOptions="Center"
@@ -214,9 +214,9 @@
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
                     <CheckBox x:Name="Open" VerticalOptions="Center"  CheckedChanged="Handle_CheckedChanged"  Grid.Column="0" Grid.Row="0" ></CheckBox>
-                    <Label Text="{translator:Translate OpenDate}" HorizontalOptions="Center" VerticalOptions="Center"  TextColor="DarkGray" FontSize="Small" Grid.Row="0" Grid.Column="1"/>
+                    <Label Text="{translator:Translate OpenDate}" HorizontalOptions="Center" VerticalOptions="Center"  TextColor="DarkGray"  Grid.Row="0" Grid.Column="1"/>
                     <CheckBox x:Name="Range" VerticalOptions="Center"  CheckedChanged="Handle_CheckedChanged_1" Grid.Column="0" Grid.Row="1"  ></CheckBox>
-                            <Label Text="{translator:Translate rangedays}" HorizontalOptions="Center" VerticalOptions="Center"  TextColor="DarkGray" FontSize="Small" Grid.Row="1" Grid.Column="1"/>
+                            <Label Text="{translator:Translate rangedays}" HorizontalOptions="Center" VerticalOptions="Center"  TextColor="DarkGray"  Grid.Row="1" Grid.Column="1"/>
 
                             </Grid>
                         </StackLayout>

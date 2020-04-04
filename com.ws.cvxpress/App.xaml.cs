@@ -11,6 +11,7 @@ using com.ws.cvxpress.Models;
 using com.ws.cvxpress.Services;
 using com.ws.cvxpress.ViewModels;
 using com.ws.cvxpress.Views;
+using com.ws.cvxpress.Views.Admin;
 using com.ws.cvxpress.Views.Operation;
 using com.ws.cvxpress.Views.Start;
 using Microsoft.AppCenter;
@@ -41,6 +42,8 @@ namespace com.ws.cvxpress
 
         public string  redirectTo { get; set;  }
 
+        public static bool TurnTraveler;
+
         public App() {  Notified = "False"; }
 
         public static byte[] CroppedImage;
@@ -65,8 +68,8 @@ namespace com.ws.cvxpress
                 Application.Current.Properties["Goto"] = "";
 
             }
-         
-         
+
+            //Device.SetFlags(new string[] { "MediaElement_Experimental" });
 
 
             Profile profile = DatabaseHelper.GetProfile(Os_Folder);
@@ -221,7 +224,8 @@ namespace com.ws.cvxpress
 
                     }
                     else
-                        MainPage = new MainPage();
+                       // MainPage = new NewsPage();
+                    MainPage = new MainPage();
                 } else {
 
                     MainPage = new VerifyPage();
@@ -340,7 +344,7 @@ namespace com.ws.cvxpress
                 if (ConfDateFromWs.Count > 0)
                 {
                     string DateFromWebService = ConfDateFromWs.Where(x => x.Name == Constants.UpdateCatalog).First().Value;
-
+                 
                     string strDatabaseDate = "";
 
                     if (lstSetting == null) lstSetting = new List<App_Con>();
@@ -390,6 +394,8 @@ namespace com.ws.cvxpress
 
                         }
 
+                        
+
                         // Delete UserTypes, UserDelivery, UserCategories
                         DatabaseHelper.Delete(ref nSetting, Os_Folder, "Categories", "");
 
@@ -400,6 +406,8 @@ namespace com.ws.cvxpress
                         DatabaseHelper.Delete(ref nSetting, Os_Folder, "CollectTypes", "");
 
                         DatabaseHelper.Delete(ref nSetting, Os_Folder, "Countries", "");
+
+                        
 
                         ObservableCollection<Categories> oc_Categories = await apiService.getCategoriesAsync();
 

@@ -25,11 +25,11 @@
         </StackLayout>
         <ScrollView Grid.Row="1">
             <StackLayout Orientation="Vertical" Padding="16,40,16,40" Spacing="10">
-                <Label FontSize="22">
+                <Label HorizontalOptions="Center">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="FlightBox," TextColor="Gray" FontAttributes="Bold" FontSize="20" />
+                                <Span Text="FlightBox," TextColor="Gray" FontAttributes="Bold" FontSize="Small" />
                                 <Span TextColor="Gray" Text=" La comunidad de viajeros y compradores," />
                                 <Span TextColor="Gray" Text="donde todos ganan" />
                                 <Span  TextColor="Gray" Text="" ForegroundColor="{StaticResource LightTextColor}" />

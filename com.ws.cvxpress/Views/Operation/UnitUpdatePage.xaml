@@ -2,13 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
-             BackgroundColor="{StaticResource DeviceStateTriggerPageStyle}"
+             BackgroundColor="{StaticResource DarkBackgroundColor}"
               xmlns:CustomControl="clr-namespace:com.ws.cvxpress.Custom"
              x:Class="com.ws.cvxpress.Views.Operation.UnitUpdatePage">
    
   <ContentPage.Content>
         
-          <StackLayout Padding="0,5,0,0" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+          <StackLayout Padding="0,5,0,10" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
             
          
@@ -27,6 +27,7 @@
                 </Grid.ColumnDefinitions>   
                 <Grid.RowDefinitions>
                  <RowDefinition Height="2*"/>
+                 <RowDefinition Height="*"/>
                  <RowDefinition Height="*"/>
                  <RowDefinition Height="*"/>
                  <RowDefinition Height="*"/>
@@ -57,7 +58,7 @@
                                 Grid.Row="0" Grid.Column="1"   /> 
                     
                   <!--  <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{translator:Translate UnitUpdate}" HorizontalTextAlignment="Center" HorizontalOptions="Center"  FontSize="Medium"/>
-                   <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{translator:Translate TravelUnitRequest}" HorizontalTextAlignment="Center" HorizontalOptions="Center"  FontSize="Small"/>
+                   <Label Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{translator:Translate TravelUnitRequest}" HorizontalTextAlignment="Center" HorizontalOptions="Center"  />
                    -->
                  </Grid>
                 
@@ -73,9 +74,9 @@
                 <Label x:Name="to" Grid.Row="2" Grid.Column="3" TextColor="{StaticResource LabelTextColorRed}" Grid.ColumnSpan="3"/>
                 <Label Text="{Binding DateFrom,Mode=OneTime, StringFormat={StaticResource formatdatenotime}}" LineBreakMode="WordWrap" Grid.Row="3" Grid.Column="3" TextColor="{StaticResource LabelTextColorRed}"/>
                 <Label  Text="{Binding DateTo,Mode=OneTime, StringFormat={StaticResource formatdatenotime}}" LineBreakMode="WordWrap" Grid.Row="4" Grid.Column="3" TextColor="{StaticResource LabelTextColorRed}"/>
-                <Label x:Name="article" Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="3" TextColor="{StaticResource LabelTextColorRed}"/>
+                <Label x:Name="article" Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="3" TextColor="{StaticResource LabelTextColorRed}"/>
                 
-                <Frame Grid.Row="5" Grid.Column="1" CornerRadius="5" Grid.ColumnSpan="5" BackgroundColor="{StaticResource DarkBackgroundColor2}" >
+                <Frame Grid.Row="6" Grid.Column="1" CornerRadius="5" Grid.ColumnSpan="5" BackgroundColor="{StaticResource DarkBackgroundColor2}" >
                     
                     <Grid>
                         <Grid.RowDefinitions>
@@ -94,11 +95,11 @@
                         <Label Text="{translator:Translate Kilos}" TextColor="White" Grid.Row="1" Grid.Column="0" />
                          <CustomControl:CustomEntry Grid.Row="1"  Grid.Column="1" 
                                                     x:Name="NewWeigth" 
-                                                    Text="{Binding NewWeight}" 
+                                                    Text="{Binding NewWeight,Mode=TwoWay}" 
                                                     Style="{StaticResource EntryStyle}"
                                                     BorderColor="White"
                                                     TextColor="White" 
-                                                    MaxLength="4"     FontSize="Small"
+                                                    MaxLength="4"     
                                                     PlaceholderColor="White">
                                
                                      
@@ -108,7 +109,7 @@
                          <Label Text="{translator:Translate Price}" TextColor="White" Grid.Row="1" Grid.Column="2" />
                          <CustomControl:CustomEntry Grid.Row="1" BorderColor="White"  Grid.Column="3" 
                                                     x:Name="NewPrice" 
-                                                    Text="{Binding NewPrice}" FontSize="Small"
+                                                    Text="{Binding NewPrice,Mode=TwoWay}" 
                                                     Style="{StaticResource EntryStyle}" 
                                                     TextColor="White" 
                                                     MaxLength="4"   
@@ -122,13 +123,13 @@
                     
                 </Frame>
 
-                 <Label Text="{Binding TravelState}" HorizontalOptions="Center" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="5"/>
+                 <Label Text="{Binding TravelState}" HorizontalOptions="Center" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="5"/>
              
                
               
                    
                      
-                    <Frame CornerRadius="5" x:Name="frame4" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="5"  BackgroundColor="Transparent" BorderColor="{Binding bColor4}">
+                    <Frame CornerRadius="5" x:Name="frame4" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="5"  BackgroundColor="Transparent" BorderColor="{Binding bColor4}">
                     <Grid>
                         
                         <Grid.ColumnDefinitions>
@@ -145,7 +146,7 @@
                 
               
                 
-                <Button x:Name="UpdateBoton" Text="{translator:Translate Update}" Clicked="Handle_Clicked_1" Grid.Row="8" Style="{StaticResource buttonStyle}" Grid.Column="1" Grid.ColumnSpan="5"/>
+                <Button x:Name="UpdateBoton" Text="{translator:Translate Update}" Clicked="Handle_Clicked_1" Grid.Row="9" Style="{StaticResource buttonStyle}" Grid.Column="1" Grid.ColumnSpan="5"/>
             </Grid>
             
             

@@ -81,6 +81,11 @@ namespace com.ws.cvxpress.Classes
 
         public static string LoginUserURL = ServerUrl + "api/Users/?id=";
 
+
+        public static string NewsURL = ServerUrl + "api/News/";
+
+
+
         public static string FB = ServerUrl + "Facebook";
 
         public static string LC = ServerUrl + "AppLogin";
@@ -98,7 +103,7 @@ namespace com.ws.cvxpress.Classes
         public static string ForIdPics = "ForIdPics";
         public static string ForProductPic = "ForProductPic";
         public static string ForIdTrav = "ForIdTrav";
-
+        public static string TurnTravelerProfile = "TravelersProfile";
 
         public static string Tspecs = "Tspecs";
         public static string Sspecs = "Sspecs";
@@ -172,6 +177,6 @@ namespace com.ws.cvxpress.Classes
         public const string OPID = "mbptidetnpln150cvh0q";
         public const string OPSandBoxRoute = "https://sandbox-api.openpay.mx/v1/";
 
-       
+      
     }
 }

@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Linq;
 
 namespace com.ws.cvxpress.Views
 {
@@ -24,20 +25,31 @@ namespace com.ws.cvxpress.Views
         public MenuPage()
         {
             InitializeComponent();
-           
+
             BindingContext = viewModel = new MenuPageViewModel();
             List<App_Con> lstConf = DatabaseHelper.getConfiguration(App.Os_Folder);
             Profile profile = DatabaseHelper.GetProfile(App.Os_Folder);
+            string ProfileState = lstConf.Where(x => x.Name == Constants.TurnTravelerProfile).First().Value;
+            App.TurnTraveler = (ProfileState == "OFF") ? false : true;
+
             UserEmail.Text = profile.Email;
 
             bool Admin = false;
 
-          
 
 
-            App_Con isUserAdmin = lstConf.Find(x => x.Name == "EmailAdmin" && x.Value == profile.Email.Trim() );
 
-            if (isUserAdmin != null) Admin = true;
+            App_Con isUserAdmin = lstConf.Find(x => x.Name == "EmailAdmin" && x.Value == profile.Email.Trim());
+
+            if (isUserAdmin != null)
+            {
+                Admin = true;
+                Toggle.IsVisible = Admin;
+            }
+            else
+            {
+                if (App.TurnTraveler == false) Toggle.IsVisible = false; else Toggle.IsVisible = true;
+            }
 
             // if exists, loads the email to the form
             if (Application.Current.Properties.ContainsKey(Constants.UserType))
@@ -46,8 +58,8 @@ namespace com.ws.cvxpress.Views
                 pType = (string)Application.Current.Properties[Constants.UserType];
 
             }
-            if(pType == Constants.Traveler)
-             {
+            if (pType == Constants.Traveler)
+            {
                 Toggle.Checked = true;
 
                 viewModel.ItemList = new ObservableCollection<HomeMenuItem>
@@ -65,36 +77,36 @@ namespace com.ws.cvxpress.Views
 
                 if (Admin)
                 {
-                   
+
                     viewModel.ItemList.Add(new HomeMenuItem { Id = MenuItemType.GeneralInfo, Title = Translator.getText("AdminInfo"), Icon = "info.png" });
                 }
 
 
             }
-            else 
+            else
             {
                 Toggle.Checked = false;
-                viewModel.ItemList = new ObservableCollection<HomeMenuItem> 
+                viewModel.ItemList = new ObservableCollection<HomeMenuItem>
                 {
                     new HomeMenuItem {Id = MenuItemType.MyProfile, Title= Translator.getText("MyProfile"), Icon = "profile.png" },
                     new HomeMenuItem {Id = MenuItemType.RequestBox, Title=Translator.getText("RequestBox"), Icon = "results.png" },
                     new HomeMenuItem {Id = MenuItemType.ListRequestBox, Title=Translator.getText("MyRequests"), Icon = "results.png" },
-                   
+
                     new HomeMenuItem {Id = MenuItemType.Contact, Title=Translator.getText("Contact"), Icon = "contact.png" },
                     new HomeMenuItem {Id = MenuItemType.Prererences, Title=Translator.getText("Settings"), Icon = "preferences.png" },
 
                     new HomeMenuItem {Id = MenuItemType.AboutPage, Title=Translator.getText("AboutPage"), Icon = "nos.png" },
                     new HomeMenuItem {Id = MenuItemType.Logout, Title=Translator.getText("Logout"), Icon = "salir.png" }
-                
+
                 };
                 if (Admin)
                 {
-                   
+
                     viewModel.ItemList.Add(new HomeMenuItem { Id = MenuItemType.GeneralInfo, Title = Translator.getText("AdminInfo"), Icon = "info.png" });
                 }
                 else
                 {
-                   
+
                 }
 
             }
@@ -105,13 +117,13 @@ namespace com.ws.cvxpress.Views
             {
                 if (e.SelectedItem == null)
                     return;
-              
+
                 var id = (int)((HomeMenuItem)e.SelectedItem).Id;
                 await RootPage.NavigateFromMenu(id);
             };
 
             lb_signupFunc();
-           
+
             void lb_signupFunc()
             {
                 try
@@ -135,7 +147,7 @@ namespace com.ws.cvxpress.Views
                                     {
                                         await Wait();
                                     }
-                                        Application.Current.MainPage = new MainPage();
+                                    Application.Current.MainPage = new MainPage();
                                 }
                                 else
                                 {
@@ -154,7 +166,7 @@ namespace com.ws.cvxpress.Views
                                     Toggle.Checked = true;
                                     using (UserDialogs.Instance.Loading(Translator.getText("LoadingProfile"), null, null, true, MaskType.Clear))
                                     {
-                                       await Wait();
+                                        await Wait();
                                     }
                                     Application.Current.MainPage = new MainPage();
                                 }
@@ -163,7 +175,7 @@ namespace com.ws.cvxpress.Views
                                     Toggle.Checked = false;
                                 }
                             }
-                           
+
 
                         }
                             )
@@ -173,19 +185,19 @@ namespace com.ws.cvxpress.Views
             }
         }
 
-        async void  Handle_Tapped(object sender, System.EventArgs e)
+        async void Handle_Tapped(object sender, System.EventArgs e)
         {
             BackgroundColor = Color.Orange; //touch color
             await Task.Delay(250);          //time to show new color
             BackgroundColor = Color.Red;
         }
 
-        private async  Task Wait()
+        private async Task Wait()
         {
             await Task.Delay(1000);
 
-         
+
         }
-      
+
     }
 }

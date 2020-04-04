@@ -23,7 +23,22 @@ namespace com.ws.cvxpress.Views.RegisterA
 
             PickerDeparture.ItemsSource = viewModel.LstitemCountries;
 
+          
+
             PickerArrival.ItemsSource = viewModel.LstitemCountriesTo;
+
+            #region Phase I Comment Later for public use
+
+            PickerDeparture.SelectedIndex = 0;
+
+            PickerArrival.SelectedIndex = 1;
+
+            PickerDeparture.IsEnabled = false;
+
+            PickerArrival.IsEnabled = false;
+
+            #endregion
+
 
             viewModel.DisplayInvalidTravelObject += async () => {
 

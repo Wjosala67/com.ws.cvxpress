@@ -111,7 +111,8 @@ namespace com.ws.cvxpress.Views.Operation
                     FirstName.Text = viewModel.FirstName;
                     //LastName.Text = viewModel.LastName;
                     ImageURL.Source = viewModel.Image;
-                    txt_auth.Text = Translator.getText("autorizecharge").Replace("{0}",(idInfo.Commission + idInfo.ProductValue).ToString()).Replace("{1}",App.strCurrency);
+                    txt_auth.Text = (IdInfo.Long == 1) ? Translator.getText("autorizechargechanged").Replace("{0}", (idInfo.Commission + idInfo.ProductValue).ToString()).Replace("{1}", App.strCurrency) : Translator.getText("autorizecharge").Replace("{0}", (idInfo.Commission + idInfo.ProductValue).ToString()).Replace("{1}", App.strCurrency);
+                    
                     //rowOne.Height = new GridLength(3, GridUnitType.Star);
                     //rowTwo.Height = new GridLength(2, GridUnitType.Star);
                 }

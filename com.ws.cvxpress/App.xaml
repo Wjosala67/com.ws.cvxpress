@@ -88,6 +88,11 @@
                 
             </Style>
 
+             <Style TargetType="SearchBar">
+                 <Setter Property="FontSize" Value="Caption"/>
+                
+            </Style>
+            
           
              <!-- Button Style -->
             <Style x:Key="buttonStyle" TargetType="Button">
@@ -98,7 +103,7 @@
                 <Setter Property="BackgroundColor" Value="{StaticResource ButtonGeneral}" />
                 <Setter Property="WidthRequest" Value="200" />
                 <Setter Property="TextColor" Value="{StaticResource ButtonTextColor}" />
-                <Setter Property="FontSize" Value="Small"/>
+                <Setter Property="FontSize" Value="Caption"/>
                <!-- <Setter Property="FontFamily" >
                 <OnPlatform x:TypeArguments="x:String">
                     <On Platform="iOS" Value="ThrowMyHandsUpintheAir" />
@@ -118,7 +123,7 @@
                 <Setter Property="BackgroundColor" Value="Transparent" />
                 <Setter Property="WidthRequest" Value="300" />
                 <Setter Property="TextColor" Value="{StaticResource ButtonTextColor}" />
-                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontSize" Value="Caption"/>
                <!-- <Setter Property="FontFamily" >
                 <OnPlatform x:TypeArguments="x:String">
                     <On Platform="iOS" Value="ThrowMyHandsUpintheAir" />
@@ -134,7 +139,7 @@
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource LabelTextColorDBGeneral}"/>
                 <Setter Property="VerticalOptions" Value="Center" />
-                
+                <Setter Property="FontSize" Value="Caption"/>
                <!-- <Setter Property="FontFamily" >
                     <OnPlatform x:TypeArguments="x:String">
                         <On Platform="iOS" Value="ThrowMyHandsUpintheAir" />
@@ -148,6 +153,7 @@
              <!-- Editor Style -->
             <Style TargetType="Editor">
                 <Setter Property="TextColor" Value="{StaticResource LabelTextColorGeneral}"/>
+                <Setter Property="FontSize" Value="Caption"/>
                <!-- <Setter Property="FontFamily" >
                     <OnPlatform x:TypeArguments="x:String">
                         <On Platform="iOS" Value="ThrowMyHandsUpintheAir" />
@@ -163,7 +169,7 @@
                 <Setter Property="PlaceholderColor" Value="{StaticResource LabelTextColorGeneral}"/>
                 <Setter Property="HeightRequest" Value="43"/>
                 <Setter Property="WidthRequest" Value="300"/>
-                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontSize" Value="Caption"/>
                <!-- <Setter Property="FontFamily" >
                     <OnPlatform x:TypeArguments="x:String">
                         <On Platform="iOS" Value="ThrowMyHandsUpintheAir" />
@@ -175,11 +181,11 @@
 
             <!-- PickerStyle Style -->
             <Style x:Key="PickerStyle" TargetType="Picker">
-                <Setter Property="TextColor" Value="{StaticResource LabelTextColorGeneral}"/>
+                <Setter Property="TextColor" Value="{StaticResource LabelTextColorWhite}"/>
                 <Setter Property="BackgroundColor" Value="Transparent"/>
                 <Setter Property="HeightRequest" Value="43"/>
                 <Setter Property="WidthRequest" Value="300"/>
-                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontSize" Value="Caption"/>
                 <!--<Setter Property="FontFamily" >
                     <OnPlatform x:TypeArguments="x:String">
                         <On Platform="iOS" Value="ThrowMyHandsUpintheAir" />
@@ -215,7 +221,7 @@
             <!-- PickerTextStyle Style -->
             <Style x:Key="PickerTextStyle"  TargetType="Picker">
                 <Setter Property="TextColor" Value="{StaticResource FrameTextColor}"/>
-                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="FontSize" Value="Caption"/>
                <!-- <Setter Property="FontFamily" >
                     <OnPlatform x:TypeArguments="x:String">
                         <On Platform="iOS" Value="ThrowMyHandsUpintheAir" />
@@ -225,9 +231,24 @@
                 </Setter>-->
             </Style>
 
+
+
             <!--CONTENT PAGE-->
 
-            <Style x:Key="DeviceStateTriggerPageStyle"
+            <Style TargetType="ContentPage">
+               <Setter Property="BackgroundColor" Value="{StaticResource DarkBackgroundColor}"/>
+                
+               <!-- <Setter Property="FontFamily" >
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="ThrowMyHandsUpintheAir" />
+                        <On Platform="Android" Value="RegencieLight.ttf#RegencieLight" />
+
+                    </OnPlatform>
+                </Setter>-->
+            </Style>
+
+
+            <!--<Style x:Key="DarkBackgroundColor"
        TargetType="ContentPage">
     <Setter Property="VisualStateManager.VisualStateGroups">
         <VisualStateGroupList>
@@ -262,7 +283,7 @@
             </VisualStateGroup>
         </VisualStateGroupList>
     </Setter>
-</Style>
+</Style>-->
 
 
             <converters:InverseBooleanConverter x:Key="InverseBoolConverter"/>

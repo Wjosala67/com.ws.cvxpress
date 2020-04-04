@@ -29,18 +29,18 @@
         <!--<Entry Grid.Row="2" Grid.ColumnSpan="2" FontSize="Small" Placeholder="Comentarios" />
               -->  
        <CustomControl:CustomEntry  x:Name="Coments"
-                    Grid.Row="2" Grid.ColumnSpan="2" BorderColor="{StaticResource DeviceStateTriggerPageStyle}" 
+                    Grid.Row="2" Grid.ColumnSpan="2" BorderColor="{StaticResource DarkBackgroundColor}" 
                     Text="" Style="{StaticResource EntryStyle}" FontSize="Small"
                     MaxLength="60" Placeholder="{translator:Translate Comments}" 
-                    PlaceholderColor="{StaticResource DeviceStateTriggerPageStyle}" Keyboard="Default"  >
+                    PlaceholderColor="{StaticResource DarkBackgroundColor}" Keyboard="Default"  >
            <Entry.Behaviors>
              <MyViews:EmailValidatorBehavior min="6" max="30" />                 
            </Entry.Behaviors>
        </CustomControl:CustomEntry>
-       <Label Text="{translator:Translate Departure}" Grid.Row="3" FontSize="Small" TextColor="{StaticResource DeviceStateTriggerPageStyle}" Grid.Column="0" Grid.ColumnSpan="2"/>
+       <Label Text="{translator:Translate Departure}" Grid.Row="3" FontSize="Small" TextColor="{StaticResource DarkBackgroundColor}" Grid.Column="0" Grid.ColumnSpan="2"/>
        <CustomControl:CustomDatePicker x:Name="PickDeparture" 
                       
-                     TextColor="{StaticResource DeviceStateTriggerPageStyle}" 
+                     TextColor="{StaticResource DarkBackgroundColor}" 
                      FontSize="Small"
                     
                     
@@ -54,7 +54,7 @@
                
        <CustomControl:CustomTimePicker x:Name="PickDepartureTime" 
                       
-                     TextColor="{StaticResource DeviceStateTriggerPageStyle}" 
+                     TextColor="{StaticResource DarkBackgroundColor}" 
                      Time="{Binding TimeArrival, Mode=TwoWay}"
                      FontSize="Small"
                      
@@ -66,10 +66,10 @@
                       
                  </CustomControl:CustomTimePicker>         
                 
-        <Label Text="{translator:Translate Arrival}" Grid.Row="5" FontSize="Small" TextColor="{StaticResource DeviceStateTriggerPageStyle}" Grid.Column="0" Grid.ColumnSpan="2"/>
+        <Label Text="{translator:Translate Arrival}" Grid.Row="5" FontSize="Small" TextColor="{StaticResource DarkBackgroundColor}" Grid.Column="0" Grid.ColumnSpan="2"/>
        <CustomControl:CustomDatePicker x:Name="PickArrival" 
                       
-                     TextColor="{StaticResource DeviceStateTriggerPageStyle}" 
+                     TextColor="{StaticResource DarkBackgroundColor}" 
                      FontSize="Small"
                     
                      MinimumDate="{Binding ToDate, Path=Date, Mode=TwoWay}"
@@ -83,7 +83,7 @@
                
        <CustomControl:CustomTimePicker x:Name="PickArrivalTime" 
                       
-                     TextColor="{StaticResource DeviceStateTriggerPageStyle}" 
+                     TextColor="{StaticResource DarkBackgroundColor}" 
                      Time="{Binding TimeArrival, Mode=TwoWay}"
                      
                      FontSize="Small"

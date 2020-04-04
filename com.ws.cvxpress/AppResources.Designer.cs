@@ -509,6 +509,12 @@ namespace com.ws.cvxpress {
             }
         }
         
+        internal static string LoadingNew {
+            get {
+                return ResourceManager.GetString("LoadingNew", resourceCulture);
+            }
+        }
+        
         internal static string Weight {
             get {
                 return ResourceManager.GetString("Weight", resourceCulture);
@@ -530,6 +536,12 @@ namespace com.ws.cvxpress {
         internal static string autorizecharge {
             get {
                 return ResourceManager.GetString("autorizecharge", resourceCulture);
+            }
+        }
+        
+        internal static string autorizechargechanged {
+            get {
+                return ResourceManager.GetString("autorizechargechanged", resourceCulture);
             }
         }
         
@@ -1118,6 +1130,12 @@ namespace com.ws.cvxpress {
         internal static string PrefArrival {
             get {
                 return ResourceManager.GetString("PrefArrival", resourceCulture);
+            }
+        }
+        
+        internal static string PrefArrival1 {
+            get {
+                return ResourceManager.GetString("PrefArrival1", resourceCulture);
             }
         }
         

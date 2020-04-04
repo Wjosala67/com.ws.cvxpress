@@ -62,12 +62,12 @@
                 
                  <CustomControl:CustomPicker x:Name="PickerDeparture" 
                       
-                     TextColor="{StaticResource EntryTextColor}" 
+                    
                      TitleColor="{StaticResource EntryTextColor}" 
                      SelectedItem="{Binding SelectedCountry, Mode=TwoWay}"
                      ItemDisplayBinding="{Binding CountryName}"                       
                      Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2"
-                     HorizontalOptions="FillAndExpand" FontSize="Small"
+                     HorizontalOptions="FillAndExpand" Style="{StaticResource PickerStyle}"
                      HeightRequest="50" 
                      Image="takeoff"
                      Title="{translator:Translate From}">
@@ -76,12 +76,12 @@
                 
                  <CustomControl:CustomPicker x:Name="PickerArrival" 
                       
-                     TextColor="{StaticResource EntryTextColor}" 
+                   
                      TitleColor="{StaticResource EntryTextColor}" 
                      SelectedItem="{Binding SelectedCountryTo, Mode=TwoWay}"
                      ItemDisplayBinding="{Binding CountryName}"   PropertyChanged="Handle_PropertyChanged"                     
                      Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"
-                     HorizontalOptions="FillAndExpand" FontSize="Small"
+                     HorizontalOptions="FillAndExpand" Style="{StaticResource PickerStyle}"
                      HeightRequest="50" 
                      Image="landing"
                      Title="{translator:Translate To}">
@@ -91,9 +91,9 @@
                  <Label Text="{translator:Translate Departure}" TextColor="{StaticResource EntryTextColor}"  Grid.Row="3" Grid.Column="1"  />
                  <CustomControl:CustomDatePicker x:Name="PickDeparture" 
                       
-                     TextColor="{StaticResource EntryTextColor}"  
+                    
                      Date="{Binding SelectedDepartureDate, Mode=TwoWay}" MinimumDate="{Binding MinDate}" 
-                     Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" FontSize="Small"
+                     Grid.Row="4" Grid.Column="1" HorizontalOptions="FillAndExpand" Style="{StaticResource PickerStyle}"
                      Format="dd/MM/yyyy"  BorderColor="White"
                      HeightRequest="50" 
                      Image="calendar">
@@ -102,9 +102,9 @@
                 
                 <CustomControl:CustomTimePicker x:Name="PickDepartureTime" 
                       
-                     TextColor="{StaticResource EntryTextColor}"  
+                     
                      Time="{Binding TimeDeparture, Mode=TwoWay}" 
-                     Grid.Row="4" Grid.Column="2" HorizontalOptions="FillAndExpand" FontSize="Small"
+                     Grid.Row="4" Grid.Column="2" HorizontalOptions="FillAndExpand" Style="{StaticResource PickerStyle}"
                       BorderColor="White"
                      HeightRequest="50" 
                      Image="clock">
@@ -115,12 +115,12 @@
                   
                 <CustomControl:CustomDatePicker x:Name="PickArrival" 
                       
-                     TextColor="{StaticResource EntryTextColor}" 
-                      BorderColor="White"
+                   
+                     BorderColor="White"
                      MinimumDate="{Binding Source={x:Reference PickDeparture}, Path=Date, Mode=TwoWay}"
                      Date="{Binding SelectedArrivalDate, Mode=TwoWay}" 
                      Format="dd/MM/yyyy"                    
-                     Grid.Row="6" Grid.Column="1" HorizontalOptions="FillAndExpand" FontSize="Small"
+                     Grid.Row="6" Grid.Column="1" HorizontalOptions="FillAndExpand" Style="{StaticResource PickerStyle}"
                      HeightRequest="50" 
                      Image="calendar"
                      >
@@ -129,12 +129,12 @@
                
                 <CustomControl:CustomTimePicker x:Name="PickArrivalTime" 
                       
-                     TextColor="{StaticResource EntryTextColor}" 
+                    
                      Time="{Binding TimeArrival, Mode=TwoWay}"
                      BorderColor="White"
                      
                                      
-                     Grid.Row="6" Grid.Column="2" HorizontalOptions="FillAndExpand" FontSize="Small"
+                     Grid.Row="6" Grid.Column="2" HorizontalOptions="FillAndExpand" Style="{StaticResource PickerStyle}"
                      HeightRequest="50" 
                      Image="clock"
                      >
@@ -153,12 +153,12 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                <!-- <ImageButton x:Name="Definitions" BackgroundColor="Transparent" HorizontalOptions="Center" Clicked="Handle_Clicked" HeightRequest="50" VerticalOptions="Center"    Grid.Column="0"  Grid.Row="0" Source="redlist.png"/> -->
-                 <Label Text="{translator:Translate WeightAvail2}" Grid.Column="0" FontSize="Small" HorizontalOptions="Center" VerticalOptions="Center"  Grid.Row="0" />
+                 <Label Text="{translator:Translate WeightAvail2}" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center"  Grid.Row="0" />
                  <CustomControl:CustomEntry x:Name="E_ItemFind" 
                                              Grid.Row="0"  Grid.Column="1" Grid.ColumnSpan="1"
                                              Text="{Binding Weight}" BorderColor="White" 
-                                             Placeholder="0.0" 
-                                             Style="{StaticResource EntryStyle}" FontSize="Small"
+                                             Placeholder="0" 
+                                             Style="{StaticResource EntryStyle}" 
                                              TextColor="{StaticResource EntryTextColor}" 
                                              MaxLength="60"    Keyboard="Numeric"
                                              PlaceholderColor="{StaticResource EntryTextColor}">                                         

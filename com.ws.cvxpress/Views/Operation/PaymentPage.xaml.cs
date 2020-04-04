@@ -30,7 +30,7 @@ namespace com.ws.cvxpress.Views.Operation
             RequestSpecs = requestSpecs;
 
             string txtAmount = (requestSpecs.ProductValue + requestSpecs.Commission).ToString() + App.strCurrency;
-            AmountPay.Text =string.Concat(Translator.getText("NoChargeYet"), " ", Translator.getText("InThatMoment").Replace("{0}", txtAmount));
+            AmountPay.Text = Translator.getText("NoChargeYet");
 
             ObservableCollection<Countries>  lstcountry = DatabaseHelper.getCountries(App.Os_Folder);
 

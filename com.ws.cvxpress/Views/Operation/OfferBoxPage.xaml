@@ -8,9 +8,7 @@
         
              x:Class="com.ws.cvxpress.Views.Operation.OfferBoxPage">
   
-   
-    
-     <StackLayout Padding="20,0,20,20" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+   <StackLayout Padding="20,0,20,20" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
             <BoxView HeightRequest="1"/>
 
             <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
@@ -29,7 +27,7 @@
                 </Grid.ColumnDefinitions>
                 
 <!--                <Label TextColor="{StaticResource LabelTextWhenLightBack}" Grid.Row="0"  Text="{translator:Translate TravelerPresentation}" FontSize="Medium"  HorizontalTextAlignment="Center" />-->
-                <Label TextColor="{StaticResource LabelTextWhenLightBack}" Grid.Row="1"  Text="{translator:Translate TravelerInstructions}" FontSize="Small" HorizontalTextAlignment="Center" />
+                <Label TextColor="{StaticResource LabelTextWhenLightBack}" Grid.Row="1"  Text="{translator:Translate TravelerInstructions}"  HorizontalTextAlignment="Center" />
                 <ScrollView Grid.Row="3">
                   <ListView x:Name="MyListView" RowHeight="200" 
                             SeparatorColor="White" 
@@ -64,22 +62,19 @@
                                         <Frame RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}" CornerRadius="5" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="2" Grid.Row="1" HasShadow="true" BackgroundColor="{StaticResource DarkBackgroundColor}">
                                               <Grid>
                                         <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="1"/>
+                                                <ColumnDefinition Width="10"/>
+                                                <ColumnDefinition Width="4*"/>
+                                                <ColumnDefinition Width="3*"/>
                                                 <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="*"/>
-
-                                                <ColumnDefinition Width="1"/>
-                                                
+                                                <ColumnDefinition Width="2*"/>
+                                                <ColumnDefinition Width="2*"/>
                                         </Grid.ColumnDefinitions>    
                                         <Grid.RowDefinitions>
-                                             <RowDefinition Height="20"/> 
-                                             <RowDefinition Height="2*"/> 
-                                             <RowDefinition Height="2*"/> 
-                                             <RowDefinition Height="2*"/> 
-                                             <RowDefinition Height="2*"/> 
-                                             <RowDefinition Height="2*"/> 
+                                             <RowDefinition Height="*"/>  
+                                             <RowDefinition Height="*"/> 
+                                             <RowDefinition Height="*"/> 
+                                             <RowDefinition Height="*"/> 
+                                             <RowDefinition Height="*"/> 
                                              <RowDefinition Height="*"/> 
                                              
                                             
@@ -87,10 +82,10 @@
                                      
                                       
                                        
-                                        <Grid
+                                       <Grid
                                                  Grid.Row="0" 
                                                  Grid.Column="1" 
-                                                 Grid.ColumnSpan="3" VerticalOptions="End" >  
+                                                 Grid.ColumnSpan="4" VerticalOptions="Center" >  
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="1"/>
                                                 </Grid.RowDefinitions>
@@ -99,21 +94,21 @@
                                                  WidthRequest="1" 
                                                  HeightRequest="0"/>
                                             </Grid>  
-                                        <Image Source="littleplane.png" HorizontalOptions="Start" Grid.Column="4" Grid.Row="0" Grid.RowSpan="2"/>
-                                        <Label Text="{translator:Translate From}" FontSize="Small"  Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"/>
-                                        <Label  Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="3"  Text="{Binding travelerSpecs.CountryCodeFrom, Mode= OneTime}" FontSize="Small" TextColor="{StaticResource LabelTextColorRed}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
+                                        <Image Source="littleplane.png" HorizontalOptions="Start" Grid.Column="5" Grid.Row="0" Grid.RowSpan="1"/>
+                                        <Label Text="{translator:Translate From}"   Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"/>
+                                        <Label  Grid.Column="3" Grid.Row="1" Grid.ColumnSpan="3"  Text="{Binding travelerSpecs.CountryCodeFrom, Mode= OneTime}"  TextColor="{StaticResource LabelTextColorRed}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
                                         
-                                        <Label Text="{translator:Translate To}" FontSize="Small"   Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2"/>
-                                        <Label  Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="3"  Text="{Binding travelerSpecs.CountryCodeTo, Mode= OneTime}" FontSize="Small" TextColor="{StaticResource LabelTextColorRed}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                        <Label Text="{translator:Translate To}"    Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2"/>
+                                        <Label  Grid.Column="3" Grid.Row="2" Grid.ColumnSpan="3"  Text="{Binding travelerSpecs.CountryCodeTo, Mode= OneTime}"  TextColor="{StaticResource LabelTextColorRed}" HorizontalOptions="Start" VerticalOptions="Center" />
                                 
-                                        <Label Text="{translator:Translate Departure}"  FontSize="Small"  Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3"/>
-                                        <Label  Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="3" Text="{Binding travelerSpecs.FromDate, Mode= OneTime,StringFormat={StaticResource formatdate}}" FontSize="Small" TextColor="{StaticResource LabelTextColorRed}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
+                                        <Label Text="{translator:Translate Departure}"    Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3"/>
+                                        <Label  Grid.Column="3" Grid.Row="3" Grid.ColumnSpan="3" Text="{Binding travelerSpecs.FromDate, Mode= OneTime,StringFormat={StaticResource formatdate}}"  TextColor="{StaticResource LabelTextColorRed}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
                                         
-                                        <Label Text="{translator:Translate Arrival}"  FontSize="Small"  Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4"/>
-                                        <Label  Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="3"  Text="{Binding travelerSpecs.ToDate, Mode= OneTime,StringFormat={StaticResource formatdate}}" FontSize="Small" TextColor="{StaticResource LabelTextColorRed}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
+                                        <Label Text="{translator:Translate Arrival}"    Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="4"/>
+                                        <Label  Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="3"  Text="{Binding travelerSpecs.ToDate, Mode= OneTime,StringFormat={StaticResource formatdate}}"  TextColor="{StaticResource LabelTextColorRed}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
                                         
-                                        <Label Text="{translator:Translate WeightAvailtravel}" FontSize="Small"  Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="5"/>
-                                        <Label  Grid.Column="4" Grid.Row="5"  Text="{Binding travelerSpecs.Capacity, Mode= OneTime}" FontSize="Small" TextColor="{StaticResource LabelTextColorRed}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
+                                        <Label Text="{translator:Translate WeightAvailtravel}"   Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="5"/>
+                                        <Label  Grid.Column="4" Grid.Row="5"  Text="{Binding travelerSpecs.Capacity, Mode= OneTime}"  TextColor="{StaticResource LabelTextColorRed}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
                                         
                                        
 <!--                                        <Image Grid.Row="1" Grid.Column="3" Grid.RowSpan="3"   Grid.ColumnSpan="4" Source="{Binding Image}"  Aspect="AspectFit"/>-->
@@ -155,4 +150,6 @@
                 </ScrollView>
             </Grid>
         </StackLayout>
+    
+   
 </ContentPage>

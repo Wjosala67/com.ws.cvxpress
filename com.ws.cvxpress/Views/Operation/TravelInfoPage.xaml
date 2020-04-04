@@ -7,7 +7,7 @@
              x:Class="com.ws.cvxpress.Views.Operation.TravelInfoPage"
              BackgroundColor="{StaticResource DarkBackgroundColor}">
     <ContentPage.Content>
-       <RelativeLayout>
+      <RelativeLayout>
           <StackLayout Padding="0,10,0,10"  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
             
@@ -78,7 +78,7 @@
                
                
                
-                <ListView x:Name="MyListView" RowHeight="160" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" 
+                <ListView x:Name="MyListView" RowHeight="180" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" 
                                                 ItemsSource="{Binding LstItemsShow}" 
                                                 ItemTapped="Handle_ItemTapped"
                                                 HasUnevenRows="true" 
@@ -90,16 +90,16 @@
                                         <!--Built in Cells-->
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
-                                                    <ViewCell Height="160" >
+                                                    <ViewCell Height="180" >
                                                         <ViewCell.View>
                                                         
                                                         <Grid >
                                                             <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="3*"/>
+                                                                    <ColumnDefinition Width="*"/>
                                                                     <ColumnDefinition Width="2*"/>
-                                                                    <ColumnDefinition Width="*"/>
-                                                                    <ColumnDefinition Width="AUTO"/>
-                                                                    <ColumnDefinition Width="AUTO"/>
-                                                                    <ColumnDefinition Width="*"/>
+                                                                    <ColumnDefinition Width="2*"/>
+                                                                    <ColumnDefinition Width="2*"/>
                                                             </Grid.ColumnDefinitions>    
                                                             <Grid.RowDefinitions>
                                                                  <RowDefinition Height="*"/>  
@@ -123,23 +123,23 @@
                                                             <Label Text="{translator:Translate FlexDelivery}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
                                                             <Label Text="{translator:Translate ItemFind}" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2"/>
                                             
-                                                            <Label Grid.Row="0"  Grid.Column="1" Grid.ColumnSpan="4" Text="{Binding Description, Mode= OneTime}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
-                                                            <Label Grid.Row="1"  Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding ProductValue, Mode= OneTime}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
-                                                            <Label Grid.Row="2"  Grid.Column="1" Text="{Binding Quantity, Mode= OneTime}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
-                                                            <Label Grid.Row="3"  Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding ToDate, Mode= OneTime, StringFormat={StaticResource formatdatenotime}}" FontSize="Small" TextColor="{StaticResource LightTextColor}"  />
-                                                            <Label Grid.Row="2"  Grid.Column="3" Text="{Binding Weight, Mode= OneTime}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                                            <Label Grid.Row="0"  Grid.Column="2" Grid.ColumnSpan="3" Text="{Binding Description, Mode= OneTime}"  TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                                            <Label Grid.Row="1"  Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding ProductValue, Mode= OneTime}"  TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                                            <Label Grid.Row="2"  Grid.Column="1" Text="{Binding Quantity, Mode= OneTime}"  TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                                            <Label Grid.Row="3"  Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding ToDate, Mode= OneTime, StringFormat={StaticResource formatdatenotime}}"  TextColor="{StaticResource LightTextColor}"  />
+                                                            <Label Grid.Row="2"  Grid.Column="3" Text="{Binding Weight, Mode= OneTime}"  TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
                                                             <Label Grid.Row="4"  Grid.Column="2" Text="{Binding Reward, Mode= OneTime}" 
-                                                                   FontSize="Small" 
+                                                                    
                                                                    TextColor="{StaticResource LightTextColor}" 
                                                                    HorizontalOptions="StartAndExpand" 
                                                                    VerticalOptions="Start" />
                                                             <Label Grid.Row="5"  Grid.Column="2" Text="{Binding Tolerance, Mode= OneTime}" 
-                                                                   FontSize="Small" 
+                                                                    
                                                                    TextColor="{StaticResource LightTextColor}" 
                                                                    HorizontalOptions="StartAndExpand" 
                                                                    VerticalOptions="Start" />
                                                             <Label Grid.Row="6"  Grid.Column="2" Text="{Binding FindWhere, Mode= OneTime}" 
-                                                                   FontSize="Small" 
+                                                                    
                                                                    TextColor="{StaticResource LightTextColor}" 
                                                                    HorizontalOptions="StartAndExpand" 
                                                                    VerticalOptions="Start" />
@@ -205,7 +205,7 @@
                <Image x:Name="openDrawer" HeightRequest="19" IsVisible="true" Source="opendrawerarrow.png" WidthRequest="50" HorizontalOptions="Center"/>
                 <SearchBar x:Name="SearchBox" IsEnabled="True"  BackgroundColor="LightGray" Focused="SearchBar_Focused" TextChanged="SearchBar_TextChanged"/>
                
-              <ListView x:Name="MyListView2"  RowHeight="170" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" 
+              <ListView x:Name="MyListView2"  RowHeight="180" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" 
                                                 ItemsSource="{Binding LstItemsShow2}" 
                                                 SeparatorVisibility="Default"
                                                 SeparatorColor="White"
@@ -218,29 +218,29 @@
                                         <!--Built in Cells-->
                                         <ListView.ItemTemplate >
                                             <DataTemplate >
-                                                    <ViewCell Height="170"  >
+                                                    <ViewCell Height="180"  >
                                                         <ViewCell.View>
                                                         
                                                         <Grid Padding="0,5,0,0" BackgroundColor="{StaticResource DarkBackgroundColor}">
                                                             <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="3*"/>
                                                                     <ColumnDefinition Width="2*"/>
-                                                                    <ColumnDefinition Width="*"/>
-                                                                    <ColumnDefinition Width="*"/>
-                                                                    <ColumnDefinition Width="*"/>
-                                                                    <ColumnDefinition Width="*"/>
+                                                                    <ColumnDefinition Width="3*"/>
+                                                                    <ColumnDefinition Width="2*"/>
+                                                                    <ColumnDefinition Width="2*"/>
                                          <ColumnDefinition Width="*"/>
                                                             </Grid.ColumnDefinitions>    
                                                             <Grid.RowDefinitions>
-                                                                 <RowDefinition Height="AUTO"/>  
-                                                                 <RowDefinition Height="AUTO"/> 
-                                                                 <RowDefinition Height="AUTO"/> 
-                                                                 <RowDefinition Height="AUTO"/>
-                                                                 <RowDefinition Height="AUTO"/> 
-                                                                 <RowDefinition Height="AUTO"/>
-                                                                <RowDefinition Height="AUTO"/> 
+                                                                 <RowDefinition Height="*"/>  
+                                                                 <RowDefinition Height="*"/> 
+                                                                 <RowDefinition Height="*"/> 
+                                                                 <RowDefinition Height="*"/>
+                                                                 <RowDefinition Height="*"/> 
+                                                                 <RowDefinition Height="*"/>
+                                                                 <RowDefinition Height="*"/> 
                                                             </Grid.RowDefinitions>   
                                                          
-                                                             <Label Text="{translator:Translate Article}" Grid.Row="0" Grid.Column="0"/>
+                                                             <Label Text="{translator:Translate Article}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"/>
                                                             
                                                             <Label Text="{translator:Translate ProductValue}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
                                                             <Label Text="{translator:Translate Qty}" Grid.Row="2" Grid.Column="0"/>
@@ -251,27 +251,34 @@
                                             
                                                             <Label Text="{translator:Translate Reward}" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"/>
                                             
-                                                            <Label Grid.Row="0"  Grid.Column="1" Grid.ColumnSpan="4" Text="{Binding Description, Mode= OneTime}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
-                                                            <Label Grid.Row="1"  Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding ProductValue, Mode= OneTime}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
-                                                            <Label Grid.Row="2"  Grid.Column="1" Text="{Binding Quantity, Mode= OneTime}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
-                                                            <Label Grid.Row="3"  Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding ToDate, Mode= OneTime, StringFormat={StaticResource formatdatenotime}}" FontSize="Small" TextColor="{StaticResource LightTextColor}"  />
-                                                            <Label Grid.Row="2"  Grid.Column="3" Text="{Binding Weight, Mode= OneTime}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
-                                                             <Label Grid.Row="4"  Grid.Column="3" Grid.ColumnSpan="2" Text="{Binding FindWhere, Mode= OneTime}" 
-                                                                   FontSize="Small" 
+                                                            <Label Grid.Row="0"  Grid.Column="2" Grid.ColumnSpan="3" Text="{Binding Description, Mode= OneTime}"  TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                                            <Label Grid.Row="1"  Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding ProductValue, Mode= OneTime}"  TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                                            <Label Grid.Row="2"  Grid.Column="1" Text="{Binding Quantity, Mode= OneTime}"  TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                                            <Label Grid.Row="3"  Grid.Column="2" Grid.ColumnSpan="2" Text="{Binding ToDate, Mode= OneTime, StringFormat={StaticResource formatdatenotime}}"  TextColor="{StaticResource LightTextColor}"  />
+                                                            <Label Grid.Row="2"  Grid.Column="3" Text="{Binding Weight, Mode= OneTime}"  TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                                             <Label Grid.Row="4"  Grid.Column="2" Grid.ColumnSpan="4" Text="{Binding FindWhere, Mode= OneTime}" 
+                                                                    
                                                                    TextColor="{StaticResource LightTextColor}" 
-                                                                   HorizontalOptions="StartAndExpand" 
-                                                                   VerticalOptions="Start" />
+                                                                   HorizontalOptions="Start" 
+                                                                   />
                                                             <Label Grid.Row="5"  Grid.Column="2" Text="{Binding Reward, Mode= OneTime}" 
-                                                                   FontSize="Small" 
+                                                                    
                                                                    TextColor="{StaticResource LightTextColor}" 
-                                                                   HorizontalOptions="StartAndExpand" 
-                                                                   VerticalOptions="Start" />
+                                                                   
+                                                                  />
                                                     
-                                                            
-                                                             <Button ImageSource="delete.png" IsVisible="{Binding canDelete}"  HorizontalOptions="Center" WidthRequest="20" Grid.Row="5" HeightRequest="20" Grid.Column="4" BackgroundColor="Transparent"   Clicked="Handle_Clicked_3" CommandParameter="{Binding .}" />
-                                                             <Button ImageSource="edit.png" HorizontalOptions="Center" Grid.Row="5" Grid.Column="5" BackgroundColor="Transparent"  Clicked="Handle_Clicked_5" CommandParameter="{Binding .}" />
-                                                             <Button ImageSource="chat.png" HorizontalOptions="Center" Grid.Row="5" Grid.Column="6" BackgroundColor="Transparent"  Clicked="Handle_Clicked_4" CommandParameter="{Binding .}" />
+                                                            <Grid Grid.Column="3" Grid.ColumnSpan="4" Grid.Row="5" ColumnSpacing="0" >
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*"/>
+                                                                    <ColumnDefinition Width="*"/>
+                                                                    <ColumnDefinition Width="*"/>
+                                                                </Grid.ColumnDefinitions>
+                                                             <Button ImageSource="delete.png" IsVisible="{Binding canDelete}"  HorizontalOptions="Center" WidthRequest="20"  HeightRequest="20" Grid.Column="0" BackgroundColor="Transparent"   Clicked="Handle_Clicked_3" CommandParameter="{Binding .}" />
+                                                             <Button ImageSource="edit.png" HorizontalOptions="Center"  Grid.Column="1" BackgroundColor="Transparent"  Clicked="Handle_Clicked_5" CommandParameter="{Binding .}" />
+                                                             <Button ImageSource="chat.png" HorizontalOptions="Center"  Grid.Column="2" BackgroundColor="Transparent"  Clicked="Handle_Clicked_4" CommandParameter="{Binding .}" />
                                                              
+                                                            </Grid>
+                                                            
                                                              <ffimageloading:CachedImage  x:Name="ImageURL" HorizontalOptions="EndAndExpand" 
                                                                 VerticalOptions="StartAndExpand" 
                                                                 Grid.Row="0" Grid.Column="4" Grid.RowSpan="3" Grid.ColumnSpan="3"

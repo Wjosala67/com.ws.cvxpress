@@ -74,6 +74,49 @@ namespace com.ws.cvxpress.Services
             return lConf;
         }
 
+        public async Task<ObservableCollection<News>> getNews()
+        {
+            var client = new HttpClient();
+
+            ObservableCollection<News> lConf = new ObservableCollection<News>();
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.BaseAddress = new Uri(Constants.ServerUrl);
+            //client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/json");
+
+            try
+            {
+
+                HttpResponseMessage response = await client.GetAsync(Constants.NewsURL );
+
+                if (response.IsSuccessStatusCode)
+                {
+                    //var result = response.Content.ReadAsStringAsync().Result;
+
+
+                    var result = JsonConvert.DeserializeObject<List<News>>(await response.Content.ReadAsStringAsync());
+
+                    lConf = new ObservableCollection<News>(result);
+
+
+
+
+                }
+            }
+            catch (TimeoutException ex)
+            {
+
+                Debug.WriteLine(ex);
+
+            }
+            catch (Exception exc)
+            {
+
+                Debug.WriteLine(exc);
+            }
+            return lConf;
+        }
+
         public async Task<bool> UpdateTravelerStatus(int status, User_Session user_session)
         {
             var client = new HttpClient();

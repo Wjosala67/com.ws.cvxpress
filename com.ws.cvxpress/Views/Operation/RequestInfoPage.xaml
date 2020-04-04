@@ -8,7 +8,7 @@
              x:Class="com.ws.cvxpress.Views.Operation.RequestInfoPage">
      <ContentPage.Content>
        
-          <StackLayout  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+          <StackLayout Padding="0,5,0,5"  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
             
             
@@ -39,7 +39,7 @@
                
                 </Grid.RowDefinitions>
                 
-               <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="4">
+               <Grid Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="5">
                     <Grid.RowDefinitions>
                          <RowDefinition x:Name="rowcero" Height="30"/>
                          <RowDefinition Height="35"/>
@@ -72,7 +72,7 @@
                 <Label  Text="{Binding DesiredDate, Mode=OneTime, StringFormat={StaticResource formatdatenotime}}" Grid.Row="3" Grid.Column="3"  Grid.ColumnSpan="2" HorizontalOptions="Start"/>
                
                 <Label Text="{translator:Translate Article}" Grid.Row="4" Grid.Column="1"/>
-                <Label  Text="{Binding Description}" Grid.Row="4" Grid.Column="3" HorizontalOptions="Start"  Grid.ColumnSpan="2"/>
+                <Label  Text="{Binding Description}" Grid.Row="4" Grid.Column="3" HorizontalOptions="Start"  Grid.ColumnSpan="3"/>
                
                 <Label Text="{translator:Translate ItemFind}" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2"/>
                 <Label Text="{Binding WhereFind}" Grid.Row="5" Grid.Column="3" HorizontalOptions="Start"  Grid.ColumnSpan="2"/>
@@ -89,14 +89,14 @@
                 <Label x:Name="RequestedAcepted" IsVisible="false" FontSize="Medium" HorizontalTextAlignment="Center" 
                        TextColor="{StaticResource LabelTextColorRed}" 
                        Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="5" HorizontalOptions="Start"/>
-                <Frame  Padding="5,5,5,5" CornerRadius="5" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="5" IsVisible="false" x:Name="MyFrameView" BackgroundColor="{StaticResource DarkBackgroundColor2}" >
+                <Frame  Padding="2,2,2,2" CornerRadius="5" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="5" IsVisible="false" x:Name="MyFrameView" BackgroundColor="{StaticResource DarkBackgroundColor2}" >
                 <Frame Padding="0,0,0,0" BackgroundColor="{StaticResource DarkBackgroundColor2}"  CornerRadius="5" 
                    HasShadow="true" >
 
                     <Grid>
                                                 <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="20"/>
-                                                        <ColumnDefinition Width="2*"/>
+                                                        <ColumnDefinition Width="3*"/>
                                                         <ColumnDefinition Width="2*"/>
                                                         <ColumnDefinition Width="2*"/>                                         
                                                         <ColumnDefinition Width="2*"/>
@@ -120,9 +120,9 @@
                                                      
                                                 <Label x:Name="FirstName"  Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="3"  Text="{Binding FirstName, Mode= OneTime}" FontSize="Default" TextColor="{StaticResource LabelTextColorRed}" HorizontalTextAlignment="Start" VerticalOptions="Center"  />
                                                 
-                                                <!--<Label x:Name="LastName" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"  Text="{Binding LastName, Mode= OneTime}" FontSize="Small" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />-->
+                                                <!--<Label x:Name="LastName" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"  Text="{Binding LastName, Mode= OneTime}"  TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />-->
                                         
-                                                <Label x:Name="Someone" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4"  Text="{translator:Translate someoneaccepted}" FontSize="Small"  TextColor="{StaticResource LabelTextColorRed}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                                <Label x:Name="Someone" Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4"  Text="{translator:Translate someoneaccepted}"   TextColor="{StaticResource LabelTextColorRed}" HorizontalOptions="Start" VerticalOptions="Center" />
 
                                                 <Grid Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4">
                                                     <Grid.ColumnDefinitions>
@@ -139,7 +139,7 @@
                                                     </Grid.RowDefinitions>
 
 
-                                                    <Label x:Name="txt_auth" IsVisible="false"  Grid.ColumnSpan="5"  FontSize="Small"  HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
+                                                    <Label x:Name="txt_auth" IsVisible="false"  Grid.ColumnSpan="5"    HorizontalOptions="CenterAndExpand" VerticalOptions="Center" />
 
                                                     <Button x:Name="bt_auth" IsVisible="false" Text="{translator:Translate Yes}"  Grid.Column="1" Grid.Row="1" Clicked="Handle_auth"  HorizontalOptions="Center" VerticalOptions="Start" Style="{StaticResource buttonStyle}" />
 
@@ -147,17 +147,17 @@
                                                 </Grid>
                                                 
 
-                                                <Label  Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="1"  Text="{translator:Translate Departure}" FontSize="Small" LineBreakMode="WordWrap" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                                <Label  Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="1"  Text="{translator:Translate Departure}"  LineBreakMode="WordWrap" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
                                         
-                                                <Label  Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2"  Text="{Binding FromDate, Mode= OneTime,StringFormat={StaticResource formatdatenotime}}" FontSize="Small" LineBreakMode="WordWrap" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                                <Label  Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="2"  Text="{Binding FromDate, Mode= OneTime,StringFormat={StaticResource formatdatenotime}}"  LineBreakMode="WordWrap" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
                                         
-                                                <Label  Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="1"  Text="{translator:Translate Arrival}" FontSize="Small" LineBreakMode="WordWrap" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                                <Label  Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="1"  Text="{translator:Translate Arrival}"  LineBreakMode="WordWrap" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
                                         
                                                         
-                                                <Label  Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"  Text="{Binding ToDate, Mode= OneTime,StringFormat={StaticResource formatdatenotime}}" FontSize="Small" LineBreakMode="WordWrap" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
+                                                <Label  Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="2"  Text="{Binding ToDate, Mode= OneTime,StringFormat={StaticResource formatdatenotime}}"  LineBreakMode="WordWrap" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Start" VerticalOptions="Center" />
                                       
                                              
-                                                <Label x:Name="Ratlabel" Grid.Column="4"  Grid.Row="5" Grid.ColumnSpan="2"  FontSize="Small" LineBreakMode="WordWrap" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Center" VerticalOptions="Center" />
+                                                <Label x:Name="Ratlabel" Grid.Column="4"  Grid.Row="5" Grid.ColumnSpan="2"   LineBreakMode="WordWrap" TextColor="{StaticResource LightTextColor}" HorizontalOptions="Center" VerticalOptions="Center" />
                                       
                         
                                                 <ffimageloading:CachedImage  x:Name="ImageURL" HorizontalOptions="EndAndExpand"

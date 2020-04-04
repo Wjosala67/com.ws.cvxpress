@@ -229,7 +229,7 @@
         <value>Mis Solicitudes</value>
     </data>
       <data name ="RequestItem" xml:space="preserve">
-        <value>Realizar Solicitud de artículo</value>
+        <value>Realiza la solicitud de tu artículo,  lo compraremos en México y lo enviaremos a Venezuela de la manera más segura y confiable</value>
     </data>
      <data name ="Requests" xml:space="preserve">
         <value>Solicitudes</value>
@@ -253,6 +253,10 @@
      <data name ="Loading" xml:space="preserve">
         <value>Cargando</value>
     </data>
+     <data name ="LoadingNew" xml:space="preserve">
+        <value>Cargando Noticias y Promociones</value>
+    </data>
+    
      <data name ="Weight" xml:space="preserve">
         <value>Peso (Kg):</value>
     </data>
@@ -265,9 +269,12 @@
         <value>Entregar producto</value>
     </data>
      <data name ="autorizecharge" xml:space="preserve">
-        <value>Las especificaciones de precio y peso pueden haber cambiado. el monto total a ser cargado es de {0} {1}. ¿Desea autorizar el cargo?</value>
+        <value>Las especificaiones de peso y precio no cambiaron el monto total a pagar es de {0} {1}. ¿Desea autorizar el cargo?</value>
     </data>
     
+     <data name ="autorizechargechanged" xml:space="preserve">
+        <value>Las especificaciones de peso y precio han cambiado el monto a pagar es de {0} {1}. ¿Desea autorizar el cargo?</value>
+    </data>
     
      <data name ="WaitforAuth" xml:space="preserve">
         <value>En espera de autorización</value>
@@ -608,7 +615,9 @@
     <data name ="PrefArrival" xml:space="preserve">
         <value>Entrega deseada</value>
      </data>
-    
+    <data name ="PrefArrival1" xml:space="preserve">
+        <value>Entrega deseada:</value>
+     </data>
      <data name ="DocDate" xml:space="preserve">
         <value>Vencimiento documento de viaje</value>
      </data>
@@ -654,7 +663,8 @@
         <value>Hay información para ti, desliza</value>
      </data>
      <data name ="WelcomeTitle" xml:space="preserve">
-        <value>Bienvenido a {APP} una comunidad de compradores y viajeros donde todos ganan</value>
+        <value>Bienvenido a {APP}, pide lo que desees desde cualquier parte del mundo nosotros lo compraremos en México y lo enviaremos a Venezuela</value>
+       
      </data>
     
     <data name ="WelcomeSubTitleTraveler" xml:space="preserve">
@@ -808,7 +818,7 @@
         <value>¿Está de Acuerdo con finalizar este viaje?</value>
      </data>
     <data name ="NoAccepted" xml:space="preserve">
-        <value>En espera de que algún viajero acepte llevar este artículo.</value>
+        <value>En espera que Flightbox acepte llevar tus artículos.</value>
      </data>
     <data name ="UserStatusBought" xml:space="preserve">
         <value>Comprado</value>
@@ -928,7 +938,7 @@
      </data>
     
      <data name ="NoChargeYet" xml:space="preserve">
-        <value>Ningun Cargo será realizado hasta que un viajero acepte llevar su artículo.</value>
+        <value>Ningún cargo será realizado hasta confirmar las especificaciones de peso y precio de sus artículos, solo en ese momento el cargo será realizado el cobro previa autorización de su parte.</value>
      </data>
     
     <data name ="InThatMoment" xml:space="preserve">

@@ -1,5 +1,107 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="com.ws.cvxpress.Views.Admin.NewsPage">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="com.ws.cvxpress.Views.Admin.NewsPage"
+             xmlns:converter ="clr-namespace:WSViews.Classes;assembly=WSViews"
+             BackgroundColor="{StaticResource DarkBackgroundColor}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:EmptyValueToBoolConverter x:Key="EmptyValueToBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-    </ContentPage.Content>
+
+     
+             <Grid Padding="0,5,0,0">
+                 <Grid.RowDefinitions>
+                     <RowDefinition Height="35"/>
+                   
+
+                     <RowDefinition Height="*"/>
+                     <RowDefinition Height="35"/>
+                 </Grid.RowDefinitions>
+                 <Grid.ColumnDefinitions>
+                     <ColumnDefinition Width="*"/>
+                     
+                 </Grid.ColumnDefinitions>
+
+                  
+                 <Image x:Name="b_Back" HorizontalOptions="Center" VerticalOptions="Center" Source="backizq.png"  Grid.Row="0"   />
+                     
+
+                <CarouselView ItemsSource="{Binding News}" PeekAreaInsets="55" Grid.Row="1">
+                        <CarouselView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroup x:Name="CommonStates">
+                                            <VisualState x:Name="CurrentItem">
+                                                <VisualState.Setters>
+                                                    <Setter Property="Scale"
+                                                            Value="1.0" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="PreviousItem">
+                                                <VisualState.Setters>
+                                                    <Setter Property="Opacity"
+                                                            Value="0.5" />
+                                                     <Setter Property="Scale"
+                                                            Value="0.9" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="NextItem">
+                                                <VisualState.Setters>
+                                                    <Setter Property="Opacity"
+                                                            Value="0.5" />
+                                                     <Setter Property="Scale"
+                                                            Value="0.9" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                            <VisualState x:Name="DefaultItem">
+                                                <VisualState.Setters>
+                                                    <Setter Property="Opacity"
+                                                            Value="0.25" />
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateManager.VisualStateGroups>
+
+                                    <!-- Item template content -->
+                                    <Frame CornerRadius="15" HasShadow="true" BackgroundColor="{StaticResource LightBackgroundColor}" VerticalOptions="FillAndExpand">
+                                         <Grid>
+                                             <Grid.RowDefinitions>
+                                                 <RowDefinition Height="AUTO"/>
+                                                 <RowDefinition Height="AUTO"/>
+                                                 <RowDefinition Height="AUTO"/>
+                                                 <RowDefinition Height="AUTO"/>
+                                                 <RowDefinition Height="AUTO"/>
+                                                 
+                                                 
+                                             </Grid.RowDefinitions>
+                                             <Grid.ColumnDefinitions>
+                                                 <ColumnDefinition Width="30"/>
+                                                 <ColumnDefinition Width="*"/>
+                                             </Grid.ColumnDefinitions>
+
+                                             <Image Source="icon.png" Grid.Row="0" Grid.Column="0" />
+                                             
+
+                                             <Label Text="{Binding Title}" Grid.Row="0" HorizontalOptions="Center" Grid.Column="1" TextColor="Black"/>
+                                             <Label Text="{Binding SubTitle}"  Grid.Row="1" Grid.ColumnSpan="2"  TextColor="Black"/>
+                                             <Label Text="{Binding Text}" LineBreakMode="WordWrap"  HorizontalOptions="CenterAndExpand" Grid.Row="2" Grid.ColumnSpan="2"   TextColor="Black"/>
+                                            
+                                             <!--<MediaElement IsLooping="False" AutoPlay="True" HeightRequest="200" WidthRequest="300" Source="{Binding Link}" ShowsPlaybackControls="True"  Grid.Row="3" Grid.ColumnSpan="2" IsVisible="{Binding Link, Converter={StaticResource EmptyValueToBoolConverter}}"/>-->
+                                             <Image Source="{Binding Image}"  Grid.Row="3" Grid.ColumnSpan="2"   IsVisible="{Binding Image, Converter={StaticResource EmptyValueToBoolConverter}}"/>
+                                             
+                                             <Label Text="{Binding Footer}"  Grid.Row="4" Grid.ColumnSpan="2"  TextColor="Black"/>
+
+                                         </Grid>
+                                    </Frame>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CarouselView.ItemTemplate>
+                  </CarouselView>
+            </Grid>
+            </ContentPage.Content>
 </ContentPage>

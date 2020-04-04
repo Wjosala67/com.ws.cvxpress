@@ -4,7 +4,7 @@
              xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
              xmlns:viewModels ="clr-namespace:com.ws.cvxpress.ViewModels"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="com.ws.cvxpress.Views.RegisterA.StepThreePage" BackgroundColor="{StaticResource DeviceStateTriggerPageStyle}">
+             x:Class="com.ws.cvxpress.Views.RegisterA.StepThreePage" BackgroundColor="{StaticResource DarkBackgroundColor}">
     <!--<ContentPage.BindingContext>
         <viewModels:StepThreeViewModel/>
     </ContentPage.BindingContext>-->

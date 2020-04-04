@@ -23,7 +23,7 @@
            HorizontalOptions="Center" 
            VerticalOptions="Start"
            HasShadow="True"
-           BackgroundColor="{StaticResource DeviceStateTriggerPageStyle}"
+           BackgroundColor="{StaticResource DarkBackgroundColor}"
            Padding="0">
          
         

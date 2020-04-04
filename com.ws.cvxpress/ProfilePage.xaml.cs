@@ -7,6 +7,7 @@ using com.ws.cvxpress.Helpers;
 using com.ws.cvxpress.Models;
 using com.ws.cvxpress.Services;
 using com.ws.cvxpress.ViewModels;
+using com.ws.cvxpress.Views.Admin;
 using com.ws.cvxpress.Views.Operation;
 using com.ws.cvxpress.Views.RegisterA;
 using WSViews.Classes;
@@ -180,6 +181,27 @@ namespace com.ws.cvxpress.Views
             //var indicator = new CarouselIndicators { ItemsSource = _viewModel.CarouselItems };
             //indicator.Margin = new Thickness(20, 20, 20, 0);
             //indicator.SetBinding(CarouselIndicators.PositionProperty, nameof(_viewModel.Position));
+
+            lb_NewsFunc();
+            void lb_NewsFunc()
+            {
+                try
+                {
+                    bt_News.GestureRecognizers.Add(new TapGestureRecognizer()
+                    {
+                        Command = new Command(async () =>
+                        {
+
+
+                            await Navigation.PushModalAsync(new NewsPage());
+
+                        }
+                            )
+                    });
+                }
+                catch (Exception ex) { Debug.WriteLine(ex); }
+            }
+
 
         }
 

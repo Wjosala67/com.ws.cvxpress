@@ -4,9 +4,15 @@
              xmlns:CustomControl="clr-namespace:com.ws.cvxpress.Custom"
              x:Class="com.ws.cvxpress.Views.MenuPage" Title="Menu"
              xmlns:translator   ="clr-namespace:com.ws.cvxpress.Helpers"
+             xmlns:converter ="clr-namespace:WSViews.Classes;assembly=WSViews"
              xmlns:MyViews ="clr-namespace:WSViews;assembly=WSViews"
              >
  
+ <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:StringToBoolConverter x:Key="StringToBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <StackLayout Orientation="Vertical"  RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
               RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
         
@@ -32,7 +38,7 @@
                             <ColumnDefinition Width="AUTO" />
                             
                         </Grid.ColumnDefinitions>
-                        <Label Grid.Row="1" x:Name="UserEmail"  Grid.Column="1" Text="{Binding User}" FontAttributes="Bold" FontSize="Small" VerticalOptions="Center" HorizontalOptions="Start" />
+                        <Label Grid.Row="1" x:Name="UserEmail"  Grid.Column="1" Text="{Binding User}" FontAttributes="Bold"  VerticalOptions="Center" HorizontalOptions="Start" />
                         
                         
                         <Image Grid.Row="0" Grid.Column="1"  x:Name="logo" HorizontalOptions="Start" VerticalOptions="End" Source="logopages.png" HeightRequest="40" />
@@ -63,9 +69,9 @@
                     CheckedImage="viajero"
                     UnCheckedImage="comprador"/>
                   
-                  <!--  <Label Grid.Row="1" Grid.Column="0" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Small" Text="{translator:Translate Traveler}"/>
+                  <!--  <Label Grid.Row="1" Grid.Column="0" VerticalOptions="Start" HorizontalOptions="Center"  Text="{translator:Translate Traveler}"/>
                     
-                    <Label  Grid.Row="1" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Center" FontSize="Small" Text="{translator:Translate Sender}"/>
+                    <Label  Grid.Row="1" Grid.Column="1" VerticalOptions="Start" HorizontalOptions="Center"  Text="{translator:Translate Sender}"/>
                 -->
                 </Grid>
             </ListView.Footer>
@@ -86,7 +92,7 @@
                                 <ColumnDefinition Width="30" />
                                 <ColumnDefinition Width="220" />
                             </Grid.ColumnDefinitions>
-                            <Label Text="{Binding Title}" Grid.Row="0" Grid.Column="2"  TextColor="{StaticResource LabelTextColorWhite}" FontSize="Small" VerticalOptions="Center"/>
+                            <Label Text="{Binding Title}" Grid.Row="0" Grid.Column="2"  TextColor="{StaticResource LabelTextColorWhite}"  VerticalOptions="Center"/>
                             <Image x:Name="image" Grid.Row="0" Grid.Column="1" Source="{Binding Icon}" WidthRequest="30" HeightRequest="30"/>
                         </Grid>
                                 </StackLayout>
@@ -96,6 +102,9 @@
             </ListView.ItemTemplate>
         </ListView>
     </StackLayout>
+
+     
+
 
      
 

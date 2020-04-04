@@ -89,18 +89,19 @@ namespace com.ws.cvxpress.Views.Start
         public SelectProfilePage()
         {
              InitializeComponent();
-            //Profile profile = DatabaseHelper.GetProfile(App.Os_Folder);
-            //List<App_Con> lstConf = DatabaseHelper.getConfiguration(App.Os_Folder);
-            //App_Con isUserAdmin = lstConf.Find(x => x.Name == "EmailAdmin" && x.Value == profile.Email.Trim());
+            Profile profile = DatabaseHelper.GetProfile(App.Os_Folder);
+            List<App_Con> lstConf = DatabaseHelper.getConfiguration(App.Os_Folder);
+            App_Con isUserAdmin = lstConf.Find(x => x.Name == "EmailAdmin" && x.Value == profile.Email.Trim());
 
-            //if (isUserAdmin != null)
-            //{
-            //    bt_traveler.IsVisible = true;
-            //}
-            //else
-            //{
-            //    bt_traveler.IsVisible = false;
-            //}
+            if (isUserAdmin != null)
+            {
+                bt_traveler.IsVisible = true;
+            }
+            else
+            {
+                bt_traveler.IsVisible = false;
+            }
+
         }
     }
 }

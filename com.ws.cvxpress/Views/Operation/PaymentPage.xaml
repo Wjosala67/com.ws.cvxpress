@@ -6,7 +6,7 @@
              xmlns:local ="clr-namespace:com.ws.cvxpress.Classes"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:fastentry="clr-namespace:XamarinFastEntrySample.FastEntry;assembly=XamarinFastEntry.Behaviors"
-             BackgroundColor="{StaticResource DeviceStateTriggerPageStyle}"
+             BackgroundColor="{StaticResource DarkBackgroundColor}"
              x:Class="com.ws.cvxpress.Views.Operation.PaymentPage">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -60,7 +60,7 @@
                     <Image Source="logopages.png" Grid.Row="1" Grid.Column="1" WidthRequest="200" />
                    
                     <Image x:Name="Back" Source="backizq.png"  HorizontalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  /> 
-                    <Label Grid.Row="2" Grid.Column="1" Text="{translator:Translate CreditCardInfo}" FontSize="Small" HorizontalTextAlignment="Center" HorizontalOptions="Center"  />
+                    <Label Grid.Row="2" Grid.Column="1" Text="{translator:Translate CreditCardInfo}"  HorizontalTextAlignment="Center" HorizontalOptions="Center"  />
                     
                  </Grid>
 
@@ -73,7 +73,7 @@
                      TextColor="{StaticResource EntryTextColor}" 
                      SelectedIndexChanged="Handle_SelectedTypeChanged"
                      TitleColor="{StaticResource EntryTextColor}" 
-                                  FontSize="Small"
+                                 Style="{StaticResource PickerStyle}"
                        HorizontalOptions="FillAndExpand"
                      HeightRequest="40" 
                      Image="down"
@@ -89,10 +89,12 @@
                  </Grid.ColumnDefinitions>
 
                   <CustomControl:CustomEntry x:Name="CardNumber" Keyboard="Numeric" Grid.Column="0" 
-                                           FontSize="Small" IsPassword="True"
+                                            IsPassword="True"
                                            Text="{Binding Number,Mode=TwoWay}"
                                            Style="{StaticResource EntryStyle}" Unfocused="CardNumber_Unfocused"
-                                           MaxLength="16" HorizontalOptions="FillAndExpand"  Placeholder="{translator:Translate CardNumber}" PlaceholderColor="{StaticResource EntryTextColor}"  >
+                                           MaxLength="16" HorizontalOptions="FillAndExpand"
+                                           Placeholder="{translator:Translate CardNumber}" 
+                                             PlaceholderColor="{StaticResource EntryTextColor}"  >
                     <Entry.Behaviors>
                        
                         <fastentry:XamarinFastEntryBehaviour Mask="################" MaxLength="16"/>
@@ -118,7 +120,7 @@
                                                 ItemDisplayBinding="{Binding Number}"
                      SelectedIndexChanged="Handle_SelectedCardChanged"
                      TitleColor="{StaticResource EntryTextColor}" 
-                                  FontSize="Small"
+                                        Style="{StaticResource PickerStyle}"
                        HorizontalOptions="FillAndExpand"
                      HeightRequest="40" 
                      Image="card"
@@ -130,7 +132,7 @@
              </Grid>
               
              <CustomControl:CustomEntry x:Name="CardHolder" Grid.Row="4" 
-                                           Grid.Column="1"  FontSize="Small"
+                                           Grid.Column="1"  
                                            Grid.ColumnSpan="3"
                                            Text="{Binding Name,ModeTwoWay}"
                                            Style="{StaticResource EntryStyle}" 
@@ -143,15 +145,15 @@
                 </CustomControl:CustomEntry>
                                 
              <Label Text="{translator:Translate MonthAndYear}" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3"
-                      FontSize="Small"   TextColor="{StaticResource EntryTextColor}"  
+                         TextColor="{StaticResource EntryTextColor}"  
                           />
                 
              <CustomControl:CustomPicker x:Name="Month" Grid.Row="6" Grid.Column="1"  
                       
-                     TextColor="{StaticResource EntryTextColor}" 
+                   
                      SelectedIndexChanged="Handle_SelectedIndexChanged"
                      TitleColor="{StaticResource EntryTextColor}" 
-                                  FontSize="Small"
+                      Style="{StaticResource PickerStyle}"             
                      HorizontalOptions="FillAndExpand"
                      HeightRequest="40" 
                      Image="down"
@@ -161,11 +163,11 @@
 
              <CustomControl:CustomPicker x:Name="Year" Grid.Row="6" Grid.Column="2" 
                       
-                     TextColor="{StaticResource EntryTextColor}" 
+                   
                      SelectedIndexChanged="Handle_SelectedIndexChanged"
                      TitleColor="{StaticResource EntryTextColor}" 
-                    
-                                           FontSize="Small"
+                     Style="{StaticResource PickerStyle}"     
+                                           
                       HorizontalOptions="FillAndExpand"
                      HeightRequest="40" 
                      Image="down"
@@ -174,7 +176,7 @@
                  </CustomControl:CustomPicker> 
                 
              <CustomControl:CustomEntry x:Name="CVV" Grid.Row="6" Grid.Column="3" 
-                                           FontSize="Small" IsPassword="True"
+                                           IsPassword="True"
                                            Style="{StaticResource EntryStyle}" 
                                            MaxLength="3" HorizontalOptions="FillAndExpand" 
                                            Text="{Binding CVV,ModeTwoWay}"
@@ -186,10 +188,10 @@
                 </CustomControl:CustomEntry>
 
              <Label Text = "{translator:Translate PaymentInfo}" Grid.Row="7" Grid.Column="1"  Grid.ColumnSpan="3"
-                                    FontSize="Small" />
+                                     />
 
              <CustomControl:CustomEntry x:Name="Line1" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3" 
-                                           FontSize="Small"
+                                           
                                            Style="{StaticResource EntryStyle}" 
                                            MaxLength="100" HorizontalOptions="FillAndExpand" 
                                            Text="{Binding Line1,ModeTwoWay}"
@@ -204,7 +206,7 @@
 
              <CustomControl:CustomEntry x:Name="State" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="3"
                                            
-                                           Style="{StaticResource EntryStyle}" FontSize="Small"
+                                           Style="{StaticResource EntryStyle}" 
                                            MaxLength="30" HorizontalOptions="FillAndExpand" 
                                            Text="{Binding SState ,ModeTwoWay}"
                                            Placeholder="{translator:Translate SState}" 
@@ -215,7 +217,7 @@
                 </CustomControl:CustomEntry>
 
              <CustomControl:CustomEntry x:Name="City" Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2"
-                                            FontSize="Small"
+                                            
                                            Style="{StaticResource EntryStyle}" 
                                            MaxLength="30" HorizontalOptions="FillAndExpand" 
                                            Text="{Binding SCity ,ModeTwoWay}"
@@ -231,7 +233,7 @@
                      TextColor="{StaticResource EntryTextColor}" 
                      SelectedIndexChanged="Handle_SelectedCountryChanged"
                      TitleColor="{StaticResource EntryTextColor}" 
-                                  FontSize="Small"
+                                  
                        HorizontalOptions="FillAndExpand"
                      HeightRequest="40" 
                      Image="down"
@@ -240,7 +242,7 @@
                  </CustomControl:CustomPicker>
 
              <CustomControl:CustomEntry x:Name="PostalCode" Grid.Row="10" Grid.Column="3" 
-                                           FontSize="Small" Keyboard="Numeric"
+                                            Keyboard="Numeric"
                                            Style="{StaticResource EntryStyle}" 
                                            MaxLength="5" HorizontalOptions="FillAndExpand" 
                                            Text="{Binding PostalCode ,ModeTwoWay}"

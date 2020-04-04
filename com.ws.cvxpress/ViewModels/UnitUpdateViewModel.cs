@@ -217,6 +217,19 @@ namespace com.ws.cvxpress.ViewModels
             get { return newweight; }
             set { newweight = value; OnPropertyChanged(); }
         }
+        private decimal oldprice;
+        public decimal OldPrice
+        {
+            get { return oldprice; }
+            set { oldprice = value; OnPropertyChanged(); }
+        }
+
+        private decimal oldweight;
+        public decimal OldWeight
+        {
+            get { return oldweight; }
+            set { oldweight = value; OnPropertyChanged(); }
+        }
         #endregion
 
         ReserveItemObj RIO { get; set; }
@@ -228,7 +241,10 @@ namespace com.ws.cvxpress.ViewModels
             dateto = Ro.travelerSpecs.ToDate;
             newprice = Ro.requestSpecs.ProductValue;
             newweight = Ro.requestSpecs.Weight;
-            if(Ro.travelerSpecs.status == 3)
+            oldprice = Ro.requestSpecs.ProductValue;
+            oldweight = Ro.requestSpecs.Weight;
+
+            if (Ro.travelerSpecs.status == 3)
             {
                 TravelState = Translator.getText("DeliverArticle");
             }else
@@ -264,6 +280,11 @@ namespace com.ws.cvxpress.ViewModels
                 RIO.requestSpecs.Weight = Math.Ceiling(newweight);
                 RIO.requestSpecs.Reward = Functions.getReward(newprice, Math.Ceiling(newweight), RIO.requestSpecs.Quantity);
                 RIO.requestSpecs.Commission = Functions.getDeliveryPrice(newprice, Math.Ceiling(newweight), RIO.requestSpecs.Quantity);
+
+                if(oldweight != newweight || oldprice != newprice )
+                {
+                    RIO.requestSpecs.Long = 1;
+                }
 
                 if (RIO.requestSpecs.status < Constants.Finished)
                 {
