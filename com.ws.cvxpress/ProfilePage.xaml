@@ -84,7 +84,7 @@
                                 Clicked="Handle_Clicked" 
                                 TextColor="{StaticResource LabelTextColorRed}" 
                                 Grid.Column="0" Grid.Row="2"  
-                                
+                                IsVisible="false"
                                 Text="{Binding ButtonText}" 
                                 Style="{StaticResource buttonStyle}" >
                 

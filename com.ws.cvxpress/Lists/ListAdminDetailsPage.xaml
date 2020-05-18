@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:com.ws.cvxpress.ViewModels"
+             
+             xmlns:translator="clr-namespace:com.ws.cvxpress.Helpers"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:CustomControl="clr-namespace:com.ws.cvxpress.Custom"
+             BackgroundColor="{StaticResource DarkBackgroundColor}"
+             x:Class="com.ws.cvxpress.Lists.ListAdminDetailsPage">
+   <ContentPage.Content>
+       <ScrollView>
+       <StackLayout Padding="20,0,20,20" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width}" RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+            <BoxView HeightRequest="1"/>
+
+            <Grid RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width} "
+              RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="AUTO" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="210" />
+                    <RowDefinition Height="AUTO" />
+                    <RowDefinition Height="AUTO" />
+                    <RowDefinition Height="AUTO" />
+                    <RowDefinition Height="AUTO" />
+                    <RowDefinition Height="AUTO" />
+                    <RowDefinition Height="AUTO" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                     <ColumnDefinition Width="*"/>
+                     <ColumnDefinition Width="*"/>
+                   
+                </Grid.ColumnDefinitions>
+                
+<!--                <Label TextColor="{StaticResource LabelTextWhenLightBack}" Grid.Row="0"  Text="{translator:Translate TravelerPresentation}" FontSize="Medium"  HorizontalTextAlignment="Center" />-->
+                <Label TextColor="White" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalOptions="Start" FontSize="Caption"  Text="Ajuste, cantidad, precio y peso si es requerido, luego haga click en 'Actualizar Solicitud'. El valor cero (0) en cantidad eliminará el artículo al ser procesada la lista"  />
+                <!--<Label TextColor="White" Grid.Row="1" HorizontalOptions="Start" FontSize="Micro"    Text="{Binding ListDescTo}" />-->
+              <Frame Grid.Row="2" Padding="5,5,5,5"  BackgroundColor="{StaticResource DarkBackgroundColor}" BorderColor="White" Grid.Column="0" Grid.ColumnSpan="2">
+                  <ListView x:Name="MyListView" RowHeight="190"  
+                            SeparatorColor="White" 
+                            SeparatorVisibility="Default"
+                            ItemsSource="{Binding ListDetails}" 
+                            HasUnevenRows="true"
+                            RefreshCommand="{Binding ItemsLoadCommand}"
+                            IsPullToRefreshEnabled="False"
+                            IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+                            CachingStrategy="RecycleElement"
+                            ItemTapped="MyListView_ItemTapped"  >
+                            
+                    <!--Built in Cells-->
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                                <ViewCell Height="190" >
+                                    <ViewCell.View>
+
+                           
+                                        <StackLayout>
+
+                                        
+                                
+                                         <Grid Padding="0,5,0,5">
+                                             <Grid.ColumnDefinitions>
+                                                  <ColumnDefinition Width="*" />
+                                                  <ColumnDefinition Width="*" />
+                                                  <ColumnDefinition Width="*" />
+                                                  <ColumnDefinition Width="*" />
+                                                  <ColumnDefinition Width="*" />
+                                                  <ColumnDefinition Width="*" />
+                                                  <ColumnDefinition Width="*" />
+                                                  <ColumnDefinition Width="*" />
+                                                  <ColumnDefinition Width="*" />
+                                                  <ColumnDefinition Width="*" />
+                                                  <ColumnDefinition Width="*" />
+                                                  <ColumnDefinition Width="*" />
+                                                  <ColumnDefinition Width="*" />
+                                                  <ColumnDefinition Width="*" />
+                                                  <ColumnDefinition Width="*" />
+                                                  <ColumnDefinition Width="*" />
+                                             </Grid.ColumnDefinitions>
+                                             <Grid.RowDefinitions>
+                                                  <RowDefinition Height="*"/>
+                                                  <RowDefinition Height="*"/>
+                                                  <RowDefinition Height="2*"/>
+                                                  <RowDefinition Height="2*"/>
+                                                  <RowDefinition Height="1"/>
+                                                  <RowDefinition Height="2*"/>
+                                              
+                                                 
+                                             </Grid.RowDefinitions>
+
+                                                   <ffimageloading:CachedImage  x:Name="ImageURL" HorizontalOptions="Start" 
+                                                                    VerticalOptions="Start" 
+                                                        Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3"
+                                                        
+                                          
+                                                        Source="{Binding imageSource}">
+                                                        <ffimageloading:CachedImage.Transformations>
+                                                            <fftransformations:CornersTransformation
+                                                                CornersTransformType="BottomLeftRounded,TopRightRounded, BottomRightRounded, TopLeftRounded"
+                                                                BottomLeftCornerSize="10"
+                                                                TopRightCornerSize="10"
+                                                                BottomRightCornerSize="10"
+                                                            TopLeftCornerSize="10"/>
+                                                        </ffimageloading:CachedImage.Transformations>   
+                                                   </ffimageloading:CachedImage> 
+
+
+                                             <Label  Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="6" HorizontalOptions="End" Text="{translator:Translate Name}" />
+                                             <Label  Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="6" HorizontalOptions="End" Text="{translator:Translate Description}" />
+                                             <Label  Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="6" HorizontalOptions="Center" Text="{translator:Translate ItemFind}" />
+                                             <Label  Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="6" HorizontalOptions="End" Text="{translator:Translate Qty}" />
+                                             <Label  Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="6" HorizontalOptions="End" IsVisible="false" Text="{translator:Translate AproxWeight}" />
+                                             <Label  Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="6" HorizontalOptions="End" Text="{translator:Translate AproxValue}" />
+
+                                             <Label  Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="7" Text="{Binding Name, Mode=TwoWay}" />
+                                             <Label  Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="7" Text="{Binding Description, Mode=TwoWay}" />
+                                             <Label  Grid.Row="2" Grid.Column="8" Grid.ColumnSpan="7" Text="{Binding FindWhere, Mode=TwoWay}" />
+                                             <CustomControl:CustomEntry   Grid.Row="3" Grid.Column="8" Grid.ColumnSpan="8" Keyboard="Numeric"  Text="{Binding Quantity, Mode=TwoWay}" TextColor="White" FontSize="Caption"/>
+                                             <CustomControl:CustomEntry   Grid.Row="4" Grid.Column="8" Grid.ColumnSpan="8" Keyboard="Numeric" IsVisible="false"     Text="{Binding Weight, Mode=TwoWay,StringFormat='{0:0.00}' }" TextColor="White" FontSize="Caption"/>
+                                             <CustomControl:CustomEntry   Grid.Row="5" Grid.Column="8" Grid.ColumnSpan="8" Keyboard="Numeric"    Text="{Binding ProductValue, Mode=TwoWay,StringFormat='{0:0.00}'}" TextColor="White" FontSize="Caption"/>
+
+
+                                         </Grid>
+
+                                         </StackLayout>
+
+                                          
+                                    </ViewCell.View>
+                                </ViewCell>
+                            </DataTemplate>
+                    </ListView.ItemTemplate>
+                    
+                  
+                  </ListView>
+                  </Frame>
+                 <Label TextColor="White" Grid.Row="3" Grid.Column="0"  HorizontalOptions="Start" FontSize="Caption"  Text="Envío al interior:"  />
+               
+                 <CustomControl:CustomEntry x:Name="en_intshipfee"  Grid.Row="3" Grid.Column="1" Keyboard="Numeric" MaxLength="5"     Text="{Binding InteriorShipment, Mode=TwoWay}" TextColor="White" FontSize="Caption"/>
+
+                 <Label TextColor="White" Grid.Row="4" Grid.Column="0"  HorizontalOptions="Start" FontSize="Caption"  Text="Servicio:"  />
+               
+                 <CustomControl:CustomEntry  x:Name="en_service"  Grid.Row="4" Grid.Column="1" Keyboard="Numeric" MaxLength="8"   Text="{Binding Service, Mode=TwoWay}" TextColor="White" FontSize="Caption"/>
+
+                
+                 <Label TextColor="White" Grid.Row="5" Grid.Column="0"  HorizontalOptions="Start" FontSize="Caption"  Text="Peso total:"  />
+               
+                 <CustomControl:CustomEntry   Grid.Row="5" Grid.Column="1" Keyboard="Numeric" MaxLength="8" TextChanged="CustomEntry_TextChanged"    Text="{Binding TotalWeight, Mode=TwoWay}" TextColor="White" FontSize="Caption"/>
+
+
+                 <Label TextColor="White" Grid.Row="6" Grid.Column="0"  HorizontalOptions="Start" FontSize="Caption"  Text="Descripción Servicio:"   />
+               
+                 <CustomControl:CustomEntry  x:Name="en_desc"  Grid.Row="6" Grid.Column="1" Keyboard="Default" MaxLength="200"    Text="{Binding ServiceDesc, Mode=TwoWay}" TextColor="White" FontSize="Caption"/>
+
+                <Label TextColor="White" Grid.Row="7" Grid.Column="0"  HorizontalOptions="Start" FontSize="Caption"  Text="Monto por Kilo:"  />
+               
+                <CustomControl:CustomEntry x:Name="ppk" IsReadOnly="True"   Grid.Row="7" Grid.Column="1" Keyboard="Default" MaxLength="200"  TextColor="White" FontSize="Caption"/>
+
+
+
+                 <Button Command="{Binding SubmitCommand}" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2"  Text="{translator:Translate UnitUpdate}" Style="{StaticResource buttonStyle}" >
+
+
+                </Button>
+            </Grid>
+        </StackLayout>
+     </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
